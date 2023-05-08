@@ -11,14 +11,27 @@
 		C29E138D2A02562500B05B31 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E138C2A02562500B05B31 /* ContentView.swift */; };
 		C29E138F2A02562600B05B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29E138E2A02562600B05B31 /* Assets.xcassets */; };
 		C29E13922A02562600B05B31 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29E13912A02562600B05B31 /* Preview Assets.xcassets */; };
+		C29E139D2A05411C00B05B31 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = C29E139C2A05411C00B05B31 /* SwiftSoup */; };
+		C29E139F2A0566CA00B05B31 /* MovieDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E139E2A0566CA00B05B31 /* MovieDayView.swift */; };
+		C29E13A12A057D0F00B05B31 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E13A02A057D0F00B05B31 /* MovieListView.swift */; };
+		C29E13A32A061DE400B05B31 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E13A22A061DE400B05B31 /* CustomAlertView.swift */; };
+		C29E13A52A07869600B05B31 /* MovieDayView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E13A42A07869600B05B31 /* MovieDayView2.swift */; };
+		C29E13A82A07EAE900B05B31 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = C29E13A72A07EAE900B05B31 /* PopupView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		076B4CC6686B5399F5219E7D /* Pods-mc2_git.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc2_git.debug.xcconfig"; path = "Target Support Files/Pods-mc2_git/Pods-mc2_git.debug.xcconfig"; sourceTree = "<group>"; };
+		9F397791EB3F8D4A522AE7D4 /* Pods-mc2_git.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mc2_git.release.xcconfig"; path = "Target Support Files/Pods-mc2_git/Pods-mc2_git.release.xcconfig"; sourceTree = "<group>"; };
 		C29E13872A02562500B05B31 /* mc2_git.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mc2_git.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29E138A2A02562500B05B31 /* mc2_gitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mc2_gitApp.swift; sourceTree = "<group>"; };
 		C29E138C2A02562500B05B31 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C29E138E2A02562600B05B31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C29E13912A02562600B05B31 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C29E139A2A0500CD00B05B31 /* mc2-git-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "mc2-git-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C29E139E2A0566CA00B05B31 /* MovieDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDayView.swift; sourceTree = "<group>"; };
+		C29E13A02A057D0F00B05B31 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
+		C29E13A22A061DE400B05B31 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		C29E13A42A07869600B05B31 /* MovieDayView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDayView2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C29E13A82A07EAE900B05B31 /* PopupView in Frameworks */,
+				C29E139D2A05411C00B05B31 /* SwiftSoup in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -37,6 +52,7 @@
 			children = (
 				C29E13892A02562500B05B31 /* mc2_git */,
 				C29E13882A02562500B05B31 /* Products */,
+				F75766ACE6EB09082C0AE996 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,10 +67,15 @@
 		C29E13892A02562500B05B31 /* mc2_git */ = {
 			isa = PBXGroup;
 			children = (
+				C29E139A2A0500CD00B05B31 /* mc2-git-Info.plist */,
 				C29E138A2A02562500B05B31 /* mc2_gitApp.swift */,
 				C29E138C2A02562500B05B31 /* ContentView.swift */,
 				C29E138E2A02562600B05B31 /* Assets.xcassets */,
+				C29E139E2A0566CA00B05B31 /* MovieDayView.swift */,
 				C29E13902A02562600B05B31 /* Preview Content */,
+				C29E13A02A057D0F00B05B31 /* MovieListView.swift */,
+				C29E13A22A061DE400B05B31 /* CustomAlertView.swift */,
+				C29E13A42A07869600B05B31 /* MovieDayView2.swift */,
 			);
 			path = mc2_git;
 			sourceTree = "<group>";
@@ -67,6 +88,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F75766ACE6EB09082C0AE996 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				076B4CC6686B5399F5219E7D /* Pods-mc2_git.debug.xcconfig */,
+				9F397791EB3F8D4A522AE7D4 /* Pods-mc2_git.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,15 +104,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C29E13952A02562600B05B31 /* Build configuration list for PBXNativeTarget "mc2_git" */;
 			buildPhases = (
+				81BBC647A1ED0E75093BF4FB /* [CP] Check Pods Manifest.lock */,
 				C29E13832A02562500B05B31 /* Sources */,
 				C29E13842A02562500B05B31 /* Frameworks */,
 				C29E13852A02562500B05B31 /* Resources */,
+				34AD4BF60BE2FA327E9A3543 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = mc2_git;
+			packageProductDependencies = (
+				C29E139C2A05411C00B05B31 /* SwiftSoup */,
+				C29E13A72A07EAE900B05B31 /* PopupView */,
+			);
 			productName = mc2_git;
 			productReference = C29E13872A02562500B05B31 /* mc2_git.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +147,10 @@
 				Base,
 			);
 			mainGroup = C29E137E2A02562500B05B31;
+			packageReferences = (
+				C29E139B2A05411C00B05B31 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				C29E13A62A07EAE900B05B31 /* XCRemoteSwiftPackageReference "PopupView" */,
+			);
 			productRefGroup = C29E13882A02562500B05B31 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -132,13 +172,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		34AD4BF60BE2FA327E9A3543 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mc2_git/Pods-mc2_git-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mc2_git/Pods-mc2_git-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mc2_git/Pods-mc2_git-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		81BBC647A1ED0E75093BF4FB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mc2_git-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C29E13832A02562500B05B31 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C29E138D2A02562500B05B31 /* ContentView.swift in Sources */,
+				C29E13A12A057D0F00B05B31 /* MovieListView.swift in Sources */,
 				C29E138B2A02562500B05B31 /* mc2_gitApp.swift in Sources */,
+				C29E139F2A0566CA00B05B31 /* MovieDayView.swift in Sources */,
+				C29E13A32A061DE400B05B31 /* CustomAlertView.swift in Sources */,
+				C29E13A52A07869600B05B31 /* MovieDayView2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +347,7 @@
 		};
 		C29E13962A02562600B05B31 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 076B4CC6686B5399F5219E7D /* Pods-mc2_git.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -270,11 +357,12 @@
 				DEVELOPMENT_TEAM = 8HG96SSK4A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mc2-git-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -290,6 +378,7 @@
 		};
 		C29E13972A02562600B05B31 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F397791EB3F8D4A522AE7D4 /* Pods-mc2_git.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -299,11 +388,12 @@
 				DEVELOPMENT_TEAM = 8HG96SSK4A;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mc2-git-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -339,6 +429,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C29E139B2A05411C00B05B31 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scinfu/SwiftSoup";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		C29E13A62A07EAE900B05B31 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C29E139C2A05411C00B05B31 /* SwiftSoup */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C29E139B2A05411C00B05B31 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			productName = SwiftSoup;
+		};
+		C29E13A72A07EAE900B05B31 /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C29E13A62A07EAE900B05B31 /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C29E137F2A02562500B05B31 /* Project object */;
 }

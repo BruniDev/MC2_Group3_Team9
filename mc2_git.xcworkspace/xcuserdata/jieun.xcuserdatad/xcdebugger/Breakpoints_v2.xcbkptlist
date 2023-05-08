@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "7BE91210-75B3-4FDD-A1EE-DD761F2F4A9C"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87AFF326-EED7-4906-B531-DAFE72CA8F3B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mc2_git/MovieDayView2.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "MovieDayView2"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "87AFF326-EED7-4906-B531-DAFE72CA8F3B - 7e300563a1cf91cc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mc2_git.MovieDayView2.init() -&gt; mc2_git.MovieDayView2"
+                  moduleName = "mc2_git"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieun/Desktop/Apple%20Developer%20Academy/MC2/mc2_git/mc2_git/MovieDayView2.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  uuid = "87AFF326-EED7-4906-B531-DAFE72CA8F3B - 6d48416b7b39951f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "mc2_git.MovieDayView2.init(monthString: Swift.String, selectedDay: Swift.Optional&lt;Foundation.Date&gt;, isButtonPressed: Swift.Bool) -&gt; mc2_git.MovieDayView2"
+                  moduleName = "mc2_git"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jieun/Desktop/Apple%20Developer%20Academy/MC2/mc2_git/mc2_git/MovieDayView2.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "136">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
