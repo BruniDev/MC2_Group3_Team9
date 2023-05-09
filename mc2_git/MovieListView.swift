@@ -16,16 +16,20 @@ struct MovieListView: View {
         
 //        ZStack {
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: 16) {
+                HStack(alignment: .top) {
                     ForEach(1..<4) { i in
-                        GeometryReader { proxy in
-                            let scale = getScale(proxy: proxy)
-                            VStack(spacing: 8) {
+//                        GeometryReader { proxy in
+//                            let scale = getScale(proxy: proxy)
+                            VStack(alignment: .leading, spacing: 8) {
                                 
                                 Image("post1")
                                     .resizable()
-                                    .scaledToFill()
-                                    .clipped().cornerRadius(8)
+                                    .scaledToFit()
+                                    .clipped()
+                                    .cornerRadius(8)
+                                    .frame(width: 188, height: 265)
+//                                    .background(Color.red)
+//                                    .padding(.trailing, -20)
 //                                    .onTapGesture {
 //                                        isShowingPopup = true
 //                                    }
@@ -39,21 +43,34 @@ struct MovieListView: View {
 //                                
 
 
-                                Text("happy together")
-                                    .font(.system(size: 16, weight: .semibold))
-                                    .multilineTextAlignment(.center)
+                                Text("영화제목")
+                                    .font(.system(size: 10, weight: .semibold))
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(.black)
+                                Text("영화시간")
+                                    .font(.system(size: 10, weight: .semibold))
+                                    .multilineTextAlignment(.leading)
                                     .foregroundColor(.black)
                             }
-                            .scaleEffect(.init(width: scale, height: scale))
-                            .padding(.vertical)
+//                            .scaleEffect(.init(width: scale, height: scale))
+//                            .padding(.vertical)
+//                            .background(Color.red)
                         } //Mark: - End Geometry
-                        .frame(width: 150, height: 300)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 32)
+                        .frame(width: 188, height: 330)
+//                        .padding(.horizontal, 20)
+//                        .padding(.vertical, 32)
+                        .padding(.leading, 20)
+//                        .background(Color.green)
+//                        .background(Color.red)
+//                        .background(Color.red)
                     } //Mark: - End ForEach
-                    Spacer()
-                        .frame(width: 16)
+//                .background(Color.purple)
+//                    Spacer()
+//                        .frame(width: 16)
                 }//Mark: - End HStack
+//            .padding(.horizontal, 8)
+//            .background(Color.orange)
+//                .padding(.vertical)
             }//Mark: - End ScrollView
 //            .overlay(
 //                if isShowingPopup {
@@ -81,24 +98,25 @@ struct MovieListView: View {
             }
         
 
-        }
+
         
 func getScale(proxy: GeometryProxy) -> CGFloat {
     let midPoint: CGFloat = 125
     let viewFrame = proxy.frame(in: CoordinateSpace.global)
     var scale: CGFloat = 1.0
-    let deltaXAnimationThreshold: CGFloat = 125
+        let deltaXAnimationThreshold: CGFloat = 125
     
-    let diffFromCenter = abs(midPoint - viewFrame.origin.x - deltaXAnimationThreshold / 2)
-    if diffFromCenter < deltaXAnimationThreshold {
-        scale = 1 + (deltaXAnimationThreshold - diffFromCenter) / 500
-    }
-    return scale
+        let diffFromCenter = abs(midPoint - viewFrame.origin.x - deltaXAnimationThreshold / 2)
+        if diffFromCenter < deltaXAnimationThreshold {
+            scale = 1 + (deltaXAnimationThreshold - diffFromCenter) / 500
+        }
+        return scale
+        }
+    
+
+    struct MovieListView_Previews: PreviewProvider {
+        static var previews: some View {
+            MovieListView(categoryName: "Top Movies")
+        }
     }
 
-
-struct MovieListView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieListView(categoryName: "Top Movies")
-    }
-}

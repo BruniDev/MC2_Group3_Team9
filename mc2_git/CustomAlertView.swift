@@ -17,17 +17,17 @@ struct CustomAlertView: View {
     var body: some View {
         
         VStack {
-            Button(action: {
-                
-            }) {
-                Image(systemName: "xmark")
-                    .foregroundColor(.white)
-                    .font(.system(size: 24, weight: .bold))
-            }
+//            Button(action: {
+//
+//            }) {
+//                Image(systemName: "xmark")
+//                    .foregroundColor(.white)
+//                    .font(.system(size: 24, weight: .bold))
+//            }
             
             Image("post1")
                 .resizable()
-                .frame(width: 300)
+//                .frame(width: 100)
                 .scaledToFit()
             
             HStack {
@@ -39,7 +39,7 @@ struct CustomAlertView: View {
             HStack {
                 RoundedRectangle(cornerRadius: 10)
                     .background(Color.black)
-                    .frame(width: 50, height: 30)
+                    .frame(width: 50, height: 20)
                     .overlay(Text("감독").foregroundColor(Color.white))
                 Text("감독명")
             }
@@ -47,7 +47,7 @@ struct CustomAlertView: View {
             HStack {
                 RoundedRectangle(cornerRadius: 10)
                     .background(Color.black)
-                    .frame(width: 50, height: 30)
+                    .frame(width: 50, height: 20)
                     .overlay(Text("출연").foregroundColor(Color.white))
                 Text("출연자명")
             }
@@ -55,7 +55,7 @@ struct CustomAlertView: View {
             HStack {
                 RoundedRectangle(cornerRadius: 10)
                     .background(Color.black)
-                    .frame(width: 50, height: 30)
+                    .frame(width: 50, height: 20)
                     .overlay(Text("개봉").foregroundColor(Color.white))
                 Text("개봉날짜")
             }
@@ -63,7 +63,7 @@ struct CustomAlertView: View {
             HStack {
                 RoundedRectangle(cornerRadius: 10)
                     .background(Color.black)
-                    .frame(width: 50, height: 30)
+                    .frame(width: 80, height: 20)
                     .overlay(Text("러닝타임").foregroundColor(Color.white))
                 Text("러닝타임")
             }
