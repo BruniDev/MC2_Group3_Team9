@@ -9,48 +9,44 @@ import SwiftUI
 
 struct MovieDayView2: View {
     
-        @State var monthString: String = "Not Set"
+    @State var monthString: String = "Not Set"
+    @State var selectedDate: Date?
+    
     let calendar = Calendar.current
     let dates = getWeek()
     
+    init() {
+        selectedDate = Date()
+    }
+    
     var body: some View {
         VStack {
-            //            Text(getMonth(date: Date()))
-            //                 ScrollView(.horizontal) {
             Text("상영중 영화")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
+                .padding(.top, 20)
                 .bold()
             HStack(spacing: 25) {
-                
-                Button(action: {
-                    
-                }, label: {
-                    VStack {
-                        Text("오늘")
-                            .bold()
-                        Text(getDayShort(date: Date()))
-                            .font(.caption)
-                    }.foregroundColor(.green)
-                        .padding(5)
-                }).background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray). frame(width: 40, height: 50))
-                
-                
-//                ForEach(dates, id: \.self) { day in
-//                    ZStack {
-//                        Button(action: {
-//
-//                        }, label: {
-//                            VStack {
-//                                Text("\(getDayNumber(date: day))")
-//                                    .bold()
-//                                Text(getDayShort(date: day))
-//                                    .font(.caption)
-//                            }.foregroundColor(.green)
-//                                .padding(5)
-//                        }).background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray) .frame(width: 40, height: 50))
-//                    }
-//                }//Mark: - end ForEach
+                ForEach(dates, id: \.self) { day in
+                    ZStack {
+                        Button(action: {
+                            selectedDate = day
+                        }, label: {
+                            VStack {
+                                Text("\(getDayNumber(date: day))")
+                                    .bold()
+                                Text(getDayShort(date: day))
+                                    .font(.system(size: 8))
+                            }.padding(5)
+                                .foregroundColor((selectedDate == day ? Color.white : Color.black))
+                        }).background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(selectedDate == day ? Color.black : Color.clear)
+                                .frame(width: 35, height: 40)
+                        )
+                    }//Mark: - End ZStack
+                }//Mark: - end ForEach
+                .padding(.top, 15)
             }
             
             NavigationView {
@@ -93,10 +89,10 @@ func getWeek() -> [Date] {
     let range = calendar.range(of: .day, in: .month, for: currentDate)!
     
     var daysMonth = (range.lowerBound ..< range.upperBound)
-        .compactMap { calendar.date(byAdding: .day, value: $0 - dayOfWeek, to: currentDate) }
+        .compactMap { calendar.date(byAdding: .day, value: $0 - 1 , to: currentDate) }
         .prefix(7)
     
-    daysMonth[0] = currentDate
+    daysMonth[0] = calendar.startOfDay(for: currentDate)
     
     return Array(daysMonth)
 }

@@ -10,36 +10,47 @@ import SwiftUI
 struct CustomAlertView: View {
     
 //    @State private var isShowingPopup = false
-
-    
 //    @Binding var isDisplayed: Bool
     
     var body: some View {
         
         VStack {
-            Button(action: {
-                
-            }) {
-                Image(systemName: "xmark")
-                    .foregroundColor(.white)
-                    .font(.system(size: 24, weight: .bold))
+            HStack {
+                Button(action: {
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.orange)
+                        .font(.system(size: 30, weight: .bold))
+                }.padding(.leading, -30)
+                Spacer()
             }
-            
-            Image("post1")
+
+            Image("Life_of_Hae-Oak")
                 .resizable()
-                .frame(width: 300)
                 .scaledToFit()
+                .frame(width: 300)
+                .shadow(color: .gray, radius: 3, y:10)
             
             HStack {
                 Text("영화제목")
+                    .font(.largeTitle)
+                    .bold()
+                Text("영화제목ENG")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
+                Spacer()
                 Text("영화년도")
+                    .font(.footnote)
+                    .foregroundColor(.gray)
             }
             
-            Text("영화내용")
+            Text("영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다.")
+                .font(.footnote)
+
             HStack {
-                RoundedRectangle(cornerRadius: 10)
+                RoundedRectangle(cornerRadius: 30)
                     .background(Color.black)
-                    .frame(width: 50, height: 30)
+                    .frame(width: 50, height: 20)
                     .overlay(Text("감독").foregroundColor(Color.white))
                 Text("감독명")
             }
@@ -47,7 +58,7 @@ struct CustomAlertView: View {
             HStack {
                 RoundedRectangle(cornerRadius: 10)
                     .background(Color.black)
-                    .frame(width: 50, height: 30)
+                    .frame(width: 50, height: 20)
                     .overlay(Text("출연").foregroundColor(Color.white))
                 Text("출연자명")
             }
@@ -55,7 +66,7 @@ struct CustomAlertView: View {
             HStack {
                 RoundedRectangle(cornerRadius: 10)
                     .background(Color.black)
-                    .frame(width: 50, height: 30)
+                    .frame(width: 50, height: 20)
                     .overlay(Text("개봉").foregroundColor(Color.white))
                 Text("개봉날짜")
             }
@@ -63,40 +74,12 @@ struct CustomAlertView: View {
             HStack {
                 RoundedRectangle(cornerRadius: 10)
                     .background(Color.black)
-                    .frame(width: 50, height: 30)
+                    .frame(width: 80, height: 20)
                     .overlay(Text("러닝타임").foregroundColor(Color.white))
                 Text("러닝타임")
             }
-            
-        }
-
-        
-        
-//        Text("this is a popup")
-//            .font(.largeTitle)
-//            .padding()
-//            .background(Color.red)
-//            .cornerRadius(16)
-
-        
-//        ZStack {
-//            Color.black.opacity(0.4)
-//                .ignoresSafeArea()
-//            VStack {
-//                Text("Popup View")
-//                Button("Close") {
-//                    isDisplayed = false
-//                }
-//            }.padding()
-//                .background(Color.white)
-//                .cornerRadius(8)
-//                .shadow(radius: 10)
-//        }
-        
-        
-        
+        }.padding(.horizontal, 50)
     }
-    
 }
 
 
@@ -142,27 +125,33 @@ struct CustomAlertView: View {
 //            //Mark: - 9:50
 //        }
 //
-////        VStack {
-////            Text("Snorlax")
-////                .font(.system(size: 18))
-////            Image("post1")
-////                .resizable()
-////                .frame(width: 80)
-////
-////            Button(action: {
-////                withAnimation {
-////                    isPresent = false
-////                }
-////            }, label: {
-////                Text("Close")
-////            })
-////        }.frame(width: 280, alignment: .center)
-////            .padding()
-////            .background(Color.red)
-////            .cornerRadius(12)
+//        VStack {
+//            Text("Snorlax")
+//                .font(.system(size: 18))
+//            Image("post1")
+//                .resizable()
+//                .frame(width: 80)
 //
-////    }).background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray) .frame(width: 40, height: 50))
+//            Button(action: {
+//                withAnimation {
+//                    isPresent = false
+//                }
+//            }, label: {
+//                Text("Close")
+//            })
+//        }.frame(width: 280, alignment: .center)
+//            .padding()
+//            .background(Color.red)
+//            .cornerRadius(12)
+//
+//    }).background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray) .frame(width: 40, height: 50))
 //
 //
 //    }
 //}
+
+struct CustoAlertView_Previews: PreviewProvider {
+    static var previews: some View {
+        CustomAlertView()
+    }
+}
