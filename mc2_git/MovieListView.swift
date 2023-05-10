@@ -9,8 +9,11 @@ import SwiftUI
 
 struct MovieListView: View {
     
+    
     let categoryName: String
-    //    @State private var isShowingPopup = false
+    @Binding var isShowingPopup: Bool
+
+//        @State private var isShowingPopup = false
     
     var body: some View {
         //        ZStack {
@@ -20,12 +23,15 @@ struct MovieListView: View {
                     //                        GeometryReader { proxy in
                     //                            let scale = getScale(proxy: proxy)
                     VStack(alignment: .leading, spacing: 8) {
-                        Image("post1")
+                        Image("Life_of_Hae-Oak")
                             .resizable()
                             .scaledToFit()
                             .clipped()
-                            .cornerRadius(8)
+//                            .cornerRadius(8)
                             .frame(width: 188, height: 265)
+                            .onTapGesture {
+                                isShowingPopup = true
+                            }
                         //                                    .onTapGesture {
                         //                                        isShowingPopup = true
                         //                                    }
@@ -38,7 +44,7 @@ struct MovieListView: View {
                         //                                }
                         //
                         Text("영화제목")
-                            .font(.system(size: 10, weight: .semibold))
+                            .font(.system(size: 15, weight: .bold))
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.black)
                         Text("영화시간")
@@ -46,13 +52,18 @@ struct MovieListView: View {
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.black)
                     }
+
                     //                            .scaleEffect(.init(width: scale, height: scale))
                     //                            .padding(.vertical)
                 } //Mark: - End Geometry
                 .frame(width: 188, height: 330)
                 .padding(.leading, 20)
             } //Mark: - End ForEach
-        }//Mark: - End HStack
+        }//Mark: - END ScrollView
+        
+
+        
+        //Mark: - End HStack
         //            .padding(.horizontal, 8)
         //                .padding(.vertical)
     }//Mark: - End ScrollView
@@ -100,7 +111,7 @@ func getScale(proxy: GeometryProxy) -> CGFloat {
 
 struct MovieListView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListView(categoryName: "Top Movies")
+        MovieListView(categoryName: "Top Movies", isShowingPopup: .constant(false))
     }
 }
 

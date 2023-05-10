@@ -11,6 +11,7 @@ struct MovieDayView2: View {
     
     @State var monthString: String = "Not Set"
     @State var selectedDate: Date = Date()
+    @Binding var isShowingPopup: Bool
     
     let calendar = Calendar.current
     let dates = getWeek()
@@ -21,7 +22,7 @@ struct MovieDayView2: View {
     
     var body: some View {
         VStack {
-            Text("상영중 영화")
+            Text("상영중인 영화")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
                 .padding(.top, 20)
@@ -51,7 +52,7 @@ struct MovieDayView2: View {
             
             NavigationView {
                 ScrollView {
-                    MovieListView(categoryName: "Top Movies")
+                    MovieListView(categoryName: "Top Movies", isShowingPopup: $isShowingPopup)
                 }
             }
         }
@@ -99,6 +100,7 @@ func getWeek() -> [Date] {
 
 struct MovieDayView2_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDayView2()
+        MovieDayView2(isShowingPopup: .constant(false))
+            
     }
 }

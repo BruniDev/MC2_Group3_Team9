@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var isPresentingCustomAlert = false
+    @State private var isShowingPopup = false
+    
     
     var body: some View {
         
@@ -28,20 +31,35 @@ struct ContentView: View {
             }.background(.black)
 
             //Mark: - 날짜 View, 포스터 View
-            MovieDayView2().padding(.bottom, 20)
-                .onTapGesture {
-                    
-                }
+            
+//            Button(action: {
+//                self.isPresentingCustomAlert = true
+//            }) {
+//                MovieDayView2()
+//                    .padding(.bottom, 20)
+//            }.popover(isPresented: $isPresentingCustomAlert, arrowEdge: .top) {
+//                CustomAlertView()
+//            }
+            
+            MovieDayView2(isShowingPopup: $isShowingPopup)
+                .padding(.bottom, 20)
+//                .onTapGesture {
+//                    self.isPresentingCustomAlert = true
+//                }.sheet(isPresented: $isPresentingCustomAlert) {
+//                    CustomAlertView()
+//                }
+
 
             //Mark: - 영화관 이름, 주소
             Rectangle()
-                .frame(height: 5)
+                .frame(height: 3)
                 .foregroundColor(Color.gray)
             HStack {
                 VStack(alignment: .leading) {
                     HStack {
                         Text("영화관 이름")
-                            .font(.system(size:32))
+                            .font(.system(size:25))
+                            .bold()
                         Image("Instagram_icon")
                             .resizable()
                             .scaledToFit()
@@ -49,6 +67,12 @@ struct ContentView: View {
                     }
 
                     Text("영화관 주소")
+                        .font(.caption)
+                        .foregroundColor(Color.gray)
+                        .bold()
+                        .padding(.bottom, 10)
+                    
+                    
 
                     HStack {
                         Text("나와의 거리")
@@ -56,11 +80,37 @@ struct ContentView: View {
                         Spacer()
                         Text("거리km")
                             .multilineTextAlignment(.trailing)
+                        Image("location")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 30)
                     }
-                }
+                }//Mark: - END VStack
+                .padding(.horizontal, 10)
                 Spacer()
-            }.padding(.leading)
+            }
+            .padding(.leading)
+                .padding(.bottom, 50)
+                .background(Color.red)
+//            Spacer()
         }//Mark: - End VStack
+        .overlay() {
+            if isShowingPopup {
+                Color.black.opacity(0.5)
+                    .ignoresSafeArea()
+                
+                    CustomAlertView(isShowingPopup: $isShowingPopup)
+                    
+                    .frame(width: UIScreen.main.bounds.width - 50, height: UIScreen.main.bounds.height - 120)
+                    .background(Color.white)
+//                    .border(.black)
+                
+
+                
+
+                
+            }
+        }//Mark: - END overlay
     }
 }
 

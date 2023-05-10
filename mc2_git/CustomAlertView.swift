@@ -8,24 +8,34 @@
 import SwiftUI
 
 struct CustomAlertView: View {
+    @Binding var isShowingPopup : Bool
     
     var body: some View {
         
         VStack {
             HStack {
+                
+ 
+                
                 Button(action: {
+                    isShowingPopup = false
                 }) {
                     Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.orange)
+                        .foregroundColor(.black.opacity(0.8))
                         .font(.system(size: 30, weight: .bold))
-                }.padding(.leading, 30)
+                }.padding(.leading, 10)
+                
+                
+                
+                
+                
                 Spacer()
             }
             
             Image("Life_of_Hae-Oak")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 300)
+                .frame(width: 280)
                 .shadow(color: .gray, radius: 3, y:10)
                 .overlay(Circle()
                     .foregroundColor(.black.opacity(0.5))
@@ -45,14 +55,15 @@ struct CustomAlertView: View {
                     Text("영화제목")
                         .font(.largeTitle)
                         .bold()
-//                    Text("영화제목ENG")
-//                        .font(.footnote)
-//                        .foregroundColor(.gray)
+                    //                    Text("영화제목ENG")
+                    //                        .font(.footnote)
+                    //                        .foregroundColor(.gray)
                     Spacer()
                     Text("영화년도")
                         .font(.footnote)
                         .foregroundColor(.gray)
                 }
+                .padding(.horizontal, 10)
                 Text("영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다.")
                     .font(.footnote)
                 VStack(alignment: .leading, spacing: 5) {
@@ -87,8 +98,9 @@ struct CustomAlertView: View {
                     }
                 }//Mark: - END VStack
                 .padding(.top)
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal, 50)
+            .padding(.horizontal, 20)
             
         }
     }
@@ -163,8 +175,8 @@ struct CustomAlertView: View {
 //    }
 //}
 
-struct CustoAlertView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomAlertView()
-    }
-}
+//struct CustoAlertView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CustomAlertView()
+//    }
+//}
