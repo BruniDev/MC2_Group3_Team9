@@ -9,9 +9,6 @@ import SwiftUI
 
 struct CustomAlertView: View {
     
-//    @State private var isShowingPopup = false
-//    @Binding var isDisplayed: Bool
-    
     var body: some View {
         
         VStack {
@@ -21,66 +18,82 @@ struct CustomAlertView: View {
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(.orange)
                         .font(.system(size: 30, weight: .bold))
-                }.padding(.leading, -30)
+                }.padding(.leading, 30)
                 Spacer()
             }
-
+            
             Image("Life_of_Hae-Oak")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 300)
                 .shadow(color: .gray, radius: 3, y:10)
+                .overlay(Circle()
+                    .foregroundColor(.black.opacity(0.5))
+                    .frame(width: 40, height: 40)
+                    .padding(.top, 10)
+                    .padding(.trailing, 10)
+                         
+                    .overlay(Text("15")
+                        .padding(.top, 10)
+                        .padding(.trailing, 10)
+                        .foregroundColor(.yellow.opacity(0.5)))
+                         ,alignment: .topTrailing
+                )
             
-            HStack {
-                Text("영화제목")
-                    .font(.largeTitle)
-                    .bold()
-                Text("영화제목ENG")
+            VStack {
+                HStack {
+                    Text("영화제목")
+                        .font(.largeTitle)
+                        .bold()
+//                    Text("영화제목ENG")
+//                        .font(.footnote)
+//                        .foregroundColor(.gray)
+                    Spacer()
+                    Text("영화년도")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                }
+                Text("영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다.")
                     .font(.footnote)
-                    .foregroundColor(.gray)
-                Spacer()
-                Text("영화년도")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
+                VStack(alignment: .leading, spacing: 5) {
+                    HStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(width: 60, height: 25)
+                            .overlay(Text("감 독") .font(.caption) .bold() .foregroundColor(Color.white))
+                        Text("이우정")
+                            .font(.caption)
+                        Spacer()
+                    }
+                    HStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(width: 60, height: 25)
+                            .overlay(Text("출 연") .font(.caption) .bold() .foregroundColor(Color.white))
+                        Text("이우정, 이우정, 이우정")
+                            .font(.caption)
+                    }
+                    HStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(width: 60, height: 25)
+                            .overlay(Text("장 르") .font(.caption) .bold() .foregroundColor(Color.white))
+                        Text("드라마")
+                            .font(.caption)
+                    }
+                    HStack {
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(width: 60, height: 25)
+                            .overlay(Text("러닝타임") .font(.caption) .bold() .foregroundColor(Color.white))
+                        Text("109분")
+                            .font(.caption)
+                    }
+                }//Mark: - END VStack
+                .padding(.top)
             }
+            .padding(.horizontal, 50)
             
-            Text("영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다.")
-                .font(.footnote)
-
-            HStack {
-                RoundedRectangle(cornerRadius: 30)
-                    .background(Color.black)
-                    .frame(width: 50, height: 20)
-                    .overlay(Text("감독").foregroundColor(Color.white))
-                Text("감독명")
-            }
-            
-            HStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .background(Color.black)
-                    .frame(width: 50, height: 20)
-                    .overlay(Text("출연").foregroundColor(Color.white))
-                Text("출연자명")
-            }
-            
-            HStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .background(Color.black)
-                    .frame(width: 50, height: 20)
-                    .overlay(Text("개봉").foregroundColor(Color.white))
-                Text("개봉날짜")
-            }
-            
-            HStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .background(Color.black)
-                    .frame(width: 80, height: 20)
-                    .overlay(Text("러닝타임").foregroundColor(Color.white))
-                Text("러닝타임")
-            }
-        }.padding(.horizontal, 50)
+        }
     }
 }
+
 
 
 //struct BlurView: UIViewRepresentable {

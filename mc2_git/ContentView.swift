@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     
+    
     var body: some View {
         
-        //        CustomAlertView()
+//                CustomAlertView()
         
         VStack {
             //Mark: - 영화관 로고
@@ -19,16 +20,19 @@ struct ContentView: View {
                 Rectangle()
                     .frame(height: 135)
                     .foregroundColor(.black)
-                
+
                 Image("영화관로고")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 70)
             }.background(.black)
-            
+
             //Mark: - 날짜 View, 포스터 View
             MovieDayView2().padding(.bottom, 20)
-            
+                .onTapGesture {
+                    
+                }
+
             //Mark: - 영화관 이름, 주소
             Rectangle()
                 .frame(height: 5)
@@ -43,9 +47,9 @@ struct ContentView: View {
                             .scaledToFit()
                             .frame(width: 30)
                     }
-                    
+
                     Text("영화관 주소")
-                    
+
                     HStack {
                         Text("나와의 거리")
                         Image(systemName: "figure.walk")
@@ -56,9 +60,8 @@ struct ContentView: View {
                 }
                 Spacer()
             }.padding(.leading)
-        }
-        Spacer()
-    }//Mark: - End VStack
+        }//Mark: - End VStack
+    }
 }
 
 

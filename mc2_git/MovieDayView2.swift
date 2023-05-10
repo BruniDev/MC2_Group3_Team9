@@ -10,14 +10,14 @@ import SwiftUI
 struct MovieDayView2: View {
     
     @State var monthString: String = "Not Set"
-    @State var selectedDate: Date?
+    @State var selectedDate: Date = Date()
     
     let calendar = Calendar.current
     let dates = getWeek()
     
-    init() {
-        selectedDate = Date()
-    }
+//    init() {
+//        selectedDate = Date()
+//    }
     
     var body: some View {
         VStack {
