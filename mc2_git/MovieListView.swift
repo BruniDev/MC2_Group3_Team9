@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MovieListView: View {
     
+    var movieDetailManager = MovieDetailManager()
+    @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
     let categoryName: String
     //    @State private var isShowingPopup = false
     
@@ -16,16 +18,30 @@ struct MovieListView: View {
         //        ZStack {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top) {
-                ForEach(1..<4) { i in
+                ForEach(0..<movieScheduleDataForUser.count, id:\.self) { index in
                     //                        GeometryReader { proxy in
                     //                            let scale = getScale(proxy: proxy)
                     VStack(alignment: .leading, spacing: 8) {
-                        Image("post1")
-                            .resizable()
-                            .scaledToFit()
-                            .clipped()
+//                        Image("post1")
+//                            .resizable()
+//                            .scaledToFit()
+//                            .clipped()
+//                            .cornerRadius(8)
+//                            .frame(width: 188, height: 265)
+                        Button {
+                            movieDetailManager.fetchDetail(movieCode: movieScheduleDataForUser[index].movieCode)
+                        } label: {
+                            AsyncImage(url: URL(string: "\(movieScheduleDataForUser[index].movieIMG)")) { img in
+                                img
+                                    .resizable()
+                                    .scaledToFit()
+                            } placeholder: {
+                                Color.white
+                            }
                             .cornerRadius(8)
-                            .frame(width: 188, height: 265)
+                            .frame(height: 265)
+                            .animation(.easeIn)
+                        }
                         //                                    .onTapGesture {
                         //                                        isShowingPopup = true
                         //                                    }
@@ -37,14 +53,22 @@ struct MovieListView: View {
                         //                                        .clipped().cornerRadius(8)
                         //                                }
                         //
-                        Text("영화제목")
+                        Text("\(movieScheduleDataForUser[index].movieName)")
                             .font(.system(size: 10, weight: .semibold))
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.black)
-                        Text("영화시간")
-                            .font(.system(size: 10, weight: .semibold))
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
+                        HStack {
+                            ForEach(0 ..< movieScheduleDataForUser[index].movieTimeTable.count, id: \.self) { i in
+                                Text(movieScheduleDataForUser[index].movieTimeTable[i])
+                                    .font(.system(size: 10, weight: .semibold))
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(.black)
+                            }
+                        }
+//                        Text("영화시간")
+//                            .font(.system(size: 10, weight: .semibold))
+//                            .multilineTextAlignment(.leading)
+//                            .foregroundColor(.black)
                     }
                     //                            .scaleEffect(.init(width: scale, height: scale))
                     //                            .padding(.vertical)
@@ -100,7 +124,7 @@ func getScale(proxy: GeometryProxy) -> CGFloat {
 
 struct MovieListView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListView(categoryName: "Top Movies")
+        MovieListView(movieScheduleDataForUser: .constant([]), categoryName: "Top Movies")
     }
 }
 

@@ -9,15 +9,17 @@ import SwiftUI
 
 struct MovieDayView2: View {
     
+    var movieScheduleManager = MovieScheduleManager()
     @State var monthString: String = "Not Set"
-    @State var selectedDate: Date?
+    @State var selectedDate: Date = Date()
+    @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
+    @Binding var allDays : Array<String>
+    
     
     let calendar = Calendar.current
-    let dates = getWeek()
+    var dates = getWeek()
+    var stringDates: Array<String> = []
     
-    init() {
-        selectedDate = Date()
-    }
     
     var body: some View {
         VStack {
@@ -31,6 +33,15 @@ struct MovieDayView2: View {
                     ZStack {
                         Button(action: {
                             selectedDate = day
+                            print("선택된날짜")
+                            print(dates)
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                            movieScheduleManager.fetchMovieSchedule(theaterName: "인디플러스포항", date: dateFormatter.string(from: selectedDate))
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                                movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
+                                print(movieScheduleDataForUser)
+                            }
                         }, label: {
                             VStack {
                                 Text("\(getDayNumber(date: day))")
@@ -51,7 +62,7 @@ struct MovieDayView2: View {
             
             NavigationView {
                 ScrollView {
-                    MovieListView(categoryName: "Top Movies")
+                    MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, categoryName: "Top Movies")
                 }
             }
         }
@@ -81,6 +92,7 @@ func getDayShort(date: Date) -> String {
 }
 
 func getWeek() -> [Date] {
+  
     let currentDate = Date()
     
     let calendar = Calendar.current
@@ -88,9 +100,12 @@ func getWeek() -> [Date] {
     
     let range = calendar.range(of: .day, in: .month, for: currentDate)!
     
+    
     var daysMonth = (range.lowerBound ..< range.upperBound)
         .compactMap { calendar.date(byAdding: .day, value: $0 - 1 , to: currentDate) }
         .prefix(7)
+    print("pleaseeeee")
+    print(daysMonth)
     
     daysMonth[0] = calendar.startOfDay(for: currentDate)
     
@@ -99,6 +114,6 @@ func getWeek() -> [Date] {
 
 struct MovieDayView2_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDayView2()
+        MovieDayView2(movieScheduleDataForUser: .constant([]), allDays: .constant([]))
     }
 }

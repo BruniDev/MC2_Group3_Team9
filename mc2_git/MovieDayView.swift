@@ -59,11 +59,11 @@ struct MovieDayView: View {
                     }.frame(width: UIScreen.main.bounds.width)
                     
                     
-                    NavigationView {
-                        ScrollView {
-                            MovieListView(categoryName: "Top Movies")
-                        }
-                    }
+//                    NavigationView {
+//                        ScrollView {
+//                            MovieListView(categoryName: "Top Movies")
+//                        }
+//                    }
                     
 //                    VStack {
 //                        ScrollView(.horizontal) {
