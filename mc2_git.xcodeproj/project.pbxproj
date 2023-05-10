@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B8695072A0BD8DD009666C0 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B8695062A0BD8DD009666C0 /* BottomSheet.swift */; };
 		C29E138B2A02562500B05B31 /* mc2_gitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E138A2A02562500B05B31 /* mc2_gitApp.swift */; };
 		C29E138D2A02562500B05B31 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E138C2A02562500B05B31 /* ContentView.swift */; };
 		C29E138F2A02562600B05B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29E138E2A02562600B05B31 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B8695062A0BD8DD009666C0 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		C29E13872A02562500B05B31 /* mc2_git.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mc2_git.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29E138A2A02562500B05B31 /* mc2_gitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mc2_gitApp.swift; sourceTree = "<group>"; };
 		C29E138C2A02562500B05B31 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				D96438F42A0B7526009D634D /* DateManager.swift */,
 				D96438F82A0B770A009D634D /* MovieScheduleManager.swift */,
 				D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */,
+				7B8695062A0BD8DD009666C0 /* BottomSheet.swift */,
 			);
 			path = mc2_git;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				D96438F52A0B7526009D634D /* DateManager.swift in Sources */,
 				C29E13A52A07869600B05B31 /* MovieDayView2.swift in Sources */,
 				D96438F32A0B74DB009D634D /* MovieScheduleData.swift in Sources */,
+				7B8695072A0BD8DD009666C0 /* BottomSheet.swift in Sources */,
 				D96438F72A0B76DC009D634D /* MovieScheduleDataForUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
