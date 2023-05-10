@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		93BCF5AF2A0BD946008CB844 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BCF5AE2A0BD946008CB844 /* LocationManager.swift */; };
+		93BCF5B12A0BD974008CB844 /* CheckTop3Theaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */; };
 		C29E138B2A02562500B05B31 /* mc2_gitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E138A2A02562500B05B31 /* mc2_gitApp.swift */; };
 		C29E138D2A02562500B05B31 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E138C2A02562500B05B31 /* ContentView.swift */; };
 		C29E138F2A02562600B05B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29E138E2A02562600B05B31 /* Assets.xcassets */; };
@@ -26,6 +28,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		93BCF5AE2A0BD946008CB844 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTop3Theaters.swift; sourceTree = "<group>"; };
 		C29E13872A02562500B05B31 /* mc2_git.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mc2_git.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29E138A2A02562500B05B31 /* mc2_gitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mc2_gitApp.swift; sourceTree = "<group>"; };
 		C29E138C2A02562500B05B31 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -107,6 +111,8 @@
 				D96438F22A0B74DB009D634D /* MovieScheduleData.swift */,
 				D96438F62A0B76DC009D634D /* MovieScheduleDataForUser.swift */,
 				D96438FC2A0B8DB5009D634D /* MovieDetailData.swift */,
+				93BCF5AE2A0BD946008CB844 /* LocationManager.swift */,
+				93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +195,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93BCF5B12A0BD974008CB844 /* CheckTop3Theaters.swift in Sources */,
 				C29E138D2A02562500B05B31 /* ContentView.swift in Sources */,
 				D96438FD2A0B8DB5009D634D /* MovieDetailData.swift in Sources */,
 				C29E13A12A057D0F00B05B31 /* MovieListView.swift in Sources */,
@@ -201,6 +208,7 @@
 				C29E13A52A07869600B05B31 /* MovieDayView2.swift in Sources */,
 				D96438F32A0B74DB009D634D /* MovieScheduleData.swift in Sources */,
 				D96438F72A0B76DC009D634D /* MovieScheduleDataForUser.swift in Sources */,
+				93BCF5AF2A0BD946008CB844 /* LocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,6 +341,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mc2-git-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 수집을 허용 하십니까?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -364,6 +373,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mc2-git-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 수집을 허용 하십니까?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

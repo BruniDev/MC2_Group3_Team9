@@ -14,6 +14,7 @@ struct MovieDayView2: View {
     @State var selectedDate: Date = Date()
     @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
     @Binding var allDays : Array<String>
+    @Binding var theaters : [Theater]
     
     
     let calendar = Calendar.current
@@ -37,7 +38,7 @@ struct MovieDayView2: View {
                             print(dates)
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "yyyy-MM-dd"
-                            movieScheduleManager.fetchMovieSchedule(theaterName: "인디플러스포항", date: dateFormatter.string(from: selectedDate))
+                            movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateFormatter.string(from: selectedDate))
                             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                                 movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                                 print(movieScheduleDataForUser)
@@ -114,6 +115,6 @@ func getWeek() -> [Date] {
 
 struct MovieDayView2_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDayView2(movieScheduleDataForUser: .constant([]), allDays: .constant([]))
+        MovieDayView2(movieScheduleDataForUser: .constant([]), allDays: .constant([]), theaters: .constant([]))
     }
 }
