@@ -16,10 +16,6 @@ struct MovieDayView2: View {
     let calendar = Calendar.current
     let dates = getWeek()
     
-//    init() {
-//        selectedDate = Date()
-//    }
-    
     var body: some View {
         VStack {
             Text("상영중인 영화")
@@ -40,15 +36,16 @@ struct MovieDayView2: View {
                                     .font(.system(size: 8))
                             }.padding(5)
                                 .foregroundColor((selectedDate == day ? Color.white : Color.black))
-                        }).background(
+                        })
+                        .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(selectedDate == day ? Color.black : Color.clear)
                                 .frame(width: 35, height: 40)
                         )
-                    }//Mark: - End ZStack
-                }//Mark: - end ForEach
-                .padding(.top, 15)
-            }
+                    }//Mark: - END ZStack
+                }//Mark: - END ForEach
+                .padding(.top, -5)
+            }//Mark: - END HStack
             
             NavigationView {
                 ScrollView {
@@ -101,6 +98,6 @@ func getWeek() -> [Date] {
 struct MovieDayView2_Previews: PreviewProvider {
     static var previews: some View {
         MovieDayView2(isShowingPopup: .constant(false))
-            
+        
     }
 }

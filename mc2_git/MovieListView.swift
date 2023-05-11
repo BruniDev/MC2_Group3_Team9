@@ -9,11 +9,8 @@ import SwiftUI
 
 struct MovieListView: View {
     
-    
     let categoryName: String
     @Binding var isShowingPopup: Bool
-
-//        @State private var isShowingPopup = false
     
     var body: some View {
         //        ZStack {
@@ -27,22 +24,10 @@ struct MovieListView: View {
                             .resizable()
                             .scaledToFit()
                             .clipped()
-//                            .cornerRadius(8)
                             .frame(width: 188, height: 265)
                             .onTapGesture {
                                 isShowingPopup = true
                             }
-                        //                                    .onTapGesture {
-                        //                                        isShowingPopup = true
-                        //                                    }
-                        
-                        //                                Button(action: { isShowingPopup.toggle() }) {
-                        //                                    Image("post1")
-                        //                                        .resizable()
-                        //                                        .scaledToFill()
-                        //                                        .clipped().cornerRadius(8)
-                        //                                }
-                        //
                         Text("영화제목")
                             .font(.system(size: 15, weight: .bold))
                             .multilineTextAlignment(.leading)
@@ -51,49 +36,16 @@ struct MovieListView: View {
                             .font(.system(size: 10, weight: .semibold))
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.black)
-                    }
-
+                    }//Mark: - END VStack
                     //                            .scaleEffect(.init(width: scale, height: scale))
                     //                            .padding(.vertical)
-                } //Mark: - End Geometry
+                } //Mark: - END ForEach
                 .frame(width: 188, height: 330)
                 .padding(.leading, 20)
-            } //Mark: - End ForEach
+            } //Mark: - END HStack
         }//Mark: - END ScrollView
-        
-
-        
-        //Mark: - End HStack
-        //            .padding(.horizontal, 8)
-        //                .padding(.vertical)
-    }//Mark: - End ScrollView
-    //            .overlay(
-    //                if isShowingPopup {
-    //                    ZStack {
-    //                        Color.black.opacity(0.5).ignoresSafeArea()
-    //                        CustomAlertView()
-    //                    }
-    //                }
-    //        )
-    
-    
-    //            .overlay(
-    //            if isShowingPopup {
-    //                ZStack {
-    //                    Color.black.opacity(0.5).ignoresSafeArea()
-    //                    CustomAlertView()
-    //                }
-    //                CustomAlertView(isDisplayed: $isPopupDisplayed)
-    //        }//Mark: - End ZStack
-    //        .fullScreenCover(isPresented: $showPopup, content: {
-    //            CustomAlertView()
-    //        }
-    //            ).onTapGesture {
-    //                isShowingPopup = true
+    }
 }
-
-
-
 
 func getScale(proxy: GeometryProxy) -> CGFloat {
     let midPoint: CGFloat = 125
@@ -107,7 +59,6 @@ func getScale(proxy: GeometryProxy) -> CGFloat {
     }
     return scale
 }
-
 
 struct MovieListView_Previews: PreviewProvider {
     static var previews: some View {
