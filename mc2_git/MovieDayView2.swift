@@ -14,7 +14,7 @@ struct MovieDayView2: View {
     @State var selectedDate: Date = Date()
     @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
     @Binding var allDays : Array<String>
-    @Binding var theaters : [Theater]
+    @Binding var isShowingPopup: Bool
     
     
     let calendar = Calendar.current
@@ -24,7 +24,7 @@ struct MovieDayView2: View {
     
     var body: some View {
         VStack {
-            Text("상영중 영화")
+            Text("상영중인 영화")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading)
                 .padding(.top, 20)
@@ -46,24 +46,26 @@ struct MovieDayView2: View {
                         }, label: {
                             VStack {
                                 Text("\(getDayNumber(date: day))")
+                                    .font(.system(size: 17))
                                     .bold()
                                 Text(getDayShort(date: day))
-                                    .font(.system(size: 8))
+                                    .font(.system(size: 11))
                             }.padding(5)
                                 .foregroundColor((selectedDate == day ? Color.white : Color.black))
-                        }).background(
+                        })
+                        .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(selectedDate == day ? Color.black : Color.clear)
-                                .frame(width: 35, height: 40)
+                                .frame(width: 42, height: 48)
                         )
-                    }//Mark: - End ZStack
-                }//Mark: - end ForEach
-                .padding(.top, 15)
-            }
+                    }//Mark: - END ZStack
+                }//Mark: - END ForEach
+                .padding(.top, -5)
+            }//Mark: - END HStack
             
             NavigationView {
                 ScrollView {
-                    MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, categoryName: "Top Movies")
+                    MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup)
                 }
             }
         }
@@ -113,8 +115,8 @@ func getWeek() -> [Date] {
     return Array(daysMonth)
 }
 
-struct MovieDayView2_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieDayView2(movieScheduleDataForUser: .constant([]), allDays: .constant([]), theaters: .constant([]))
-    }
-}
+//struct MovieDayView2_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MovieDayView2(movieScheduleDataForUser: .constant([]), allDays: .constant([]), isShowingPopup: $isShowingPopup)
+//    }
+//}

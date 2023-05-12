@@ -15,236 +15,98 @@ struct ContentView: View {
     @State var closedDays : Array<String> = []
     @State var workingDays : Array<String> = []
     @State var movieScheduleDataForUser: Array<MovieScheduleDataForUser> = []
-    @State var locationDataManager = LocationDataManager()
-    @State var theaters : [Theater] = [Theater()]
+    @State private var isShowingPopup = false
+    @State private var isPresentingCustomAlert = false
     
     var body: some View {
         
-        //        CustomAlertView()
-        NavigationView {
-            NavigationLink(destination: MainView(locationDataManager: self.$locationDataManager, theaters: self.$theaters)){
-                Text("나와 가까운 영화관은 ...")
-            }
-//            VStack {
-//                //Mark: - 영화관 로고
-//                ZStack {
-//                    Rectangle()
-//                        .frame(height: 135)
-//                        .foregroundColor(.black)
-//
-//                    Image("영화관로고")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 70)
-//                }.background(.black)
-//
-//                //Mark: - 날짜 View, 포스터 View
-//                MovieDayView2(movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $workingDays ).padding(.bottom, 20)
-//
-//                //Mark: - 영화관 이름, 주소
-//                Rectangle()
-//                    .frame(height: 5)
-//                    .foregroundColor(Color.gray)
-//                HStack {
-//                    VStack(alignment: .leading) {
-//                        HStack {
-//                            Text("영화관 이름")
-//                                .font(.system(size:32))
-//                            Image("Instagram_icon")
-//                                .resizable()
-//                                .scaledToFit()
-//                                .frame(width: 30)
-//                        }
-//
-//                        Text("영화관 주소")
-//
-//                        HStack {
-//                            Text("나와의 거리")
-//                            Image(systemName: "figure.walk")
-//                            Spacer()
-//                            Text("거리km")
-//                                .multilineTextAlignment(.trailing)
-//                        }
-//                    }
-//                    Spacer()
-//                }.padding(.leading)
-//            }
-//            Spacer()
-//                .onAppear{
-//                    dateManager.fetchDate(theaterName: "인디플러스포항")
-//                    movieScheduleManager.fetchMovieSchedule(theaterName: "인디플러스포항", date: dateManager.allDays[0])
-//                    allDays = dateManager.allDays
-//                    closedDays = dateManager.closedDays
-//                    //                workingDays = allDays
-//                    for i in closedDays {
-//                        if let j = allDays.firstIndex(of: i){
-//                            allDays.remove(at: j)
-//                        }
-//                    }
-//                    //                print("!!!!!!!!!!")
-//                    //                print(allDays)
-//                    //                print(closedDays)
-//                    //                print(workingDays)
-//                    //                print("!!!!!!!!!!")
-//                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-//                        movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
-//                        print(movieScheduleDataForUser)
-//                    }
-//                }
-        }.onAppear {
-            if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
-                theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
-                dateManager.fetchDate(theaterName: theaters[0].name)
-                movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
-                allDays = dateManager.allDays
-                closedDays = dateManager.closedDays
-                //                workingDays = allDays
-                for i in closedDays {
-                    if let j = allDays.firstIndex(of: i){
-                        allDays.remove(at: j)
-                    }
-                }
-                //                print("!!!!!!!!!!")
-                //                print(allDays)
-                //                print(closedDays)
-                //                print(workingDays)
-                //                print("!!!!!!!!!!")
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                    movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
-                    print(movieScheduleDataForUser)
-                }
-            }
-        }
-        
-    }//Mark: - End VStack
-}
-
-struct MainView: View {
-    var dateManager = DateManager()
-    var movieScheduleManager = MovieScheduleManager()
-    @State var allDays : Array<String> = []
-    @State var closedDays : Array<String> = []
-    @State var workingDays : Array<String> = []
-    @State var movieScheduleDataForUser: Array<MovieScheduleDataForUser> = []
-    @Binding var locationDataManager : LocationDataManager
-    @Binding var theaters : [Theater]
-    
-    var body: some View {
-        VStack {
-            ScrollView {
-                ZStack { //Mark: - 영화관 로고
+        GeometryReader { geometry in
+            VStack(spacing: 0){
+                
+                //Mark: - Top, 영화관 로고
+                ZStack {
                     Rectangle()
-                        .frame(height: 135)
-                        .foregroundColor(.black)
-                    
+                        .frame(height: 128)
+
+                        .foregroundColor(Color(hex: "252525"))
                     Image("영화관로고")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70)
-                }.background(.black)
+                }
+                .background(Color(hex: "252525"))
                 
                 //Mark: - 날짜 View, 포스터 View
-                MovieDayView2(movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $workingDays ,theaters: $theaters).padding(.bottom, 20)
+                MovieDayView2(movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $workingDays, isShowingPopup: $isShowingPopup)
+                    .padding(.bottom, 20)
                 
                 //Mark: - 영화관 이름, 주소
                 Rectangle()
-                    .frame(height: 5)
+                    .frame(height: 3)
                     .foregroundColor(Color.gray)
                 HStack {
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("\(theaters[0].name)")
-                                .font(.system(size:32))
-                            Image("Instagram_icon")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 30)
+                            Text("영화관 이름")
+                                .font(.system(size:20))
+                                .bold()
+                            Link(destination: URL(string: "https://www.instagram.com/__0330/")!, label: {
+                                Image("Instagram_icon")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30)
+                            })
                         }
-                        
                         Text("영화관 주소")
+                            .font(.caption)
+                            .bold()
+                            .padding(.bottom, 10)
+                        
                         
                         HStack {
                             Text("나와의 거리")
                             Image(systemName: "figure.walk")
+                                .foregroundColor(.purple)
                             Spacer()
-                            Text("\(theaters[0].handleDistance())")
+                            Text("거리km")
                                 .multilineTextAlignment(.trailing)
+                                .foregroundColor(.purple)
+                                .bold()
+                            
+                            Link(destination: URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
+                                Image("location")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 30)
+                            })
                         }
-                    }
+                    }//Mark: - END VStack
+                    .padding(.horizontal, 10)
                     Spacer()
-                }.padding(.leading)
-            }
-            .onAppear {
-                dateManager.fetchDate(theaterName: theaters[0].name)
-                movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
-                allDays = dateManager.allDays
-                closedDays = dateManager.closedDays
-                //                workingDays = allDays
-                for i in closedDays {
-                    if let j = allDays.firstIndex(of: i){
-                        allDays.remove(at: j)
-                    }
-                }
-                //                print("!!!!!!!!!!")
-                //                print(allDays)
-                //                print(closedDays)
-                //                print(workingDays)
-                //                print("!!!!!!!!!!")
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                    movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
-                    print(movieScheduleDataForUser)
-                }
-            }
-            .refreshable {
-                locationDataManager.locationManager.requestLocation()
-                theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
-                dateManager.fetchDate(theaterName: theaters[0].name)
-                movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
-                allDays = dateManager.allDays
-                closedDays = dateManager.closedDays
-                //                workingDays = allDays
-                for i in closedDays {
-                    if let j = allDays.firstIndex(of: i){
-                        allDays.remove(at: j)
-                    }
-                }
-                //                print("!!!!!!!!!!")
-                //                print(allDays)
-                //                print(closedDays)
-                //                print(workingDays)
-                //                print("!!!!!!!!!!")
-                // DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                    movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
-                    print(movieScheduleDataForUser)
-                // }
-            }
+                }//Mark: - END HStack
+                .padding(.leading)
+                .padding(.top, 20)
+                .padding(.bottom, 40)
+                .background(Color.gray)
+            }//Mark: - End VStack
+            .overlay() {
+                if isShowingPopup {
+                    Color.black.opacity(0.5)
+                        .ignoresSafeArea()
+                    
+                    CustomAlertView(isShowingPopup: $isShowingPopup)
+                        .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.9)
+
+    //
+    //                    .frame(width: UIScreen.main.bounds.width - 50, height: UIScreen.main.bounds.height - 140)
+                        .background(Color.white)
         }
+        
+
+            }
+        }//Mark: - END overlay
     }
 }
-//        Spacer()
-//            .onAppear{
-//                dateManager.fetchDate(theaterName: theaters[0].name)
-//                movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
-//                allDays = dateManager.allDays
-//                closedDays = dateManager.closedDays
-//                //                workingDays = allDays
-//                for i in closedDays {
-//                    if let j = allDays.firstIndex(of: i){
-//                        allDays.remove(at: j)
-//                    }
-//                }
-//                //                print("!!!!!!!!!!")
-//                //                print(allDays)
-//                //                print(closedDays)
-//                //                print(workingDays)
-//                //                print("!!!!!!!!!!")
-//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-//                    movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
-//                    print(movieScheduleDataForUser)
-//                }
-//            }
-//}
-    
 
 
 struct ContentView_Previews: PreviewProvider {
