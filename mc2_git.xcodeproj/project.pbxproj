@@ -11,6 +11,7 @@
 		937173892A0E969F0070E9A4 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 937173882A0E969F0070E9A4 /* Color.swift */; };
 		93BCF5AF2A0BD946008CB844 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BCF5AE2A0BD946008CB844 /* LocationManager.swift */; };
 		93BCF5B12A0BD974008CB844 /* CheckTop3Theaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */; };
+		C24643802A0D2F4300712334 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C246437F2A0D2F4300712334 /* Color.swift */; };
 		C29E138B2A02562500B05B31 /* mc2_gitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E138A2A02562500B05B31 /* mc2_gitApp.swift */; };
 		C29E138D2A02562500B05B31 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E138C2A02562500B05B31 /* ContentView.swift */; };
 		C29E138F2A02562600B05B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29E138E2A02562600B05B31 /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		937173882A0E969F0070E9A4 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ../../MC2_Group3_Team9/mc2_git/Color.swift; sourceTree = "<group>"; };
 		93BCF5AE2A0BD946008CB844 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTop3Theaters.swift; sourceTree = "<group>"; };
+		C246437F2A0D2F4300712334 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		C29E13872A02562500B05B31 /* mc2_git.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mc2_git.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C29E138A2A02562500B05B31 /* mc2_gitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mc2_gitApp.swift; sourceTree = "<group>"; };
 		C29E138C2A02562500B05B31 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,13 @@
 				C29E138A2A02562500B05B31 /* mc2_gitApp.swift */,
 				C29E138E2A02562600B05B31 /* Assets.xcassets */,
 				C29E13902A02562600B05B31 /* Preview Content */,
+				C29E13A02A057D0F00B05B31 /* MovieListView.swift */,
+				C29E13A22A061DE400B05B31 /* CustomAlertView.swift */,
+				C29E13A42A07869600B05B31 /* MovieDayView2.swift */,
+				C246437F2A0D2F4300712334 /* Color.swift */,
+				D96438F42A0B7526009D634D /* DateManager.swift */,
+				D96438F82A0B770A009D634D /* MovieScheduleManager.swift */,
+				D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */,
 			);
 			path = mc2_git;
 			sourceTree = "<group>";
@@ -221,6 +230,7 @@
 				D96438F32A0B74DB009D634D /* MovieScheduleData.swift in Sources */,
 				D96438F72A0B76DC009D634D /* MovieScheduleDataForUser.swift in Sources */,
 				93BCF5AF2A0BD946008CB844 /* LocationManager.swift in Sources */,
+				C24643802A0D2F4300712334 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

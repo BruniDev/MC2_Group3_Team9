@@ -298,13 +298,3 @@ struct AnimationView : View {
         }.frame(width: 30, height: 30)
     }
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//        //        Mark: - 아이폰 status bar 색상 white로 변경
-////        var preferredStatusBarStyle: UIStatusBarStyle {
-////            return .lightContent
-////        }
-//    }
-//}
