@@ -16,9 +16,7 @@ struct ContentView: View {
     @State var workingDays : Array<String> = []
     @State var movieScheduleDataForUser: Array<MovieScheduleDataForUser> = []
     @State private var isShowingPopup = false
-    
     @State private var isPresentingCustomAlert = false
-    @State private var isShowingPopup = false
     
     var body: some View {
         
@@ -39,7 +37,8 @@ struct ContentView: View {
                 .background(Color(hex: "252525"))
                 
                 //Mark: - 날짜 View, 포스터 View
-                MovieDayView2(movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $workingDays ).padding(.bottom, 20)
+                MovieDayView2(movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $workingDays, isShowingPopup: $isShowingPopup)
+                    .padding(.bottom, 20)
                 
                 //Mark: - 영화관 이름, 주소
                 Rectangle()

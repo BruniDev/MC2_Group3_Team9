@@ -11,7 +11,7 @@ struct MovieListView: View {
     
     var movieDetailManager = MovieDetailManager()
     @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
-    let categoryName: String
+//    let categoryName: String
     @Binding var isShowingPopup: Bool
     
     var body: some View {
@@ -72,9 +72,9 @@ func getScale(proxy: GeometryProxy) -> CGFloat {
     return scale
 }
 
-struct MovieListView_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieListView(movieScheduleDataForUser: .constant([]), categoryName: "Top Movies", isShowingPopup: .constant(false))
-    }
-}
-
+//struct MovieListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MovieListView(movieScheduleDataForUser: .constant([]), categoryName: "Top Movies", isShowingPopup: .constant(false))
+//    }
+//}
+//

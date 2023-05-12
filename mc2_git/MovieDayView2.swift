@@ -65,7 +65,7 @@ struct MovieDayView2: View {
             
             NavigationView {
                 ScrollView {
-                    MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, categoryName: "Top Movies")
+                    MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup)
                 }
             }
         }
@@ -115,8 +115,8 @@ func getWeek() -> [Date] {
     return Array(daysMonth)
 }
 
-struct MovieDayView2_Previews: PreviewProvider {
-    static var previews: some View {
-        MovieDayView2(movieScheduleDataForUser: .constant([]), allDays: .constant([]))
-    }
-}
+//struct MovieDayView2_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MovieDayView2(movieScheduleDataForUser: .constant([]), allDays: .constant([]), isShowingPopup: $isShowingPopup)
+//    }
+//}
