@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		933C248A2A0D63A1000F68E7 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933C24892A0D63A1000F68E7 /* TestView.swift */; };
 		93BCF5AF2A0BD946008CB844 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BCF5AE2A0BD946008CB844 /* LocationManager.swift */; };
 		93BCF5B12A0BD974008CB844 /* CheckTop3Theaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */; };
 		C29E138B2A02562500B05B31 /* mc2_gitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E138A2A02562500B05B31 /* mc2_gitApp.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		933C24892A0D63A1000F68E7 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		93BCF5AE2A0BD946008CB844 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTop3Theaters.swift; sourceTree = "<group>"; };
 		C29E13872A02562500B05B31 /* mc2_git.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mc2_git.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +63,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		933C24882A0D3147000F68E7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C29E138C2A02562500B05B31 /* ContentView.swift */,
+				C29E139E2A0566CA00B05B31 /* MovieDayView.swift */,
+				C29E13A02A057D0F00B05B31 /* MovieListView.swift */,
+				C29E13A22A061DE400B05B31 /* CustomAlertView.swift */,
+				C29E13A42A07869600B05B31 /* MovieDayView2.swift */,
+				933C24892A0D63A1000F68E7 /* TestView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		C29E137E2A02562500B05B31 = {
 			isa = PBXGroup;
 			children = (
@@ -80,19 +95,12 @@
 		C29E13892A02562500B05B31 /* mc2_git */ = {
 			isa = PBXGroup;
 			children = (
-				D96438F12A0B74B4009D634D /* Model */,
+				933C24882A0D3147000F68E7 /* Views */,
+				D96438F12A0B74B4009D634D /* Models */,
 				C29E139A2A0500CD00B05B31 /* mc2-git-Info.plist */,
 				C29E138A2A02562500B05B31 /* mc2_gitApp.swift */,
-				C29E138C2A02562500B05B31 /* ContentView.swift */,
 				C29E138E2A02562600B05B31 /* Assets.xcassets */,
-				C29E139E2A0566CA00B05B31 /* MovieDayView.swift */,
 				C29E13902A02562600B05B31 /* Preview Content */,
-				C29E13A02A057D0F00B05B31 /* MovieListView.swift */,
-				C29E13A22A061DE400B05B31 /* CustomAlertView.swift */,
-				C29E13A42A07869600B05B31 /* MovieDayView2.swift */,
-				D96438F42A0B7526009D634D /* DateManager.swift */,
-				D96438F82A0B770A009D634D /* MovieScheduleManager.swift */,
-				D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */,
 			);
 			path = mc2_git;
 			sourceTree = "<group>";
@@ -105,16 +113,19 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		D96438F12A0B74B4009D634D /* Model */ = {
+		D96438F12A0B74B4009D634D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				D96438F22A0B74DB009D634D /* MovieScheduleData.swift */,
 				D96438F62A0B76DC009D634D /* MovieScheduleDataForUser.swift */,
 				D96438FC2A0B8DB5009D634D /* MovieDetailData.swift */,
 				93BCF5AE2A0BD946008CB844 /* LocationManager.swift */,
+				D96438F42A0B7526009D634D /* DateManager.swift */,
+				D96438F82A0B770A009D634D /* MovieScheduleManager.swift */,
+				D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */,
 				93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +212,7 @@
 				C29E13A12A057D0F00B05B31 /* MovieListView.swift in Sources */,
 				C29E138B2A02562500B05B31 /* mc2_gitApp.swift in Sources */,
 				D96438FB2A0B8D94009D634D /* MovieDetailManager.swift in Sources */,
+				933C248A2A0D63A1000F68E7 /* TestView.swift in Sources */,
 				C29E139F2A0566CA00B05B31 /* MovieDayView.swift in Sources */,
 				C29E13A32A061DE400B05B31 /* CustomAlertView.swift in Sources */,
 				D96438F92A0B770A009D634D /* MovieScheduleManager.swift in Sources */,
@@ -344,7 +356,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 수집을 허용 하십니까?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -376,7 +387,6 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 수집을 허용 하십니까?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;

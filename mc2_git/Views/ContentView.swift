@@ -17,106 +17,63 @@ struct ContentView: View {
     @State var movieScheduleDataForUser: Array<MovieScheduleDataForUser> = []
     @State var locationDataManager = LocationDataManager()
     @State var theaters : [Theater] = [Theater()]
+    @State var isLoading: Bool = true
+    @State var biggestCircle : Bool = false
+    @State var biggerCircle : Bool = false
     
     var body: some View {
-        
-        //        CustomAlertView()
-        NavigationView {
-            NavigationLink(destination: MainView(locationDataManager: self.$locationDataManager, theaters: self.$theaters)){
-                Text("나와 가까운 영화관은 ...")
+        ZStack {
+            ZStack {
+                MainView(locationDataManager: self.$locationDataManager, theaters: self.$theaters)
+                
+                if isLoading {
+                    LoadingView
+                }
             }
-//            VStack {
-//                //Mark: - 영화관 로고
-//                ZStack {
-//                    Rectangle()
-//                        .frame(height: 135)
-//                        .foregroundColor(.black)
-//
-//                    Image("영화관로고")
-//                        .resizable()
-//                        .scaledToFit()
-//                        .frame(width: 70)
-//                }.background(.black)
-//
-//                //Mark: - 날짜 View, 포스터 View
-//                MovieDayView2(movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $workingDays ).padding(.bottom, 20)
-//
-//                //Mark: - 영화관 이름, 주소
-//                Rectangle()
-//                    .frame(height: 5)
-//                    .foregroundColor(Color.gray)
-//                HStack {
-//                    VStack(alignment: .leading) {
-//                        HStack {
-//                            Text("영화관 이름")
-//                                .font(.system(size:32))
-//                            Image("Instagram_icon")
-//                                .resizable()
-//                                .scaledToFit()
-//                                .frame(width: 30)
-//                        }
-//
-//                        Text("영화관 주소")
-//
-//                        HStack {
-//                            Text("나와의 거리")
-//                            Image(systemName: "figure.walk")
-//                            Spacer()
-//                            Text("거리km")
-//                                .multilineTextAlignment(.trailing)
-//                        }
-//                    }
-//                    Spacer()
-//                }.padding(.leading)
-//            }
-//            Spacer()
-//                .onAppear{
-//                    dateManager.fetchDate(theaterName: "인디플러스포항")
-//                    movieScheduleManager.fetchMovieSchedule(theaterName: "인디플러스포항", date: dateManager.allDays[0])
-//                    allDays = dateManager.allDays
-//                    closedDays = dateManager.closedDays
-//                    //                workingDays = allDays
-//                    for i in closedDays {
-//                        if let j = allDays.firstIndex(of: i){
-//                            allDays.remove(at: j)
-//                        }
-//                    }
-//                    //                print("!!!!!!!!!!")
-//                    //                print(allDays)
-//                    //                print(closedDays)
-//                    //                print(workingDays)
-//                    //                print("!!!!!!!!!!")
-//                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-//                        movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
-//                        print(movieScheduleDataForUser)
-//                    }
-//                }
-        }.onAppear {
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
+                isLoading.toggle()
+            })
+        }
+    }
+}
+
+extension ContentView {
+    
+    var LoadingView: some View {
+        ZStack {
+            Color(red: 246 / 255, green: 242 / 255, blue: 233 / 255).ignoresSafeArea()
+            VStack(alignment: .leading) {
+                Text("가까운").font(.largeTitle.bold()).font(.system(size: 34.0))
+                Text("독립영화관으로").font(.largeTitle.bold()).font(.system(size: 34.0))
+                Text("떠납니다.").font(.largeTitle.bold()).font(.system(size: 34.0))
+                Text("나와 가장 가까운 독립영화관을").font(.headline).font(.system(size: 17.0)).foregroundColor(Color.gray)
+                Text("찾아볼까요?").font(.headline).font(.system(size: 17.0)).foregroundColor(Color.gray)
+                AnimationView()
+            }
+        }
+        .onAppear {
             if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
                 theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
                 dateManager.fetchDate(theaterName: theaters[0].name)
                 movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
                 allDays = dateManager.allDays
                 closedDays = dateManager.closedDays
-                //                workingDays = allDays
+
                 for i in closedDays {
                     if let j = allDays.firstIndex(of: i){
                         allDays.remove(at: j)
                     }
                 }
-                //                print("!!!!!!!!!!")
-                //                print(allDays)
-                //                print(closedDays)
-                //                print(workingDays)
-                //                print("!!!!!!!!!!")
+                
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                     movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                     print(movieScheduleDataForUser)
                 }
             }
         }
-        
-    }//Mark: - End VStack
+    }
 }
 
 struct MainView: View {
@@ -137,10 +94,11 @@ struct MainView: View {
                         .frame(height: 135)
                         .foregroundColor(.black)
                     
-                    Image("영화관로고")
+                    Image("\(theaters[0].name)")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 70)
+                        .offset(x:0,y:10)
                 }.background(.black)
                 
                 //Mark: - 날짜 View, 포스터 View
@@ -174,22 +132,19 @@ struct MainView: View {
                     Spacer()
                 }.padding(.leading)
             }
+            .edgesIgnoringSafeArea(.top)
             .onAppear {
                 dateManager.fetchDate(theaterName: theaters[0].name)
                 movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
                 allDays = dateManager.allDays
                 closedDays = dateManager.closedDays
-                //                workingDays = allDays
+
                 for i in closedDays {
                     if let j = allDays.firstIndex(of: i){
                         allDays.remove(at: j)
                     }
                 }
-                //                print("!!!!!!!!!!")
-                //                print(allDays)
-                //                print(closedDays)
-                //                print(workingDays)
-                //                print("!!!!!!!!!!")
+                
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                     movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                     print(movieScheduleDataForUser)
@@ -203,49 +158,72 @@ struct MainView: View {
                 allDays = dateManager.allDays
                 closedDays = dateManager.closedDays
                 //                workingDays = allDays
+                
                 for i in closedDays {
                     if let j = allDays.firstIndex(of: i){
                         allDays.remove(at: j)
                     }
                 }
-                //                print("!!!!!!!!!!")
-                //                print(allDays)
-                //                print(closedDays)
-                //                print(workingDays)
-                //                print("!!!!!!!!!!")
-                // DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                     movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                     print(movieScheduleDataForUser)
-                // }
+                  }
             }
         }
     }
 }
-//        Spacer()
-//            .onAppear{
-//                dateManager.fetchDate(theaterName: theaters[0].name)
-//                movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
-//                allDays = dateManager.allDays
-//                closedDays = dateManager.closedDays
-//                //                workingDays = allDays
-//                for i in closedDays {
-//                    if let j = allDays.firstIndex(of: i){
-//                        allDays.remove(at: j)
-//                    }
-//                }
-//                //                print("!!!!!!!!!!")
-//                //                print(allDays)
-//                //                print(closedDays)
-//                //                print(workingDays)
-//                //                print("!!!!!!!!!!")
-//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-//                    movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
-//                    print(movieScheduleDataForUser)
-//                }
-//            }
-//}
     
-
+struct AnimationView : View {
+    @State var biggestCircle = false
+    @State var biggerCircle = false
+    @State var circle = true
+    
+    var body: some View {
+        ZStack {
+                if biggestCircle {
+                    Circle()
+                        .fill(Color(red: 88 / 255, green: 86 / 255, blue: 214 / 255))
+                        .frame(width: 30, height: 30)
+                        .opacity(0.25)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                                biggestCircle.toggle()
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                                biggerCircle.toggle()
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.5) {
+                                biggerCircle.toggle()
+                            }
+                        }
+                }
+                
+            if biggerCircle {
+                    Circle()
+                        .fill(Color(red: 88 / 255, green: 86 / 255, blue: 214 / 255))
+                        .frame(width: 20, height: 20)
+                        .opacity(0.6)
+                        .animation(.default, value: biggerCircle)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                                biggestCircle.toggle()
+                            }
+                        }
+                }
+            if circle {
+                Circle()
+                    .fill(Color(red: 88 / 255, green: 86 / 255, blue: 214 / 255))
+                    .frame(width: 10, height: 10)
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                            biggerCircle.toggle()
+                        }
+                    }
+            }
+        }.frame(width: 30, height: 30)
+    }
+}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -256,5 +234,3 @@ struct ContentView_Previews: PreviewProvider {
 //        }
     }
 }
-
-
