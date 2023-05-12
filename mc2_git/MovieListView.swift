@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MovieListView: View {
     
+    var movieDetailManager = MovieDetailManager()
+    @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
     let categoryName: String
     @Binding var isShowingPopup: Bool
     
@@ -16,35 +18,45 @@ struct MovieListView: View {
         //        ZStack {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top) {
-                ForEach(1..<4) { i in
+                ForEach(0..<movieScheduleDataForUser.count, id:\.self) { index in
                     //                        GeometryReader { proxy in
                     //                            let scale = getScale(proxy: proxy)
                     VStack(alignment: .leading, spacing: 8) {
-                        Image("Life_of_Hae-Oak")
-                            .resizable()
-                            .scaledToFit()
-                            .clipped()
-                            .frame(width: 200, height: 300)
-                            .onTapGesture {
-                                isShowingPopup = true
+                        Button {
+                            movieDetailManager.fetchDetail(movieCode: movieScheduleDataForUser[index].movieCode)
+                            isShowingPopup = true
+                        } label: {
+                            AsyncImage(url: URL(string: "\(movieScheduleDataForUser[index].movieIMG)")) { img in
+                                img
+                                    .resizable()
+                                    .scaledToFit()
+                            } placeholder: {
+                                Color.white
                             }
-                        Text("영화제목")
-                            .font(.system(size: 15, weight: .bold))
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
-                        Text("영화시간")
+                            .cornerRadius(8)
+                            .frame(height: 265)
+                            .animation(.easeIn)
+                        }
+                        Text("\(movieScheduleDataForUser[index].movieName)")
                             .font(.system(size: 10, weight: .semibold))
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.black)
-                    }//Mark: - END VStack
-                    //                            .scaleEffect(.init(width: scale, height: scale))
-                    //                            .padding(.vertical)
-                } //Mark: - END ForEach
+                        HStack {
+                            ForEach(0 ..< movieScheduleDataForUser[index].movieTimeTable.count, id: \.self) { i in
+                                Text(movieScheduleDataForUser[index].movieTimeTable[i])
+                                    .font(.system(size: 10, weight: .semibold))
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(.black)
+                            }
+                        }
+
+                    }
+                } //Mark: - End Geometry
                 .frame(width: 188, height: 330)
                 .padding(.leading, 20)
-            } //Mark: - END HStack
-        }//Mark: - END ScrollView
-    }
+            } //Mark: - End ForEach
+        }//Mark: - End HStack
+    }//Mark: - End ScrollView
 }
 
 func getScale(proxy: GeometryProxy) -> CGFloat {
@@ -62,7 +74,7 @@ func getScale(proxy: GeometryProxy) -> CGFloat {
 
 struct MovieListView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieListView(categoryName: "Top Movies", isShowingPopup: .constant(false))
+        MovieListView(movieScheduleDataForUser: .constant([]), categoryName: "Top Movies", isShowingPopup: .constant(false))
     }
 }
 

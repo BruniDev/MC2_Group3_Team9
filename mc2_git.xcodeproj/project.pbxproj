@@ -17,6 +17,12 @@
 		C29E13A32A061DE400B05B31 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E13A22A061DE400B05B31 /* CustomAlertView.swift */; };
 		C29E13A52A07869600B05B31 /* MovieDayView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E13A42A07869600B05B31 /* MovieDayView2.swift */; };
 		C29E13A82A07EAE900B05B31 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = C29E13A72A07EAE900B05B31 /* PopupView */; };
+		D96438F32A0B74DB009D634D /* MovieScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438F22A0B74DB009D634D /* MovieScheduleData.swift */; };
+		D96438F52A0B7526009D634D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438F42A0B7526009D634D /* DateManager.swift */; };
+		D96438F72A0B76DC009D634D /* MovieScheduleDataForUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438F62A0B76DC009D634D /* MovieScheduleDataForUser.swift */; };
+		D96438F92A0B770A009D634D /* MovieScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438F82A0B770A009D634D /* MovieScheduleManager.swift */; };
+		D96438FB2A0B8D94009D634D /* MovieDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */; };
+		D96438FD2A0B8DB5009D634D /* MovieDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438FC2A0B8DB5009D634D /* MovieDetailData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		C29E13A02A057D0F00B05B31 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
 		C29E13A22A061DE400B05B31 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		C29E13A42A07869600B05B31 /* MovieDayView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDayView2.swift; sourceTree = "<group>"; };
+		D96438F22A0B74DB009D634D /* MovieScheduleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScheduleData.swift; sourceTree = "<group>"; };
+		D96438F42A0B7526009D634D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		D96438F62A0B76DC009D634D /* MovieScheduleDataForUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScheduleDataForUser.swift; sourceTree = "<group>"; };
+		D96438F82A0B770A009D634D /* MovieScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScheduleManager.swift; sourceTree = "<group>"; };
+		D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailManager.swift; sourceTree = "<group>"; };
+		D96438FC2A0B8DB5009D634D /* MovieDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +76,7 @@
 		C29E13892A02562500B05B31 /* mc2_git */ = {
 			isa = PBXGroup;
 			children = (
+				D96438F12A0B74B4009D634D /* Model */,
 				C29E139A2A0500CD00B05B31 /* mc2-git-Info.plist */,
 				C29E138A2A02562500B05B31 /* mc2_gitApp.swift */,
 				C29E138C2A02562500B05B31 /* ContentView.swift */,
@@ -73,6 +86,9 @@
 				C29E13A22A061DE400B05B31 /* CustomAlertView.swift */,
 				C29E13A42A07869600B05B31 /* MovieDayView2.swift */,
 				C246437F2A0D2F4300712334 /* Color.swift */,
+				D96438F42A0B7526009D634D /* DateManager.swift */,
+				D96438F82A0B770A009D634D /* MovieScheduleManager.swift */,
+				D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */,
 			);
 			path = mc2_git;
 			sourceTree = "<group>";
@@ -83,6 +99,16 @@
 				C29E13912A02562600B05B31 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D96438F12A0B74B4009D634D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D96438F22A0B74DB009D634D /* MovieScheduleData.swift */,
+				D96438F62A0B76DC009D634D /* MovieScheduleDataForUser.swift */,
+				D96438FC2A0B8DB5009D634D /* MovieDetailData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,10 +190,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C29E138D2A02562500B05B31 /* ContentView.swift in Sources */,
+				D96438FD2A0B8DB5009D634D /* MovieDetailData.swift in Sources */,
 				C29E13A12A057D0F00B05B31 /* MovieListView.swift in Sources */,
 				C29E138B2A02562500B05B31 /* mc2_gitApp.swift in Sources */,
+				D96438FB2A0B8D94009D634D /* MovieDetailManager.swift in Sources */,
 				C29E13A32A061DE400B05B31 /* CustomAlertView.swift in Sources */,
+				D96438F92A0B770A009D634D /* MovieScheduleManager.swift in Sources */,
+				D96438F52A0B7526009D634D /* DateManager.swift in Sources */,
 				C29E13A52A07869600B05B31 /* MovieDayView2.swift in Sources */,
+				D96438F32A0B74DB009D634D /* MovieScheduleData.swift in Sources */,
+				D96438F72A0B76DC009D634D /* MovieScheduleDataForUser.swift in Sources */,
 				C24643802A0D2F4300712334 /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -306,6 +338,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -336,6 +369,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

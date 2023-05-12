@@ -9,6 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
+    var dateManager = DateManager()
+    var movieScheduleManager = MovieScheduleManager()
+    @State var allDays : Array<String> = []
+    @State var closedDays : Array<String> = []
+    @State var workingDays : Array<String> = []
+    @State var movieScheduleDataForUser: Array<MovieScheduleDataForUser> = []
+    @State private var isShowingPopup = false
+    
     @State private var isPresentingCustomAlert = false
     @State private var isShowingPopup = false
     
@@ -31,7 +39,7 @@ struct ContentView: View {
                 .background(Color(hex: "252525"))
                 
                 //Mark: - 날짜 View, 포스터 View
-                MovieDayView2(isShowingPopup: $isShowingPopup)
+                MovieDayView2(movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $workingDays ).padding(.bottom, 20)
                 
                 //Mark: - 영화관 이름, 주소
                 Rectangle()
@@ -101,13 +109,14 @@ struct ContentView: View {
     }
 }
 
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
         //        Mark: - 아이폰 status bar 색상 white로 변경
-        var preferredStatusBarStyle: UIStatusBarStyle {
-            return .lightContent
-        }
+//        var preferredStatusBarStyle: UIStatusBarStyle {
+//            return .lightContent
+//        }
     }
 }
 

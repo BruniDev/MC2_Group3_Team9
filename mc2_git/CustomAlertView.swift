@@ -1,10 +1,3 @@
-//
-//  Post.swift
-//  mc2_git
-//
-//  Created by 박지은 on 2023/05/06.
-//
-
 import SwiftUI
 
 struct CustomAlertView: View {
@@ -15,6 +8,7 @@ struct CustomAlertView: View {
     let closeButtonPadding: CGFloat = 0.02
     
     var body: some View {
+                HStack {
                 
         GeometryReader { geometry in
             
