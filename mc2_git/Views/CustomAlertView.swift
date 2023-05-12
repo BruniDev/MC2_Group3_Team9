@@ -1,157 +1,95 @@
-//
-//  Post.swift
-//  mc2_git
-//
-//  Created by 박지은 on 2023/05/06.
-//
-
 import SwiftUI
 
 struct CustomAlertView: View {
     
-//    @State private var isShowingPopup = false
-//    @Binding var isDisplayed: Bool
+    @Binding var isShowingPopup : Bool
+    
+    let posterWidth: CGFloat = 0.8
+    let closeButtonPadding: CGFloat = 0.02
     
     var body: some View {
-        
-        VStack {
-            HStack {
-                Button(action: {
-                }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.orange)
-                        .font(.system(size: 30, weight: .bold))
-                }.padding(.leading, -30)
-                Spacer()
-            }
-
-            Image("Life_of_Hae-Oak")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 300)
-                .shadow(color: .gray, radius: 3, y:10)
+        HStack {
             
-            HStack {
-                Text("영화제목")
-                    .font(.largeTitle)
-                    .bold()
-                Text("영화제목ENG")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-                Spacer()
-                Text("영화년도")
-                    .font(.footnote)
-                    .foregroundColor(.gray)
+            GeometryReader { geometry in
+                
+                let posterSize = geometry.size.width * posterWidth
+                let closeButtonPaddingSize = posterSize
+                
+                VStack {
+                    
+                    //Mark: - 왼쪽 위 닫기 버튼
+                    HStack {
+                        Button(action: {
+                            isShowingPopup = false
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                                .imageScale(.large)
+                                .foregroundColor(.black.opacity(0.8))
+                                .padding(.leading, geometry.size.width * closeButtonPadding)
+                            Spacer()
+                        }
+                    }
+                    
+                    //Mark: - 영화 포스터 이미지
+                    Image("Life_of_Hae-Oak")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: geometry.size.width * posterWidth)
+                        .shadow(color: .gray, radius: 3, y:10)
+                        .overlay(Circle()
+                            .foregroundColor(.black.opacity(0.5))
+                            .frame(width: geometry.size.width * 0.1)
+                            .padding(.vertical, geometry.size.width * 0.01)
+                            .padding(.horizontal, geometry.size.height * 0.02)
+                            .overlay(Text("15")
+                                .frame(width: geometry.size.width * 0.1)
+                                .padding(.vertical, geometry.size.width * 0.01)
+                                .padding(.horizontal, geometry.size.height * 0.02)
+                                .foregroundColor(.yellow.opacity(0.5)))
+                                 ,alignment: .topTrailing
+                        )
+                    
+                    //Mark: - 포스터 이미지 아래 영화 정보 전체
+                    HStack(alignment: .bottom) {
+                        Text("영화제목")
+                            .font(.largeTitle)
+                            .bold()
+                        Text("영화년도")
+                            .font(.footnote)
+                            .foregroundColor(.gray)
+                        Spacer()
+                    }
+                    .padding(.leading, geometry.size.width * 0.08)
+                    Text("영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다.")
+                        .font(.footnote)
+                        .padding(.horizontal, geometry.size.width * 0.065)
+                    
+                    //Mark: - Movie Information(감독, 출연, 장르, 러닝타임
+                    VStack(alignment: .leading) {
+                        movieInfo(title: "감 독", content: "이우정", geometry: geometry)
+                        movieInfo(title: "출 연", content: "이우정, 이우정, 이우정", geometry: geometry)
+                        movieInfo(title: "장 르", content: "드라마", geometry: geometry)
+                        movieInfo(title: "러닝타임", content: "109분", geometry: geometry)
+                    }
+                    .padding(.leading, geometry.size.width * 0.08)
+                }
+                .padding(.horizontal, geometry.size.width * 0.02)
+                .padding(.vertical, geometry.size.height * 0.02)
             }
-            
-            Text("영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다.")
-                .font(.footnote)
-
-            HStack {
-                RoundedRectangle(cornerRadius: 30)
-                    .background(Color.black)
-                    .frame(width: 50, height: 20)
-                    .overlay(Text("감독").foregroundColor(Color.white))
-                Text("감독명")
-            }
-            
-            HStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .background(Color.black)
-                    .frame(width: 50, height: 20)
-                    .overlay(Text("출연").foregroundColor(Color.white))
-                Text("출연자명")
-            }
-            
-            HStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .background(Color.black)
-                    .frame(width: 50, height: 20)
-                    .overlay(Text("개봉").foregroundColor(Color.white))
-                Text("개봉날짜")
-            }
-            
-            HStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .background(Color.black)
-                    .frame(width: 80, height: 20)
-                    .overlay(Text("러닝타임").foregroundColor(Color.white))
-                Text("러닝타임")
-            }
-        }.padding(.horizontal, 50)
+        }
     }
-}
-
-
-//struct BlurView: UIViewRepresentable {
-//    func makeUIView(context: Context) -> UIVisualEffectView {
-//        let view = UIVisualEffectView(effect: UIBlurEffect(style: .systemUltraThinMaterial))
-//
-//        return view
-//    }
-//
-//    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-//
-//    }
-//}
-//
-//
-//struct CustomAlertView: View {
-//    @Binding var show: Bool
-//
-//
-//    var body: some View {
-//
-//        ZStack(alignment: .init(horizontal: .trailing, vertical: .top)) {
-//            VStack(spacing: 25) {
-//                Image("post1")
-//                Text("Congra")
-//                    .font(.title)
-//                    .foregroundColor(.pink)
-//
-//                Text("you are good")
-//                Button(action: {}) {
-//                    Text("Back to Home")
-//                        .foregroundColor(.white)
-//                        .bold()
-//                        .padding(.vertical, 10)
-//                        .padding(.horizontal, 25)
-//                        .background(Color.purple)
-//                        .clipShape(Capsule())
-//                }
-//            }.padding(.vertical, 25)
-//                .padding(.horizontal, 30)
-//
-//            //Mark: - 9:50
-//        }
-//
-//        VStack {
-//            Text("Snorlax")
-//                .font(.system(size: 18))
-//            Image("post1")
-//                .resizable()
-//                .frame(width: 80)
-//
-//            Button(action: {
-//                withAnimation {
-//                    isPresent = false
-//                }
-//            }, label: {
-//                Text("Close")
-//            })
-//        }.frame(width: 280, alignment: .center)
-//            .padding()
-//            .background(Color.red)
-//            .cornerRadius(12)
-//
-//    }).background(RoundedRectangle(cornerRadius: 10).stroke(Color.gray) .frame(width: 40, height: 50))
-//
-//
-//    }
-//}
-
-struct CustoAlertView_Previews: PreviewProvider {
-    static var previews: some View {
-        CustomAlertView()
+    
+    func movieInfo(title: String, content: String, geometry: GeometryProxy) -> some View {
+        HStack {
+            RoundedRectangle(cornerRadius: 20)
+                .frame(width: 60, height: 25)
+                .overlay(Text(title)
+                    .font(.caption)
+                    .bold()
+                    .foregroundColor(Color.white))
+            Text(content)
+                .font(.caption)
+            Spacer()
+        }
     }
 }
