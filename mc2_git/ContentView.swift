@@ -94,6 +94,7 @@ struct ContentView: View {
         }.onAppear {
             if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
                 theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
+                print(theaters)
                 dateManager.fetchDate(theaterName: theaters[0].name)
                 movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
                 allDays = dateManager.allDays
@@ -104,11 +105,6 @@ struct ContentView: View {
                         allDays.remove(at: j)
                     }
                 }
-                //                print("!!!!!!!!!!")
-                //                print(allDays)
-                //                print(closedDays)
-                //                print(workingDays)
-                //                print("!!!!!!!!!!")
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                     movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                     print(movieScheduleDataForUser)
@@ -144,7 +140,7 @@ struct MainView: View {
                 }.background(.black)
                 
                 //Mark: - 날짜 View, 포스터 View
-                MovieDayView2(movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $workingDays ,theaters: $theaters).padding(.bottom, 20)
+                MovieDayView2(movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays ,theaters: $theaters).padding(.bottom, 20)
                 
                 //Mark: - 영화관 이름, 주소
                 Rectangle()
@@ -176,7 +172,6 @@ struct MainView: View {
             }
             .onAppear {
                 dateManager.fetchDate(theaterName: theaters[0].name)
-                movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
                 allDays = dateManager.allDays
                 closedDays = dateManager.closedDays
                 //                workingDays = allDays
@@ -190,16 +185,19 @@ struct MainView: View {
                 //                print(closedDays)
                 //                print(workingDays)
                 //                print("!!!!!!!!!!")
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                    movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
-                    print(movieScheduleDataForUser)
-                }
+                movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: allDays[0])
+//                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+//                    movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
+//                    print(movieScheduleDataForUser)
+//                }
+                movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
+                print(movieScheduleDataForUser)
             }
             .refreshable {
                 locationDataManager.locationManager.requestLocation()
                 theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
                 dateManager.fetchDate(theaterName: theaters[0].name)
-                movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
+                
                 allDays = dateManager.allDays
                 closedDays = dateManager.closedDays
                 //                workingDays = allDays
@@ -213,6 +211,7 @@ struct MainView: View {
                 //                print(closedDays)
                 //                print(workingDays)
                 //                print("!!!!!!!!!!")
+                movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: allDays[0])
                 // DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                     movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                     print(movieScheduleDataForUser)
@@ -254,6 +253,18 @@ struct ContentView_Previews: PreviewProvider {
 //        var preferredStatusBarStyle: UIStatusBarStyle {
 //            return .lightContent
 //        }
+    }
+}
+
+extension Color {
+    init(hex: UInt, alpha: Double = 1) {
+        self.init(
+            .sRGB,
+            red: Double((hex >> 16) & 0xff) / 255,
+            green: Double((hex >> 08) & 0xff) / 255,
+            blue: Double((hex >> 00) & 0xff) / 255,
+            opacity: alpha
+        )
     }
 }
 

@@ -50,15 +50,23 @@ struct MovieDayView2: View {
                                 Text(getDayShort(date: day))
                                     .font(.system(size: 8))
                             }.padding(5)
-                                .foregroundColor((selectedDate == day ? Color.white : Color.black))
+                                .foregroundColor(foregroundCheck(aDay: day, allDays: allDays, selectedDate: selectedDate))
                         }).background(
                             RoundedRectangle(cornerRadius: 10)
-                                .fill(selectedDate == day ? Color.black : Color.clear)
+                                .strokeBorder(borderCheck(aDay: day, allDays: allDays, selectedDate: selectedDate), lineWidth: 1)
+                                .background(RoundedRectangle(cornerRadius: 10).fill(fillCheck(aDay: day, allDays: allDays, selectedDate: selectedDate)))
                                 .frame(width: 35, height: 40)
                         )
+                        .disabled(closedDayCheck(aDay: day, allDays: allDays))
+                        
                     }//Mark: - End ZStack
                 }//Mark: - end ForEach
                 .padding(.top, 15)
+                .onAppear{
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    selectedDate = dateFormatter.date(from: allDays[0])!
+                }
             }
             
             NavigationView {
@@ -67,6 +75,13 @@ struct MovieDayView2: View {
                 }
             }
         }
+//        .onAppear{
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "yyyy-MM-dd"
+//            print("대체모야")
+//            print(allDays)
+////            selectedDate = dateFormatter.date(from: allDays[0])!
+//        }
     }
 }
 
@@ -112,6 +127,58 @@ func getWeek() -> [Date] {
     
     return Array(daysMonth)
 }
+
+func closedDayCheck(aDay: Date, allDays: Array<String>) -> Bool{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    if allDays.contains(dateFormatter.string(from: aDay)) == true {
+        return false
+    } else {
+        return true
+    }
+}
+func foregroundCheck(aDay: Date, allDays: Array<String>, selectedDate: Date) -> Color {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    if allDays.contains(dateFormatter.string(from: aDay)) == true {
+        if dateFormatter.string(from: selectedDate) == dateFormatter.string(from: aDay) {
+            return Color.white
+        }else{
+            return Color.black
+        }
+    } else {
+        return Color(hex: 0x999999)
+    }
+}
+
+func fillCheck(aDay: Date, allDays: Array<String>, selectedDate: Date) -> Color {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    if allDays.contains(dateFormatter.string(from: aDay)) == true {
+        if dateFormatter.string(from: selectedDate) == dateFormatter.string(from: aDay) {
+            return Color(hex: 0x5856D6)
+        }else{
+            return Color.white
+        }
+    } else {
+        return Color.white
+    }
+}
+
+func borderCheck(aDay: Date, allDays: Array<String>, selectedDate: Date) -> Color {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    if allDays.contains(dateFormatter.string(from: aDay)) == true {
+        if dateFormatter.string(from: selectedDate) == dateFormatter.string(from: aDay) {
+            return Color(hex: 0x5856D6)
+        }else{
+            return Color.black
+        }
+    } else {
+        return Color(hex: 0x999999)
+    }
+}
+
 
 struct MovieDayView2_Previews: PreviewProvider {
     static var previews: some View {

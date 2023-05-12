@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-@main
+ @main
 struct mc2_gitApp: App {
     var body: some Scene {
         WindowGroup {
