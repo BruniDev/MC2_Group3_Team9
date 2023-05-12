@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var closedDays : Array<String> = []
     @State var workingDays : Array<String> = []
     @State var movieScheduleDataForUser: Array<MovieScheduleDataForUser> = []
+    @State private var isShowingPopup = false
     
     var body: some View {
         
@@ -38,58 +39,67 @@ struct ContentView: View {
             
             //Mark: - 영화관 이름, 주소
             Rectangle()
-                .frame(height: 5)
-                .foregroundColor(Color.gray)
-            HStack {
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("영화관 이름")
-                            .font(.system(size:32))
-                        Image("Instagram_icon")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 30)
-                    }
-                    
-                    Text("영화관 주소")
-                    
-                    HStack {
-                        Text("나와의 거리")
-                        Image(systemName: "figure.walk")
-                        Spacer()
-                        Text("거리km")
-                            .multilineTextAlignment(.trailing)
-                    }
-                }
-                Spacer()
-            }.padding(.leading)
-        }
-        Spacer()
-            .onAppear{
-                dateManager.fetchDate(theaterName: "인디플러스포항")
-                movieScheduleManager.fetchMovieSchedule(theaterName: "인디플러스포항", date: dateManager.allDays[0])
-                allDays = dateManager.allDays
-                closedDays = dateManager.closedDays
-//                workingDays = allDays
-                for i in closedDays {
-                    if let j = allDays.firstIndex(of: i){
-                        allDays.remove(at: j)
-                    }
-                }
-//                print("!!!!!!!!!!")
-//                print(allDays)
-//                print(closedDays)
-//                print(workingDays)
-//                print("!!!!!!!!!!")
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                    movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
-                    print(movieScheduleDataForUser)
+                            .frame(height: 3)
+                            .foregroundColor(Color.gray)
+                        HStack {
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text("영화관 이름")
+                                        .font(.system(size:25))
+                                        .bold()
+                                    Link(destination: URL(string: "https://www.instagram.com/__0330/")!, label: {
+                                        Image("Instagram_icon")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 30)
+                                    })
+                                }
+                                Text("영화관 주소")
+                                    .font(.caption)
+                                    .bold()
+                                    .padding(.bottom, 10)
+                                
+                                
+                                HStack {
+                                    Text("나와의 거리")
+                                    Image(systemName: "figure.walk")
+                                        .foregroundColor(.purple)
+                                    Spacer()
+                                    Text("거리km")
+                                        .multilineTextAlignment(.trailing)
+                                        .foregroundColor(.purple)
+                                        .bold()
+                                    
+                                    Link(destination: URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
+                                        Image("location")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 30)
+                                    })
+                                }
+                            }//Mark: - END VStack
+                            .padding(.horizontal, 10)
+                            Spacer()
+                        }//Mark: - END HStack
+                        .padding(.leading)
+                        .padding(.top, 20)
+                        .padding(.bottom, 50)
+                        .background(Color.gray)
+                    }//Mark: - End VStack
+                    .overlay() {
+                        if isShowingPopup {
+                            Color.black.opacity(0.5)
+                                .ignoresSafeArea()
+                            
+                            CustomAlertView(isShowingPopup: $isShowingPopup)
+                            
+                                .frame(width: UIScreen.main.bounds.width - 50, height: UIScreen.main.bounds.height - 120)
+                                .background(Color.white)
+                        }
+                    }//Mark: - END overlay
                 }
             }
-        
-    }//Mark: - End VStack
-}
-    
+
 
 
 struct ContentView_Previews: PreviewProvider {
