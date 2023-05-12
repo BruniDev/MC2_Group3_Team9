@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B36C9942A0EDE7C0043D988 /* BottomSheetLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36C9932A0EDE7C0043D988 /* BottomSheetLayer.swift */; };
 		93BCF5AF2A0BD946008CB844 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BCF5AE2A0BD946008CB844 /* LocationManager.swift */; };
 		93BCF5B12A0BD974008CB844 /* CheckTop3Theaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */; };
 		C24643802A0D2F4300712334 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C246437F2A0D2F4300712334 /* Color.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B36C9932A0EDE7C0043D988 /* BottomSheetLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetLayer.swift; sourceTree = "<group>"; };
 		93BCF5AE2A0BD946008CB844 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTop3Theaters.swift; sourceTree = "<group>"; };
 		C246437F2A0D2F4300712334 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				D96438F42A0B7526009D634D /* DateManager.swift */,
 				D96438F82A0B770A009D634D /* MovieScheduleManager.swift */,
 				D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */,
+				7B36C9932A0EDE7C0043D988 /* BottomSheetLayer.swift */,
 			);
 			path = mc2_git;
 			sourceTree = "<group>";
@@ -199,6 +202,7 @@
 				C29E138D2A02562500B05B31 /* ContentView.swift in Sources */,
 				D96438FD2A0B8DB5009D634D /* MovieDetailData.swift in Sources */,
 				C29E13A12A057D0F00B05B31 /* MovieListView.swift in Sources */,
+				7B36C9942A0EDE7C0043D988 /* BottomSheetLayer.swift in Sources */,
 				C29E138B2A02562500B05B31 /* mc2_gitApp.swift in Sources */,
 				D96438FB2A0B8D94009D634D /* MovieDetailManager.swift in Sources */,
 				C29E13A32A061DE400B05B31 /* CustomAlertView.swift in Sources */,
