@@ -66,7 +66,6 @@
 		933C24882A0D3147000F68E7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				C29E138C2A02562500B05B31 /* ContentView.swift */,
 				C29E139E2A0566CA00B05B31 /* MovieDayView.swift */,
 				C29E13A02A057D0F00B05B31 /* MovieListView.swift */,
 				C29E13A22A061DE400B05B31 /* CustomAlertView.swift */,
@@ -95,6 +94,7 @@
 		C29E13892A02562500B05B31 /* mc2_git */ = {
 			isa = PBXGroup;
 			children = (
+				C29E138C2A02562500B05B31 /* ContentView.swift */,
 				933C24882A0D3147000F68E7 /* Views */,
 				D96438F12A0B74B4009D634D /* Models */,
 				C29E139A2A0500CD00B05B31 /* mc2-git-Info.plist */,
