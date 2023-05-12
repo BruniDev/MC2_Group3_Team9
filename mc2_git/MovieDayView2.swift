@@ -38,7 +38,7 @@ struct MovieDayView2: View {
                             print(dates)
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "yyyy-MM-dd"
-                            movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateFormatter.string(from: selectedDate))
+                            movieScheduleManager.fetchMovieSchedule(theaterName: "인디플러스포항", date: dateFormatter.string(from: selectedDate))
                             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                                 movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                                 print(movieScheduleDataForUser)
