@@ -22,12 +22,6 @@ struct MovieListView: View {
                     //                        GeometryReader { proxy in
                     //                            let scale = getScale(proxy: proxy)
                     VStack(alignment: .leading, spacing: 8) {
-//                        Image("post1")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .clipped()
-//                            .cornerRadius(8)
-//                            .frame(width: 188, height: 265)
                         Button {
                             movieDetailManager.fetchDetail(movieCode: movieScheduleDataForUser[index].movieCode)
                         } label: {
@@ -42,17 +36,6 @@ struct MovieListView: View {
                             .frame(height: 265)
                             .animation(.easeIn)
                         }
-                        //                                    .onTapGesture {
-                        //                                        isShowingPopup = true
-                        //                                    }
-                        
-                        //                                Button(action: { isShowingPopup.toggle() }) {
-                        //                                    Image("post1")
-                        //                                        .resizable()
-                        //                                        .scaledToFill()
-                        //                                        .clipped().cornerRadius(8)
-                        //                                }
-                        //
                         Text("\(movieScheduleDataForUser[index].movieName)")
                             .font(.system(size: 10, weight: .semibold))
                             .multilineTextAlignment(.leading)
@@ -65,44 +48,14 @@ struct MovieListView: View {
                                     .foregroundColor(.black)
                             }
                         }
-//                        Text("영화시간")
-//                            .font(.system(size: 10, weight: .semibold))
-//                            .multilineTextAlignment(.leading)
-//                            .foregroundColor(.black)
+
                     }
-                    //                            .scaleEffect(.init(width: scale, height: scale))
-                    //                            .padding(.vertical)
                 } //Mark: - End Geometry
                 .frame(width: 188, height: 330)
                 .padding(.leading, 20)
             } //Mark: - End ForEach
         }//Mark: - End HStack
-        //            .padding(.horizontal, 8)
-        //                .padding(.vertical)
     }//Mark: - End ScrollView
-    //            .overlay(
-    //                if isShowingPopup {
-    //                    ZStack {
-    //                        Color.black.opacity(0.5).ignoresSafeArea()
-    //                        CustomAlertView()
-    //                    }
-    //                }
-    //        )
-    
-    
-    //            .overlay(
-    //            if isShowingPopup {
-    //                ZStack {
-    //                    Color.black.opacity(0.5).ignoresSafeArea()
-    //                    CustomAlertView()
-    //                }
-    //                CustomAlertView(isDisplayed: $isPopupDisplayed)
-    //        }//Mark: - End ZStack
-    //        .fullScreenCover(isPresented: $showPopup, content: {
-    //            CustomAlertView()
-    //        }
-    //            ).onTapGesture {
-    //                isShowingPopup = true
 }
 
 
