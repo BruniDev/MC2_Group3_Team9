@@ -31,16 +31,17 @@ struct MovieDayView2: View {
                         }, label: {
                             VStack {
                                 Text("\(getDayNumber(date: day))")
+                                    .font(.system(size: 17))
                                     .bold()
                                 Text(getDayShort(date: day))
-                                    .font(.system(size: 8))
+                                    .font(.system(size: 11))
                             }.padding(5)
                                 .foregroundColor((selectedDate == day ? Color.white : Color.black))
                         })
                         .background(
                             RoundedRectangle(cornerRadius: 10)
                                 .fill(selectedDate == day ? Color.black : Color.clear)
-                                .frame(width: 35, height: 40)
+                                .frame(width: 42, height: 48)
                         )
                     }//Mark: - END ZStack
                 }//Mark: - END ForEach

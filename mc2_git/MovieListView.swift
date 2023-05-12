@@ -24,7 +24,7 @@ struct MovieListView: View {
                             .resizable()
                             .scaledToFit()
                             .clipped()
-                            .frame(width: 188, height: 265)
+                            .frame(width: 200, height: 300)
                             .onTapGesture {
                                 isShowingPopup = true
                             }
