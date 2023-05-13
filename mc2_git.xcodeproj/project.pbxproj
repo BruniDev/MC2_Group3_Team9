@@ -7,129 +7,172 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B36C9942A0EDE7C0043D988 /* BottomSheetLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B36C9932A0EDE7C0043D988 /* BottomSheetLayer.swift */; };
-		93BCF5AF2A0BD946008CB844 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BCF5AE2A0BD946008CB844 /* LocationManager.swift */; };
-		93BCF5B12A0BD974008CB844 /* CheckTop3Theaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */; };
-		C24643802A0D2F4300712334 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C246437F2A0D2F4300712334 /* Color.swift */; };
-		C29E138B2A02562500B05B31 /* mc2_gitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E138A2A02562500B05B31 /* mc2_gitApp.swift */; };
-		C29E138D2A02562500B05B31 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E138C2A02562500B05B31 /* ContentView.swift */; };
-		C29E138F2A02562600B05B31 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29E138E2A02562600B05B31 /* Assets.xcassets */; };
-		C29E13922A02562600B05B31 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C29E13912A02562600B05B31 /* Preview Assets.xcassets */; };
-		C29E139D2A05411C00B05B31 /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = C29E139C2A05411C00B05B31 /* SwiftSoup */; };
-		C29E13A12A057D0F00B05B31 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E13A02A057D0F00B05B31 /* MovieListView.swift */; };
-		C29E13A32A061DE400B05B31 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E13A22A061DE400B05B31 /* CustomAlertView.swift */; };
-		C29E13A52A07869600B05B31 /* MovieDayView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29E13A42A07869600B05B31 /* MovieDayView2.swift */; };
-		C29E13A82A07EAE900B05B31 /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = C29E13A72A07EAE900B05B31 /* PopupView */; };
-		D96438F32A0B74DB009D634D /* MovieScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438F22A0B74DB009D634D /* MovieScheduleData.swift */; };
-		D96438F52A0B7526009D634D /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438F42A0B7526009D634D /* DateManager.swift */; };
-		D96438F72A0B76DC009D634D /* MovieScheduleDataForUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438F62A0B76DC009D634D /* MovieScheduleDataForUser.swift */; };
-		D96438F92A0B770A009D634D /* MovieScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438F82A0B770A009D634D /* MovieScheduleManager.swift */; };
-		D96438FB2A0B8D94009D634D /* MovieDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */; };
-		D96438FD2A0B8DB5009D634D /* MovieDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D96438FC2A0B8DB5009D634D /* MovieDetailData.swift */; };
+		93C2185F2A0F8B12008BC96B /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = 93C2185E2A0F8B12008BC96B /* SwiftSoup */; };
+		93C218622A0F8B4A008BC96B /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 93C218612A0F8B4A008BC96B /* PopupView */; };
+		93FB5C542A0F8807008A8AA9 /* mc2_gitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C532A0F8807008A8AA9 /* mc2_gitApp.swift */; };
+		93FB5C562A0F8807008A8AA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C552A0F8807008A8AA9 /* ContentView.swift */; };
+		93FB5C582A0F8808008A8AA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93FB5C572A0F8808008A8AA9 /* Assets.xcassets */; };
+		93FB5C5B2A0F8808008A8AA9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93FB5C5A2A0F8808008A8AA9 /* Preview Assets.xcassets */; };
+		93FB5C822A0F8874008A8AA9 /* MovieScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C812A0F8874008A8AA9 /* MovieScheduleData.swift */; };
+		93FB5C842A0F888C008A8AA9 /* MovieScheduleDataForUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C832A0F888C008A8AA9 /* MovieScheduleDataForUser.swift */; };
+		93FB5C862A0F889D008A8AA9 /* MovieDetailData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C852A0F889D008A8AA9 /* MovieDetailData.swift */; };
+		93FB5C882A0F88A7008A8AA9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C872A0F88A7008A8AA9 /* LocationManager.swift */; };
+		93FB5C8A2A0F88BC008A8AA9 /* CheckTop3Theaters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C892A0F88BC008A8AA9 /* CheckTop3Theaters.swift */; };
+		93FB5C8C2A0F88C5008A8AA9 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C8B2A0F88C5008A8AA9 /* Color.swift */; };
+		93FB5C8E2A0F88D9008A8AA9 /* DateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C8D2A0F88D9008A8AA9 /* DateManager.swift */; };
+		93FB5C902A0F88EC008A8AA9 /* MovieScheduleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C8F2A0F88EC008A8AA9 /* MovieScheduleManager.swift */; };
+		93FB5C922A0F88FA008A8AA9 /* MovieDetailManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C912A0F88FA008A8AA9 /* MovieDetailManager.swift */; };
+		93FB5C942A0F8912008A8AA9 /* MovieListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C932A0F8912008A8AA9 /* MovieListView.swift */; };
+		93FB5C982A0F894B008A8AA9 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C972A0F894B008A8AA9 /* CustomAlertView.swift */; };
+		93FB5C9A2A0F8962008A8AA9 /* MovieDayView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C992A0F8962008A8AA9 /* MovieDayView2.swift */; };
+		93FB5C9C2A0F8971008A8AA9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C9B2A0F8971008A8AA9 /* TestView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		93FB5C612A0F8808008A8AA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93FB5C482A0F8807008A8AA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93FB5C4F2A0F8807008A8AA9;
+			remoteInfo = mc2_git;
+		};
+		93FB5C6B2A0F8808008A8AA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 93FB5C482A0F8807008A8AA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 93FB5C4F2A0F8807008A8AA9;
+			remoteInfo = mc2_git;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		7B36C9932A0EDE7C0043D988 /* BottomSheetLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetLayer.swift; sourceTree = "<group>"; };
-		93BCF5AE2A0BD946008CB844 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTop3Theaters.swift; sourceTree = "<group>"; };
-		C246437F2A0D2F4300712334 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		C29E13872A02562500B05B31 /* mc2_git.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mc2_git.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C29E138A2A02562500B05B31 /* mc2_gitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mc2_gitApp.swift; sourceTree = "<group>"; };
-		C29E138C2A02562500B05B31 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		C29E138E2A02562600B05B31 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		C29E13912A02562600B05B31 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		C29E139A2A0500CD00B05B31 /* mc2-git-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "mc2-git-Info.plist"; sourceTree = SOURCE_ROOT; };
-		C29E13A02A057D0F00B05B31 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
-		C29E13A22A061DE400B05B31 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
-		C29E13A42A07869600B05B31 /* MovieDayView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDayView2.swift; sourceTree = "<group>"; };
-		D96438F22A0B74DB009D634D /* MovieScheduleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScheduleData.swift; sourceTree = "<group>"; };
-		D96438F42A0B7526009D634D /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
-		D96438F62A0B76DC009D634D /* MovieScheduleDataForUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScheduleDataForUser.swift; sourceTree = "<group>"; };
-		D96438F82A0B770A009D634D /* MovieScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScheduleManager.swift; sourceTree = "<group>"; };
-		D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailManager.swift; sourceTree = "<group>"; };
-		D96438FC2A0B8DB5009D634D /* MovieDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailData.swift; sourceTree = "<group>"; };
+		93C218632A0F8C45008BC96B /* mc2-git-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "mc2-git-Info.plist"; sourceTree = SOURCE_ROOT; };
+		93FB5C502A0F8807008A8AA9 /* mc2_git.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mc2_git.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93FB5C532A0F8807008A8AA9 /* mc2_gitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mc2_gitApp.swift; sourceTree = "<group>"; };
+		93FB5C552A0F8807008A8AA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		93FB5C572A0F8808008A8AA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		93FB5C5A2A0F8808008A8AA9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		93FB5C602A0F8808008A8AA9 /* mc2_gitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mc2_gitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93FB5C6A2A0F8808008A8AA9 /* mc2_gitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = mc2_gitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		93FB5C812A0F8874008A8AA9 /* MovieScheduleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScheduleData.swift; sourceTree = "<group>"; };
+		93FB5C832A0F888C008A8AA9 /* MovieScheduleDataForUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScheduleDataForUser.swift; sourceTree = "<group>"; };
+		93FB5C852A0F889D008A8AA9 /* MovieDetailData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailData.swift; sourceTree = "<group>"; };
+		93FB5C872A0F88A7008A8AA9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		93FB5C892A0F88BC008A8AA9 /* CheckTop3Theaters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTop3Theaters.swift; sourceTree = "<group>"; };
+		93FB5C8B2A0F88C5008A8AA9 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		93FB5C8D2A0F88D9008A8AA9 /* DateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateManager.swift; sourceTree = "<group>"; };
+		93FB5C8F2A0F88EC008A8AA9 /* MovieScheduleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieScheduleManager.swift; sourceTree = "<group>"; };
+		93FB5C912A0F88FA008A8AA9 /* MovieDetailManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailManager.swift; sourceTree = "<group>"; };
+		93FB5C932A0F8912008A8AA9 /* MovieListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListView.swift; sourceTree = "<group>"; };
+		93FB5C972A0F894B008A8AA9 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
+		93FB5C992A0F8962008A8AA9 /* MovieDayView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDayView2.swift; sourceTree = "<group>"; };
+		93FB5C9B2A0F8971008A8AA9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C29E13842A02562500B05B31 /* Frameworks */ = {
+		93FB5C4D2A0F8807008A8AA9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C29E13A82A07EAE900B05B31 /* PopupView in Frameworks */,
-				C29E139D2A05411C00B05B31 /* SwiftSoup in Frameworks */,
+				93C218622A0F8B4A008BC96B /* PopupView in Frameworks */,
+				93C2185F2A0F8B12008BC96B /* SwiftSoup in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93FB5C5D2A0F8808008A8AA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93FB5C672A0F8808008A8AA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C29E137E2A02562500B05B31 = {
+		93FB5C472A0F8807008A8AA9 = {
 			isa = PBXGroup;
 			children = (
-				C29E13892A02562500B05B31 /* mc2_git */,
-				C29E13882A02562500B05B31 /* Products */,
+				93FB5C522A0F8807008A8AA9 /* mc2_git */,
+				93FB5C512A0F8807008A8AA9 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C29E13882A02562500B05B31 /* Products */ = {
+		93FB5C512A0F8807008A8AA9 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C29E13872A02562500B05B31 /* mc2_git.app */,
+				93FB5C502A0F8807008A8AA9 /* mc2_git.app */,
+				93FB5C602A0F8808008A8AA9 /* mc2_gitTests.xctest */,
+				93FB5C6A2A0F8808008A8AA9 /* mc2_gitUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C29E13892A02562500B05B31 /* mc2_git */ = {
+		93FB5C522A0F8807008A8AA9 /* mc2_git */ = {
 			isa = PBXGroup;
 			children = (
-				D96438F12A0B74B4009D634D /* Model */,
-				C29E139A2A0500CD00B05B31 /* mc2-git-Info.plist */,
-				C29E138A2A02562500B05B31 /* mc2_gitApp.swift */,
-				C29E138C2A02562500B05B31 /* ContentView.swift */,
-				C29E138E2A02562600B05B31 /* Assets.xcassets */,
-				C29E13902A02562600B05B31 /* Preview Content */,
-				C29E13A02A057D0F00B05B31 /* MovieListView.swift */,
-				C29E13A22A061DE400B05B31 /* CustomAlertView.swift */,
-				C29E13A42A07869600B05B31 /* MovieDayView2.swift */,
-				C246437F2A0D2F4300712334 /* Color.swift */,
-				D96438F42A0B7526009D634D /* DateManager.swift */,
-				D96438F82A0B770A009D634D /* MovieScheduleManager.swift */,
-				D96438FA2A0B8D94009D634D /* MovieDetailManager.swift */,
-				7B36C9932A0EDE7C0043D988 /* BottomSheetLayer.swift */,
+				93C218632A0F8C45008BC96B /* mc2-git-Info.plist */,
+				93FB5C7E2A0F8845008A8AA9 /* Models */,
+				93FB5C7D2A0F883B008A8AA9 /* Views */,
+				93FB5C532A0F8807008A8AA9 /* mc2_gitApp.swift */,
+				93FB5C552A0F8807008A8AA9 /* ContentView.swift */,
+				93FB5C572A0F8808008A8AA9 /* Assets.xcassets */,
+				93FB5C592A0F8808008A8AA9 /* Preview Content */,
 			);
 			path = mc2_git;
 			sourceTree = "<group>";
 		};
-		C29E13902A02562600B05B31 /* Preview Content */ = {
+		93FB5C592A0F8808008A8AA9 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				C29E13912A02562600B05B31 /* Preview Assets.xcassets */,
+				93FB5C5A2A0F8808008A8AA9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		D96438F12A0B74B4009D634D /* Model */ = {
+		93FB5C7D2A0F883B008A8AA9 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D96438F22A0B74DB009D634D /* MovieScheduleData.swift */,
-				D96438F62A0B76DC009D634D /* MovieScheduleDataForUser.swift */,
-				D96438FC2A0B8DB5009D634D /* MovieDetailData.swift */,
-				93BCF5AE2A0BD946008CB844 /* LocationManager.swift */,
-				93BCF5B02A0BD974008CB844 /* CheckTop3Theaters.swift */,
+				93FB5C932A0F8912008A8AA9 /* MovieListView.swift */,
+				93FB5C972A0F894B008A8AA9 /* CustomAlertView.swift */,
+				93FB5C992A0F8962008A8AA9 /* MovieDayView2.swift */,
+				93FB5C9B2A0F8971008A8AA9 /* TestView.swift */,
 			);
-			path = Model;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		93FB5C7E2A0F8845008A8AA9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				93FB5C812A0F8874008A8AA9 /* MovieScheduleData.swift */,
+				93FB5C832A0F888C008A8AA9 /* MovieScheduleDataForUser.swift */,
+				93FB5C852A0F889D008A8AA9 /* MovieDetailData.swift */,
+				93FB5C872A0F88A7008A8AA9 /* LocationManager.swift */,
+				93FB5C892A0F88BC008A8AA9 /* CheckTop3Theaters.swift */,
+				93FB5C8B2A0F88C5008A8AA9 /* Color.swift */,
+				93FB5C8D2A0F88D9008A8AA9 /* DateManager.swift */,
+				93FB5C8F2A0F88EC008A8AA9 /* MovieScheduleManager.swift */,
+				93FB5C912A0F88FA008A8AA9 /* MovieDetailManager.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C29E13862A02562500B05B31 /* mc2_git */ = {
+		93FB5C4F2A0F8807008A8AA9 /* mc2_git */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C29E13952A02562600B05B31 /* Build configuration list for PBXNativeTarget "mc2_git" */;
+			buildConfigurationList = 93FB5C742A0F8808008A8AA9 /* Build configuration list for PBXNativeTarget "mc2_git" */;
 			buildPhases = (
-				C29E13832A02562500B05B31 /* Sources */,
-				C29E13842A02562500B05B31 /* Frameworks */,
-				C29E13852A02562500B05B31 /* Resources */,
+				93FB5C4C2A0F8807008A8AA9 /* Sources */,
+				93FB5C4D2A0F8807008A8AA9 /* Frameworks */,
+				93FB5C4E2A0F8807008A8AA9 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -137,29 +180,73 @@
 			);
 			name = mc2_git;
 			packageProductDependencies = (
-				C29E139C2A05411C00B05B31 /* SwiftSoup */,
-				C29E13A72A07EAE900B05B31 /* PopupView */,
+				93C2185E2A0F8B12008BC96B /* SwiftSoup */,
+				93C218612A0F8B4A008BC96B /* PopupView */,
 			);
 			productName = mc2_git;
-			productReference = C29E13872A02562500B05B31 /* mc2_git.app */;
+			productReference = 93FB5C502A0F8807008A8AA9 /* mc2_git.app */;
 			productType = "com.apple.product-type.application";
+		};
+		93FB5C5F2A0F8808008A8AA9 /* mc2_gitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93FB5C772A0F8808008A8AA9 /* Build configuration list for PBXNativeTarget "mc2_gitTests" */;
+			buildPhases = (
+				93FB5C5C2A0F8808008A8AA9 /* Sources */,
+				93FB5C5D2A0F8808008A8AA9 /* Frameworks */,
+				93FB5C5E2A0F8808008A8AA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93FB5C622A0F8808008A8AA9 /* PBXTargetDependency */,
+			);
+			name = mc2_gitTests;
+			productName = mc2_gitTests;
+			productReference = 93FB5C602A0F8808008A8AA9 /* mc2_gitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		93FB5C692A0F8808008A8AA9 /* mc2_gitUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 93FB5C7A2A0F8808008A8AA9 /* Build configuration list for PBXNativeTarget "mc2_gitUITests" */;
+			buildPhases = (
+				93FB5C662A0F8808008A8AA9 /* Sources */,
+				93FB5C672A0F8808008A8AA9 /* Frameworks */,
+				93FB5C682A0F8808008A8AA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				93FB5C6C2A0F8808008A8AA9 /* PBXTargetDependency */,
+			);
+			name = mc2_gitUITests;
+			productName = mc2_gitUITests;
+			productReference = 93FB5C6A2A0F8808008A8AA9 /* mc2_gitUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C29E137F2A02562500B05B31 /* Project object */ = {
+		93FB5C482A0F8807008A8AA9 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					C29E13862A02562500B05B31 = {
-						CreatedOnToolsVersion = 14.3;
+					93FB5C4F2A0F8807008A8AA9 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+					93FB5C5F2A0F8808008A8AA9 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 93FB5C4F2A0F8807008A8AA9;
+					};
+					93FB5C692A0F8808008A8AA9 = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = 93FB5C4F2A0F8807008A8AA9;
 					};
 				};
 			};
-			buildConfigurationList = C29E13822A02562500B05B31 /* Build configuration list for PBXProject "mc2_git" */;
+			buildConfigurationList = 93FB5C4B2A0F8807008A8AA9 /* Build configuration list for PBXProject "mc2_git" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -167,60 +254,102 @@
 				en,
 				Base,
 			);
-			mainGroup = C29E137E2A02562500B05B31;
+			mainGroup = 93FB5C472A0F8807008A8AA9;
 			packageReferences = (
-				C29E139B2A05411C00B05B31 /* XCRemoteSwiftPackageReference "SwiftSoup" */,
-				C29E13A62A07EAE900B05B31 /* XCRemoteSwiftPackageReference "PopupView" */,
+				93C2185D2A0F8B12008BC96B /* XCRemoteSwiftPackageReference "SwiftSoup" */,
+				93C218602A0F8B4A008BC96B /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
-			productRefGroup = C29E13882A02562500B05B31 /* Products */;
+			productRefGroup = 93FB5C512A0F8807008A8AA9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C29E13862A02562500B05B31 /* mc2_git */,
+				93FB5C4F2A0F8807008A8AA9 /* mc2_git */,
+				93FB5C5F2A0F8808008A8AA9 /* mc2_gitTests */,
+				93FB5C692A0F8808008A8AA9 /* mc2_gitUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C29E13852A02562500B05B31 /* Resources */ = {
+		93FB5C4E2A0F8807008A8AA9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C29E13922A02562600B05B31 /* Preview Assets.xcassets in Resources */,
-				C29E138F2A02562600B05B31 /* Assets.xcassets in Resources */,
+				93FB5C5B2A0F8808008A8AA9 /* Preview Assets.xcassets in Resources */,
+				93FB5C582A0F8808008A8AA9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93FB5C5E2A0F8808008A8AA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93FB5C682A0F8808008A8AA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C29E13832A02562500B05B31 /* Sources */ = {
+		93FB5C4C2A0F8807008A8AA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				93BCF5B12A0BD974008CB844 /* CheckTop3Theaters.swift in Sources */,
-				C29E138D2A02562500B05B31 /* ContentView.swift in Sources */,
-				D96438FD2A0B8DB5009D634D /* MovieDetailData.swift in Sources */,
-				C29E13A12A057D0F00B05B31 /* MovieListView.swift in Sources */,
-				7B36C9942A0EDE7C0043D988 /* BottomSheetLayer.swift in Sources */,
-				C29E138B2A02562500B05B31 /* mc2_gitApp.swift in Sources */,
-				D96438FB2A0B8D94009D634D /* MovieDetailManager.swift in Sources */,
-				C29E13A32A061DE400B05B31 /* CustomAlertView.swift in Sources */,
-				D96438F92A0B770A009D634D /* MovieScheduleManager.swift in Sources */,
-				D96438F52A0B7526009D634D /* DateManager.swift in Sources */,
-				C29E13A52A07869600B05B31 /* MovieDayView2.swift in Sources */,
-				D96438F32A0B74DB009D634D /* MovieScheduleData.swift in Sources */,
-				7B8695072A0BD8DD009666C0 /* BottomSheet.swift in Sources */,
-				D96438F72A0B76DC009D634D /* MovieScheduleDataForUser.swift in Sources */,
-				93BCF5AF2A0BD946008CB844 /* LocationManager.swift in Sources */,
-				C24643802A0D2F4300712334 /* Color.swift in Sources */,
+				93FB5C8A2A0F88BC008A8AA9 /* CheckTop3Theaters.swift in Sources */,
+				93FB5C982A0F894B008A8AA9 /* CustomAlertView.swift in Sources */,
+				93FB5C562A0F8807008A8AA9 /* ContentView.swift in Sources */,
+				93FB5C822A0F8874008A8AA9 /* MovieScheduleData.swift in Sources */,
+				93FB5C922A0F88FA008A8AA9 /* MovieDetailManager.swift in Sources */,
+				93FB5C882A0F88A7008A8AA9 /* LocationManager.swift in Sources */,
+				93FB5C9C2A0F8971008A8AA9 /* TestView.swift in Sources */,
+				93FB5C942A0F8912008A8AA9 /* MovieListView.swift in Sources */,
+				93FB5C842A0F888C008A8AA9 /* MovieScheduleDataForUser.swift in Sources */,
+				93FB5C902A0F88EC008A8AA9 /* MovieScheduleManager.swift in Sources */,
+				93FB5C8C2A0F88C5008A8AA9 /* Color.swift in Sources */,
+				93FB5C542A0F8807008A8AA9 /* mc2_gitApp.swift in Sources */,
+				93FB5C8E2A0F88D9008A8AA9 /* DateManager.swift in Sources */,
+				93FB5C862A0F889D008A8AA9 /* MovieDetailData.swift in Sources */,
+				93FB5C9A2A0F8962008A8AA9 /* MovieDayView2.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93FB5C5C2A0F8808008A8AA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		93FB5C662A0F8808008A8AA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		93FB5C622A0F8808008A8AA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93FB5C4F2A0F8807008A8AA9 /* mc2_git */;
+			targetProxy = 93FB5C612A0F8808008A8AA9 /* PBXContainerItemProxy */;
+		};
+		93FB5C6C2A0F8808008A8AA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 93FB5C4F2A0F8807008A8AA9 /* mc2_git */;
+			targetProxy = 93FB5C6B2A0F8808008A8AA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		C29E13932A02562600B05B31 /* Debug */ = {
+		93FB5C722A0F8808008A8AA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -270,7 +399,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -280,7 +409,7 @@
 			};
 			name = Debug;
 		};
-		C29E13942A02562600B05B31 /* Release */ = {
+		93FB5C732A0F8808008A8AA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -324,7 +453,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -334,7 +463,7 @@
 			};
 			name = Release;
 		};
-		C29E13962A02562600B05B31 /* Debug */ = {
+		93FB5C752A0F8808008A8AA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -342,23 +471,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mc2_git/Preview Content\"";
-				DEVELOPMENT_TEAM = 8HG96SSK4A;
+				DEVELOPMENT_TEAM = 834B9VMHHG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mc2-git-Info.plist";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 수집을 허용 하십니까?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 수집에 동의하십니까?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cyndi.mc2-git";
+				PRODUCT_BUNDLE_IDENTIFIER = "chacha.mc2-git";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -366,7 +493,7 @@
 			};
 			name = Debug;
 		};
-		C29E13972A02562600B05B31 /* Release */ = {
+		93FB5C762A0F8808008A8AA9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -374,23 +501,21 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"mc2_git/Preview Content\"";
-				DEVELOPMENT_TEAM = 8HG96SSK4A;
+				DEVELOPMENT_TEAM = 834B9VMHHG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "mc2-git-Info.plist";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 수집을 허용 하십니까?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "위치 정보 수집에 동의하십니까?";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.cyndi.mc2-git";
+				PRODUCT_BUNDLE_IDENTIFIER = "chacha.mc2-git";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -398,23 +523,117 @@
 			};
 			name = Release;
 		};
+		93FB5C782A0F8808008A8AA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 834B9VMHHG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "chacha.mc2-gitTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mc2_git.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mc2_git";
+			};
+			name = Debug;
+		};
+		93FB5C792A0F8808008A8AA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 834B9VMHHG;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "chacha.mc2-gitTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/mc2_git.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/mc2_git";
+			};
+			name = Release;
+		};
+		93FB5C7B2A0F8808008A8AA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 834B9VMHHG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "chacha.mc2-gitUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = mc2_git;
+			};
+			name = Debug;
+		};
+		93FB5C7C2A0F8808008A8AA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 834B9VMHHG;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "chacha.mc2-gitUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = mc2_git;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C29E13822A02562500B05B31 /* Build configuration list for PBXProject "mc2_git" */ = {
+		93FB5C4B2A0F8807008A8AA9 /* Build configuration list for PBXProject "mc2_git" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C29E13932A02562600B05B31 /* Debug */,
-				C29E13942A02562600B05B31 /* Release */,
+				93FB5C722A0F8808008A8AA9 /* Debug */,
+				93FB5C732A0F8808008A8AA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C29E13952A02562600B05B31 /* Build configuration list for PBXNativeTarget "mc2_git" */ = {
+		93FB5C742A0F8808008A8AA9 /* Build configuration list for PBXNativeTarget "mc2_git" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C29E13962A02562600B05B31 /* Debug */,
-				C29E13972A02562600B05B31 /* Release */,
+				93FB5C752A0F8808008A8AA9 /* Debug */,
+				93FB5C762A0F8808008A8AA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93FB5C772A0F8808008A8AA9 /* Build configuration list for PBXNativeTarget "mc2_gitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93FB5C782A0F8808008A8AA9 /* Debug */,
+				93FB5C792A0F8808008A8AA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		93FB5C7A2A0F8808008A8AA9 /* Build configuration list for PBXNativeTarget "mc2_gitUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				93FB5C7B2A0F8808008A8AA9 /* Debug */,
+				93FB5C7C2A0F8808008A8AA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -422,7 +641,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C29E139B2A05411C00B05B31 /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
+		93C2185D2A0F8B12008BC96B /* XCRemoteSwiftPackageReference "SwiftSoup" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scinfu/SwiftSoup";
 			requirement = {
@@ -430,28 +649,28 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		C29E13A62A07EAE900B05B31 /* XCRemoteSwiftPackageReference "PopupView" */ = {
+		93C218602A0F8B4A008BC96B /* XCRemoteSwiftPackageReference "PopupView" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/exyte/PopupView.git";
+			repositoryURL = "https://github.com/Mijick/PopupView";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				minimumVersion = 1.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C29E139C2A05411C00B05B31 /* SwiftSoup */ = {
+		93C2185E2A0F8B12008BC96B /* SwiftSoup */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C29E139B2A05411C00B05B31 /* XCRemoteSwiftPackageReference "SwiftSoup" */;
+			package = 93C2185D2A0F8B12008BC96B /* XCRemoteSwiftPackageReference "SwiftSoup" */;
 			productName = SwiftSoup;
 		};
-		C29E13A72A07EAE900B05B31 /* PopupView */ = {
+		93C218612A0F8B4A008BC96B /* PopupView */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C29E13A62A07EAE900B05B31 /* XCRemoteSwiftPackageReference "PopupView" */;
+			package = 93C218602A0F8B4A008BC96B /* XCRemoteSwiftPackageReference "PopupView" */;
 			productName = PopupView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = C29E137F2A02562500B05B31 /* Project object */;
+	rootObject = 93FB5C482A0F8807008A8AA9 /* Project object */;
 }

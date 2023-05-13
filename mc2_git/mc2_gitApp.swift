@@ -2,7 +2,7 @@
 //  mc2_gitApp.swift
 //  mc2_git
 //
-//  Created by 박지은 on 2023/05/03.
+//  Created by 차차 on 2023/05/13.
 //
 
 import SwiftUI
