@@ -133,7 +133,7 @@ struct ContentView: View {
                                                     .foregroundColor(Color(hex: "5856D6"))
                                                     .bold()
                                                 Link(destination: URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
-                                                    Image("location")
+                                                    Image("location") // #bruni : URL 인스턴스 파라미터로 dummy data 대신 addresses[theaters[0].name]을 넣어주면 에러가 발생합니다.
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: 30)
