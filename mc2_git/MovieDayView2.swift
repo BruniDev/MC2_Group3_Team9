@@ -68,20 +68,12 @@ struct MovieDayView2: View {
                     selectedDate = dateFormatter.date(from: allDays[0])!
                 }
             }
-            
             NavigationView {
                 ScrollView {
                     MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, categoryName: "Top Movies")
                 }
             }
         }
-//        .onAppear{
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "yyyy-MM-dd"
-//            print("대체모야")
-//            print(allDays)
-////            selectedDate = dateFormatter.date(from: allDays[0])!
-//        }
     }
 }
 
