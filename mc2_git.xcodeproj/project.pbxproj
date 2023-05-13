@@ -210,6 +210,7 @@
 				D96438F52A0B7526009D634D /* DateManager.swift in Sources */,
 				C29E13A52A07869600B05B31 /* MovieDayView2.swift in Sources */,
 				D96438F32A0B74DB009D634D /* MovieScheduleData.swift in Sources */,
+				7B8695072A0BD8DD009666C0 /* BottomSheet.swift in Sources */,
 				D96438F72A0B76DC009D634D /* MovieScheduleDataForUser.swift in Sources */,
 				93BCF5AF2A0BD946008CB844 /* LocationManager.swift in Sources */,
 				C24643802A0D2F4300712334 /* Color.swift in Sources */,
