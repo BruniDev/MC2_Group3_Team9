@@ -28,18 +28,26 @@ struct BottomSheetView: View {
                     }
                     .pickerStyle(.segmented)
                     if selected == segments[0] {
-
                         HStack{
-                            RoundedRectangle(cornerRadius: 10)
-                            RoundedRectangle(cornerRadius: 10)
-                            RoundedRectangle(cornerRadius: 10)
+                            Rectangle()
+                                .border(.gray)
+                                .cornerRadius(19)
+                                .frame(width: 109, height: 141)
+                            Rectangle()
+                                .border(.gray)
+                                .cornerRadius(19)
+                                .frame(width: 109, height: 141)
+                            Rectangle()
+                                .border(.gray)
+                                .cornerRadius(19)
+                                .frame(width: 109, height: 141)
                         }
-                        
                     }
                     else {
                         Text("영화관 취향 테스트를 통해 \n 취향에 맞는 영화관을 추천해 드릴게요!")
                         Button(action : {
-                            print("Button pressed")
+                            print("Button Pressed in BSView")
+                            // TestView
                         }) {
                             Text("테스트 시작하기")
                         }

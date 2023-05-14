@@ -150,6 +150,8 @@ func CheckTop3Theaters(location: CLLocation) -> [Theater] {
     top3.insert(theaters[0], at: 0)
     top3.insert(theaters[1], at: 1)
     top3.insert(theaters[2], at: 2)
+    print(theaters[1].name)
+    print(theaters[2].name)
     return top3
 }
 
