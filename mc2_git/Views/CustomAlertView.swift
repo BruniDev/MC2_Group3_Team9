@@ -4,6 +4,7 @@ struct CustomAlertView: View {
     
     @Binding var isShowingPopup : Bool
     @Binding var movieDetailData : MovieDetailData
+
     
     var body: some View {
         
@@ -12,6 +13,7 @@ struct CustomAlertView: View {
             VStack(spacing: 0) {
                 
                 //Mark: - 영화 포스터 이미지
+
                 AsyncImage(url: URL(string:movieDetailData.poster)) { img in
                     img
                         .resizable()
