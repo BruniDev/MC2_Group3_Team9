@@ -3,6 +3,8 @@ import SwiftUI
 struct CustomAlertView: View {
     
     @Binding var isShowingPopup : Bool
+    @Binding var movieDetailData : MovieDetailData
+
     
     var body: some View {
         
@@ -11,54 +13,84 @@ struct CustomAlertView: View {
             VStack(spacing: 0) {
                 
                 //Mark: - 영화 포스터 이미지
-                Image("Life_of_Hae-Oak")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 284, height: 407)
-                    .padding(.top, 65)
-                    .shadow(color: .gray, radius: 3, y: 4)
-                    .overlay(Circle()
-                        .foregroundColor(.black.opacity(0.5))
-                        .frame(width: 40)
-                        .padding(.top, 80)
-                        .padding(.trailing, 15)
-                        .overlay(Text("15")
-                            .font(.system(size: 22))
-                            .padding(.top, 87)
-                            .padding(.trailing, 24)
-                            .foregroundColor(.yellow.opacity(0.5))
-                                 ,alignment: .topTrailing
-                        )
+
+                AsyncImage(url: URL(string:movieDetailData.poster)) { img in
+                    img
+                        .resizable()
+                        .scaledToFit()
+                    
+                } placeholder: {
+                    Color.white
+                }
+                .frame(width: 284, height: 407)
+                .padding(.top, 65)
+                .shadow(color: .gray, radius: 3, y: 4)
+                .overlay(Circle()
+                    .foregroundColor(.black.opacity(0.5))
+                    .frame(width: 40)
+                    .padding(.top, 80)
+                    .padding(.trailing, 15)
+                    .overlay(Text(movieDetailData.rating)
+                        .font(.system(size: 22))
+                        .padding(.top, 87)
+                        .padding(.trailing, 24)
+                        .foregroundColor(.yellow.opacity(0.5))
                              ,alignment: .topTrailing
                     )
+                         ,alignment: .topTrailing
+                )
+//                Image("Life_of_Hae-Oak")
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 284, height: 407)
+//                    .padding(.top, 65)
+//                    .shadow(color: .gray, radius: 3, y: 4)
+//                    .overlay(Circle()
+//                        .foregroundColor(.black.opacity(0.5))
+//                        .frame(width: 40)
+//                        .padding(.top, 80)
+//                        .padding(.trailing, 15)
+//                        .overlay(Text(movieDetailData.rating)
+//                            .font(.system(size: 22))
+//                            .padding(.top, 87)
+//                            .padding(.trailing, 24)
+//                            .foregroundColor(.yellow.opacity(0.5))
+//                                 ,alignment: .topTrailing
+//                        )
+//                             ,alignment: .topTrailing
+//                    )
                 
                 //Mark: - 포스터 이미지 아래 영화 정보 전체
                 HStack(alignment: .bottom) {
-                    Text("영화제목")
+                    Text(movieDetailData.title)
                         .font(.system(size: 28))
                         .padding(.leading, 34)
                         .bold()
-                    Text("영화년도")
+                    Text(movieDetailData.releasedDate)
                         .font(.system(size: 11))
                     Spacer()
                 }
                 .padding(.top, 12)
+                .padding(.trailing, 30)
+         
                 
-                Text("영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다. 영화내용 들어가는 자리입니다.")
+                Text(movieDetailData.overView)
+                    .multilineTextAlignment(.leading)
                     .padding(.top, 11)
                     .font(.system(size: 11))
                     .padding(.horizontal, 34)
                     .lineSpacing(1)
-                
+                    
                 //Mark: - Movie Information(감독, 출연, 장르, 러닝타임
                 VStack(spacing: 4) {
-                    movieInfo(title: "감 독", content: "이우정")
-                    movieInfo(title: "출 연", content: "이우정, 이우정, 이우정")
-                    movieInfo(title: "장 르", content: "드라마")
-                    movieInfo(title: "러닝타임", content: "109분")
+                    movieInfo(title: "감 독", content: movieDetailData.director)
+                    movieInfo(title: "출 연", content: movieDetailData.cast)
+                    movieInfo(title: "장 르", content: movieDetailData.genre)
+                    movieInfo(title: "러닝타임", content: movieDetailData.runningTime)
                 }
                 .padding(.top, 20)
                 .padding(.leading, 34)
+                .padding(.trailing,34)
                 .padding(.bottom, 34)
             }
             
