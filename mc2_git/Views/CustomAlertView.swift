@@ -92,6 +92,8 @@ struct CustomAlertView: View {
                 .padding(.leading, 34)
                 .padding(.trailing,34)
                 .padding(.bottom, 34)
+                
+                
             }
             
             VStack {
