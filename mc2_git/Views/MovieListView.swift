@@ -13,6 +13,7 @@ struct MovieListView: View {
     @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
 //    let categoryName: String
     @Binding var isShowingPopup: Bool
+    @Binding var movieDetailData: MovieDetailData
     
     var body: some View {
         //        ZStack {
@@ -23,10 +24,7 @@ struct MovieListView: View {
                     //                            let scale = getScale(proxy: proxy)
                     VStack(alignment: .leading, spacing: 8) {
                         Button {
-                            movieDetailManager.fetchDetail(movieCode: movieScheduleDataForUser[index].movieCode)
-                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                                print(movieDetailManager.cast)
-                            }
+                            movieDetailData = movieDetailManager.fetchDetail(movieCode: movieScheduleDataForUser[index].movieCode)!
                             isShowingPopup = true
                         } label: {
                             AsyncImage(url: URL(string: "\(movieScheduleDataForUser[index].movieIMG)")) { img in

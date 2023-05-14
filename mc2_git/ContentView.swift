@@ -64,6 +64,7 @@ let addresses : [String : String] = [
 struct ContentView: View {
     var dateManager = DateManager()
     var movieScheduleManager = MovieScheduleManager()
+    @State var movieDetailData: MovieDetailData = MovieDetailData(title: "", engTitle: "", poster: "", releasedDate: "", overView: "", director: "", cast: "", genre: "", runningTime: "", rating: "")
     @State var allDays : Array<String> = []
     @State var closedDays : Array<String> = []
     @State var workingDays : Array<String> = []
@@ -80,7 +81,7 @@ struct ContentView: View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 ZStack {
-                    ZStack {
+                    // ZStack {
                                 ScrollView {
                                     ZStack { //Mark: - 영화관 로고
                                         Rectangle()
@@ -95,7 +96,7 @@ struct ContentView: View {
                                     .foregroundColor(Color(hex: "252525"))
                                     
                                     //Mark: - 날짜 View, 포스터 View
-                                    MovieDayView2(selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup)
+                                    MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup)
                                     // .padding(.bottom, 20)
                                     
                                     //Mark: - 영화관 이름, 주소
@@ -199,7 +200,7 @@ struct ContentView: View {
                                         movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                                     }
                                 }
-                        }
+                      //  }
                         
                         
                         if isLoading {
@@ -211,13 +212,13 @@ struct ContentView: View {
                         })
                     }
                 }
-                .overlay() {
+            .overlay(){
                     if isShowingPopup {
                         Color.black.opacity(0.5)
                             .ignoresSafeArea()
                         
-                        CustomAlertView(isShowingPopup: $isShowingPopup)
-                            .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.9)
+                        CustomAlertView(isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
+                            .frame(width: 352, height: 758)
                             .background(Color.white)
                     }
                 }
@@ -333,3 +334,5 @@ struct AnimationView : View {
         }.frame(width: 75, height: 75)
     }
 }
+
+

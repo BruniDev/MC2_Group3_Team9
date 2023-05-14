@@ -12,6 +12,7 @@ struct MovieDayView2: View {
     var movieScheduleManager = MovieScheduleManager()
     @State var monthString: String = "Not Set"
     //@State var selectedDate: Date = Date()
+    @Binding var movieDetailData: MovieDetailData
     @Binding var selectedDate: Date
     @Binding var theaters: [Theater]
     @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
@@ -70,7 +71,7 @@ struct MovieDayView2: View {
             
             NavigationView {
                 ScrollView {
-                    MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup)
+                    MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
                 }
             }
         }
