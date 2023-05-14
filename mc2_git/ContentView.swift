@@ -80,7 +80,7 @@ struct ContentView: View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 ZStack {
-                    ZStack {
+                    // ZStack {
                                 ScrollView {
                                     ZStack { //Mark: - 영화관 로고
                                         Rectangle()
@@ -199,7 +199,7 @@ struct ContentView: View {
                                         movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                                     }
                                 }
-                        }
+                      //  }
                         
                         
                         if isLoading {
