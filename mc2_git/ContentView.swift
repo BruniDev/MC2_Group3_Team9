@@ -220,6 +220,9 @@ struct ContentView: View {
                         CustomAlertView(isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
                             .frame(width: 352, height: 758)
                             .background(Color.white)
+                        
+                        
+                        
                     }
                 }
             }

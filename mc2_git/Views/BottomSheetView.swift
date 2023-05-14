@@ -16,7 +16,7 @@ struct BottomSheetView: View {
             Button("Show Bottom Sheet") {
                 showSheet = true
             }
-            .navigationTitle("영화관 탐색하기 🧭")
+            
             .buttonStyle(.borderedProminent)
             .sheet(isPresented: $showSheet) {
                 VStack{
