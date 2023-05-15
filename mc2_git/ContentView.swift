@@ -34,7 +34,7 @@ let instagrams : [String : String] = [
     "KU시네마테크" : "https://instagram.com/kucinema?igshid=MzRlODBiNWFlZA=="
 ]
 
-let addresses : [String : String] = [ // 광주극장, 오오극장, 인디플러스 포항 제외 모두 안됌. 주소 직접 복사 붙여넣기로 넣어야 함.
+let urls : [String : String] = [ // 광주극장, 오오극장, 인디플러스 포항 제외 모두 안됌. 주소 직접 복사 붙여넣기로 넣어야 함.
     "광주극장" : "https://map.naver.com/v5/search/%EA%B4%91%EC%A3%BC%EA%B7%B9%EC%9E%A5/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
     "광주독립영화관" : "https://map.naver.com/v5/search/광주독립영화관/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
     "더숲아트시네마" : "https://map.naver.com/v5/search/더숲아트시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
@@ -61,16 +61,43 @@ let addresses : [String : String] = [ // 광주극장, 오오극장, 인디플�
     "KU시네마테크" : "https://map.naver.com/v5/search/KU시네마테크/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp"
 ]
 
-let results = [
-    "라이카시네마",
-    "에무시네마",
-    "인디플러스포항",
-    "KU시네마테크", // Q5 일반 영화관
-    "오오극장",
-    "오르페오한남",
-    "씨네큐브광화문",
-    "판타스틱큐브" // Q5 아이맥스
+let addresses : [String : String] = [ // 오오극장, 인디플러스 포항 제외 모두 안됌. 주소 직접 복사 붙여넣기로 넣어야 함.
+    "광주극장" : "https://map.naver.com/v5/search/%EA%B4%91%EC%A3%BC%EA%B7%B9%EC%9E%A5/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "광주독립영화관" : "https://map.naver.com/v5/search/광주독립영화관/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "더숲아트시네마" : "https://map.naver.com/v5/search/더숲아트시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "씨네아트리좀" : "https://map.naver.com/v5/search/씨네아트리좀/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "아트하우스모모" : "https://map.naver.com/v5/search/아트하우스모모/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "안동중앙시네마" : "https://map.naver.com/v5/search/안동중앙시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "에무시네마" : "https://map.naver.com/v5/search/에무시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "오오극장" : "대구광역시 중구 국채보상로 537",
+    "인디플러스포항" : "경상북도 포항시 북구 서동로 83",
+    "인디플러스천안" : "https://map.naver.com/v5/search/인디플러스천안/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "인천미림극장" : "https://map.naver.com/v5/search/인천미림극장/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "전주디지털독립영화관" : "https://map.naver.com/v5/search/전주디지털독립영화관/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "판타스틱큐브" : "https://map.naver.com/v5/search/판타스틱큐브/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "필름포럼" : "https://map.naver.com/v5/search/필름포럼/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "헤이리시네마" : "https://map.naver.com/v5/search/헤이리시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "씨네큐브광화문" : "https://map.naver.com/v5/search/씨네큐브광화문/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "오르페오한남" : "https://map.naver.com/v5/search/오르페오한남/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "라이카시네마" : "https://map.naver.com/v5/search/라이카시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "모퉁이극장" : "https://map.naver.com/v5/search/모퉁이극장/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "씨네인디U" : "https://map.naver.com/v5/search/씨네인디U/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "아리랑시네센터" : "https://map.naver.com/v5/search/아리랑시네센터/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "영화공간주안" : "https://map.naver.com/v5/search/영화공간주안/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "KT&G상상마당시네마" : "https://map.naver.com/v5/search/KT&G상상마당시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "KU시네마테크" : "https://map.naver.com/v5/search/KU시네마테크/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp"
 ]
+
+//let results = [
+//    "라이카시네마",
+//    "에무시네마",
+//    "인디플러스포항",
+//    "KU시네마테크", // Q5 일반 영화관
+//    "오오극장",
+//    "오르페오한남",
+//    "씨네큐브광화문",
+//    "판타스틱큐브" // Q5 아이맥스
+//]
 
 struct ContentView: View {
     var dateManager = DateManager()
@@ -96,8 +123,8 @@ struct ContentView: View {
            NavigationView {
             VStack(spacing: 0) {
                 ZStack {
-                    // ZStack {
-                    ScrollView {
+                  //  VStack(spacing: 0) {
+                    ScrollView(showsIndicators: false) {
                         ZStack { //Mark: - 영화관 로고
                             Rectangle()
                                 .frame(height: 128)
@@ -115,62 +142,67 @@ struct ContentView: View {
                         // .padding(.bottom, 20)
                         
                         //Mark: - 영화관 이름, 주소
-                        Rectangle()
-                            .frame(height: 3)
-                            .foregroundColor(Color(hex:"E5E5EA"))
-                        
-                        HStack {
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text("\(theaterName)") // #fix
-                                        .font(.system(size:20))
-                                        .bold()
-                                    
-                                    Link(destination: URL(string: instagrams[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
-                                        Image("Instagram_icon")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 30)
-                                    })
-                                    
-                                    
-                                    
-                                    NavigationLink(destination: TestView()) { //
-                                        Text("Test")
-                                    }
-                                }
-                                
-                                Text("영화관 주소")
-                                    .font(.caption)
-                                    .bold()
-                                    .padding(.bottom, 10)
-                                
-                                HStack {
-                                    Text("나와의 거리")
-                                    Image(systemName: "figure.walk")
-                                        .foregroundColor(Color(hex: "5856D6"))
-                                    Spacer()
-                                    Text("\(theaters[0].handleDistance())")
-                                        .multilineTextAlignment(.trailing)
-                                        .foregroundColor(Color(hex: "5856D6"))
-                                        .bold()
-                                    Link(destination: URL(string: addresses[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
-                                        Image("location")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 30)
-                                    })
-                                }
-                            }
+                            VStack(spacing: 0) {
+                            Rectangle()
+                                .frame(height: 3)
+                                .foregroundColor(Color(hex:"E5E5EA"))
                             
-                            .padding(.horizontal, 10)
-                            Spacer()
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    HStack {
+                                        Text("\(theaterName)") // #fix
+                                            .font(.system(size:28))
+                                            .bold()
+                                        
+                                        Link(destination: URL(string: instagrams[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
+                                            Image("Instagram_icon")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 30)
+                                        })
+                                        
+                                        
+                                        
+                                        NavigationLink(destination: TestView()) { //
+                                            Text("Test")
+                                        }
+                                    }
+                                    
+                                    Text("영화관 주소") // addresses[theaterName]
+                                        .font(.caption)
+                                        .font(.system(size:12))
+                                        .bold()
+                                        .padding(.bottom, 10)
+                                    
+                                    HStack {
+                                        Text("나와의 거리")
+                                        Image(systemName: "figure.walk")
+                                            .foregroundColor(Color(hex: "5856D6"))
+                                        Spacer()
+                                        Text("\(theaters[0].handleDistance())")
+                                            .multilineTextAlignment(.trailing)
+                                            .foregroundColor(Color(hex: "5856D6"))
+                                            .bold()
+                                        Link(destination: URL(string: urls[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
+                                            Image("location")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 30)
+                                        })
+                                    }
+                                    .offset(y: 55)
+                                }
+                                .padding(.horizontal, 10)
+                                 //Spacer()
+                                //    .border(.red, width: 100)
+                            }
+                            .padding(.leading)
+                            .padding(.top, 20)
+                            .padding(.bottom, 80)
+                            .background(Color(hex:"687CC3").opacity(0.1))
                         }
-                        .padding(.leading)
-                        .padding(.top, 20)
-                        .padding(.bottom, 80)
-                        .background(Color(hex:"687CC3").opacity(0.1))
                     }
+                    .scrollContentBackground(.hidden)
                     .edgesIgnoringSafeArea(.top)
                     .onAppear {
                         
@@ -221,20 +253,51 @@ struct ContentView: View {
                             movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                         }
                     }
-                    //  }
-                    
-                    
+               // }
+                    // SheetView Visaulization
+                    ZStack {
+                            Rectangle()
+                                .foregroundColor(.white)
+                                .cornerRadius(20)
+                                .frame(width: 390, height: 164)
+                                .offset(y: 422)
+                                .shadow(radius: 3)
+                        VStack {
+                            Button(action: {
+                                print("alert")
+                            }){
+                                Rectangle()
+                                    .foregroundColor(.gray)
+                                    .cornerRadius(3.5)
+                                    .frame(width: 48, height: 4)
+                                    .offset(y: 364)
+                            }
+                            HStack {
+                                Text("영화관 탐색하기")
+                                    .font(.system(size: 20))
+                                    .foregroundColor(Color.black)
+                                Image(systemName: "figure.hiking")
+                                    .foregroundColor(Color(hex: "5856D6"))
+                            }
+                            .offset(x: -105, y: 377)
+                        }
+                    }
+ 
                     if isLoading {
                         LoadingView
                     }
+                    
+                    
                 }.onAppear {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
                         isLoading.toggle()
-                        showSheet = true
+                        // showSheet = true
                     })
                 }
             }
-        } // #end of navigationView
+
+        }
+        // #end of navigationView
             .overlay(){
                     if isShowingPopup {
                         Color.black.opacity(0.5)

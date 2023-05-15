@@ -72,14 +72,11 @@ struct MovieDayView2: View {
                 }
             }//Mark: - END HStack
             
-            NavigationView {
-                VStack{
-                    ScrollView {
+
+            VStack {
                         MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
-                    }
-                    
-                }
             }
+
             .sheet(isPresented: $showSheet) {
                 
                 VStack{
