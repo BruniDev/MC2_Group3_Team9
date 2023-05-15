@@ -108,6 +108,10 @@ struct ContentView: View {
     @State var randomInd : Int = 0
     @State var showSheet : Bool = false
     @Binding var loadingNum : Int
+    @State var offset : CGFloat = 0
+    @State var translation : CGSize = CGSize(width: 0 , height: 0)
+    @State var location : CGPoint = CGPoint(x:0,y:0)
+    @State private var selected = "내 근처 영화관"
     var body: some View {
         NavigationView {
             ZStack {
@@ -147,12 +151,6 @@ struct ContentView: View {
                                             .scaledToFit()
                                             .frame(width: 30)
                                     })
-                                    
-                                    
-                                    
-                                    NavigationLink(destination: TestView(loadingNum: $loadingNum)) { //
-                                        Text("Test")
-                                    }
                                 }
                                 
                                 Text(addresses[theaterName] ?? "X")
@@ -244,107 +242,49 @@ struct ContentView: View {
                         }
                     }
                 }
-               
-                if showSheet {
-                    ZStack{
-                        Button(action: {
-                            showSheet = false
-                        },label: {
-                            Rectangle()
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                .edgesIgnoringSafeArea(.all)
-                                .foregroundColor(.black)
-                                .opacity(0.6)
-                        })
-                        .simultaneousGesture(TapGesture().onEnded{
-                            answer = true
-                        })
-                        
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(.white)
-                            .frame(height: UIScreen.main.bounds.height * 0.5)
-                            .offset(y: 200)
-                            .shadow(radius: 3)
-                    }
-                    .transition(.move(edge: .bottom))
-                    .animation(.easeInOut)
-                    
-                }
-                // SheetView Visaulization
-                if showSheet == false {
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(.white)
-                            .cornerRadius(20)
-                            .frame(width: 390, height: 164)
-                            .offset(y: 422)
-                            .shadow(radius: 3)
-                        
-                        Rectangle()
-                            .foregroundColor(.white)
-                            .cornerRadius(20)
-                            .frame(width: 390, height: 164)
-                            .offset(y: 422)
-                            .shadow(radius: 3)
-                        VStack {
-                            Rectangle()
-                                .foregroundColor(.gray)
-                                .cornerRadius(3.5)
-                                .frame(width: 48, height: 4)
-                                .offset(y: 364)
-                            
-                            HStack {
-                                Text("영화관 탐색하기")
-                                    .font(.system(size: 20).bold())
-                                    .foregroundColor(Color.black)
-                                Image(systemName: "figure.hiking")
-                                    .foregroundColor(Color(hex: "5856D6"))
+                GeometryReader { reader in
+                    BottomSheetView(selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName)
+                        .offset(y: reader.frame(in: .global).height - 60)
+                        .offset(y: offset)
+                        .gesture(DragGesture().onChanged({(value) in
+                            withAnimation{
+                                translation = value.translation
+                                location = value.location
+                                
+                                if value.startLocation.y > reader.frame(in : .global).midX {
+                                    if value.translation.height < 0 && offset > (-reader.frame(in: .global).height + 60) {
+                                        offset = value.translation.height
+                                    }
+                                }
+                                
+                                if value.startLocation.y < reader.frame(in : .global).midX {
+                                    if value.translation.height > 0 && offset < 0 {
+                                        offset = (-reader.frame(in: .global).height + 60) +
+                                        value.translation.height
+                                    }
+                                }
                             }
-                            .offset(x: -100, y: 370)
+                        }).onEnded({(value) in
+                            withAnimation {
+                                if value.startLocation.y > reader.frame(in: .global).midX {
+                                    if -value.translation.height > reader.frame(in: .global).midX {
+                                        offset = (-reader.frame(in: .global).height + 60)
+                                        return
+                                    }
+                                    offset = 0
+                                }
+                                if value.startLocation.y < reader.frame(in: .global).midX {
+                                    if value.translation.height < reader.frame(in: .global).midX {
+                                        offset = (-reader.frame(in: .global).height + 60)
+                                        return
+                                    }
+                                    offset = 0
+                                }
+                            }
                             
-//                            Button(action: {
-//                                showSheet = true
-//                            }){
-//                                Text("영화관 탐색하기")
-//                                    .border(.red)
-//                                HStack {
-//                                    Text("영화관 탐색하기")
-//                                        .font(.system(size: 20))
-//                                        .foregroundColor(Color.black)
-//                                    Image(systemName: "figure.hiking")
-//                                        .foregroundColor(Color(hex: "5856D6"))
-//                                }
-//                                .offset(x: -105, y: 377)
-//                            }
-                        }
-                    }
+                        })
+                        )
                 }
-                
-                if isLoading && loadingNum == 1 {
-                    LoadingView
-                }
-                
-                
-            }.onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    isLoading.toggle()
-                    // showSheet = true
-                })
-            }
-        }
-        .navigationBarBackButtonHidden(true)
-        // #end of navigationView
-        .overlay(){
-            if isShowingPopup {
-                Color.black.opacity(0.5)
-                    .ignoresSafeArea()
-                
-                CustomAlertView(isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
-                    .frame(width: 352, height: 758)
-                    .background(Color.white)
-                
-                
-                
             }
         }
     }

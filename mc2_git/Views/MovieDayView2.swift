@@ -21,6 +21,9 @@ struct MovieDayView2: View {
     @Binding var showSheet : Bool
     @State private var selected = "내 근처 영화관"
     let segments = ["내 근처 영화관", "내 취향 영화관"]
+    @State var offset : CGFloat = 0
+    @State var translation : CGSize = CGSize(width: 0 , height: 0)
+    @State var location : CGPoint = CGPoint(x:0,y:0)
     
     let calendar = Calendar.current
     var dates = getWeek()
@@ -74,10 +77,68 @@ struct MovieDayView2: View {
             }
             .padding(.horizontal, 27)//Mark: - END HStack
             
-
+            
             VStack {
-                    MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
+                MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
+                
+                
             }
+            
+//            ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)){
+//                Color.red
+//
+//                VStack {
+//                    Text("\(translation.width) \(translation.height)")
+//                    Text("\(location.x) \(location.y)")
+//                }
+//                .frame(maxHeight: .infinity)
+           
+//                GeometryReader { reader in
+//                    BottomSheetView()
+//                        .offset(y: reader.frame(in: .global).height - 60)
+//                        .offset(y: offset)
+//                        .gesture(DragGesture().onChanged({(value) in
+//                            withAnimation{
+//                                translation = value.translation
+//                                location = value.location
+//
+//                                if value.startLocation.y > reader.frame(in : .global).midX {
+//                                    if value.translation.height < 0 && offset > (-reader.frame(in: .global).height + 60) {
+//                                        offset = value.translation.height
+//                                    }
+//                                }
+//
+//                                if value.startLocation.y < reader.frame(in : .global).midX {
+//                                    if value.translation.height > 0 && offset < 0 {
+//                                        offset = (-reader.frame(in: .global).height + 60) +
+//                                        value.translation.height
+//                                    }
+//                                }
+//                            }
+//                        }).onEnded({(value) in
+//                            withAnimation {
+//                                if value.startLocation.y > reader.frame(in: .global).midX {
+//                                    if -value.translation.height > reader.frame(in: .global).midX {
+//                                        offset = (-reader.frame(in: .global).height + 60)
+//                                        return
+//                                    }
+//                                    offset = 0
+//                                }
+//                                if value.startLocation.y < reader.frame(in: .global).midX {
+//                                    if value.translation.height < reader.frame(in: .global).midX {
+//                                        offset = (-reader.frame(in: .global).height + 60)
+//                                        return
+//                                    }
+//                                    offset = 0
+//                                }
+//                            }
+//
+//                        })
+//                        )
+//                }
+//
+//            }
+            
 /*
             .sheet(isPresented: $showSheet) {
                 
@@ -189,7 +250,7 @@ struct MovieDayView2: View {
                     
             }
  */
-        }
+        }//VStack Ended
     }
 }
 

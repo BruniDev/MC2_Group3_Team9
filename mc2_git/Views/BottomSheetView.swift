@@ -1,71 +1,144 @@
-//
-//  BottomSheetView.swift
-//  mc2_git
-//
-//  Created by 정현 on 2023/05/14.
-//
+
 import SwiftUI
 
 struct BottomSheetView: View {
-    @State private var showSheet = true
-    @State private var selected = "내 근처 영화관"
+    
+    @Binding var selected : String
     let segments = ["내 근처 영화관", "내 취향 영화관"]
- 
-    var body: some View {
-      NavigationView {
-            Button("Show Bottom Sheet") {
-                showSheet = true
-            }
-            
-            .buttonStyle(.borderedProminent)
-            .sheet(isPresented: $showSheet) {
-                VStack{
-                    Picker("Choose course", selection: $selected) {
-                        ForEach(segments, id:\.self) { segment in
-                            Text(segment)
-                                .tag(segment)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    if selected == segments[0] {
-                        HStack{
-                            Rectangle()
-                                .border(.gray)
-                                .cornerRadius(19)
-                                .frame(width: 109, height: 141)
-                            Rectangle()
-                                .border(.gray)
-                                .cornerRadius(19)
-                                .frame(width: 109, height: 141)
-                            Rectangle()
-                                .border(.gray)
-                                .cornerRadius(19)
-                                .frame(width: 109, height: 141)
-                        }
-                    }
-                    else {
-                        Text("영화관 취향 테스트를 통해 \n 취향에 맞는 영화관을 추천해 드릴게요!")
-                        Button(action : {
-                            print("Button Pressed in BSView")
-                            // TestView
-                        }) {
-                            Text("테스트 시작하기")
-                        }
-                        .background(Color.purple)
-                        .cornerRadius(40)
-                        .foregroundColor(.white)
-                    }
-                } .presentationDetents([.fraction(0.1),.fraction(0.25)])
-            }
+    //    @Binding var movieDetailData: MovieDetailData
+    @Binding var selectedDate: Date
+    @Binding var theaters: [Theater]
+    @Binding var theaterName : String
+    @State var loadingNum : Int = 1
+    @State var showSettingView = false
+    var body : some View {
+        VStack {
            
-            Spacer()
-        }
+            Capsule()
+                .fill(Color(white: 0.95))
+                .frame(width: 50, height : 7)
+            
+            HStack {
+                Text("영화관 탐색하기")
+                    .font(.system(size: 20).bold())
+                    .foregroundColor(Color.black)
+                Image(systemName: "figure.hiking")
+                    .foregroundColor(Color(hex: "5856D6"))
+            }
+            .padding()
+            
+            Picker("Choose course", selection: $selected) {
+                ForEach(segments, id : \.self) { segment in
+                    Text(segment)
+                        .tag(segment)
+                    
+                }
+            }
+            .pickerStyle(.segmented)
+            if selected == segments[0] {
+                HStack {
+                    Button(action: {
+                        theaterName = theaters[0].name
+                    }) {
+                        ZStack{
+                            Rectangle()
+                                .frame(width: 109, height: 141)
+                                .foregroundColor(.white)
+                                .border(.gray)
+                                .cornerRadius(19)
+                            
+                            VStack {
+                                Circle()
+                                    .frame(width: 60, height: 60)
+                                Text("\(theaters[0].name)")
+                                    .font(.system(size: 15.0))
+                                    .foregroundColor(.black)
+                                Text("\(theaters[0].handleDistance())")
+                                    .font(.system(size: 15.0))
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }// 1번째
+                    Button(action: {
+                        theaterName = theaters[1].name
+                    }) {
+                        ZStack{
+                            Rectangle()
+                                .frame(width: 109, height: 141)
+                                .foregroundColor(.white)
+                                .border(.gray)
+                                .cornerRadius(19)
+                            
+                            VStack {
+                                Circle()
+                                    .frame(width: 60, height: 60)
+                                Text("\(theaters[1].name)")
+                                    .font(.system(size: 15.0))
+                                    .foregroundColor(.black)
+                                Text("\(theaters[1].handleDistance())")
+                                    .font(.system(size: 15.0))
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+                    Button(action: {
+                        theaterName = theaters[2].name
+                    }) {
+                        ZStack{
+                            Rectangle()
+                                .frame(width: 109, height: 141)
+                                .foregroundColor(.white)
+                                .border(.gray)
+                                .cornerRadius(19)
+                            
+                            VStack {
+                                Circle()
+                                    .frame(width: 60, height: 60)
+                                Text("\(theaters[2].name)")
+                                    .font(.system(size: 15.0))
+                                    .foregroundColor(.black)
+                                Text("\(theaters[2].handleDistance())")
+                                    .font(.system(size: 15.0))
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+                }
+                
+            }
+            else {
+              
+                    Text("영화관 취향 테스트를 통해 \n 취향에 맞는 영화관을 추천해 드릴게요!")
+                    Button(action : {
+                        self.showSettingView = true
+                        print("버튼이 눌렸다")
+                        
+                    }){
+                        Text("테스트 시작하기")
+                            .font(.system(size: 20.0))
+                            .fixedSize(horizontal: false, vertical: true)
+                            .multilineTextAlignment(.center)
+                            .padding()
+                            .frame(width: 182, height: 64)
+                            .foregroundColor(Color.white)
+                            .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(32.5))
+                    }
+                
+            }
+        }.background(Color.white)
+            .sheet(isPresented: $showSettingView) {
+               TestView(loadingNum: $loadingNum)
+            }
     }
 }
 
-struct BottomSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        BottomSheetView()
-    }
-}
+//struct BlurShape : UIViewRepresentable {
+//    func MakeUIView(context: Context) -> UIVisualEffectView {
+//        return UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
+//    }
+//    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
+//
+//    }
+//}
+//
 
