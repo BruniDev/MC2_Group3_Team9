@@ -20,10 +20,12 @@ let theaters = [
 ]
 
 struct Q1 : View {
+    @Binding var loadingNum : Int
     var body: some View {
             NavigationView {
-                
                 VStack {
+//
+                    
                     VStack(alignment: .leading){
                         Text("영화가")
                             .font(.largeTitle.bold())
@@ -37,7 +39,7 @@ struct Q1 : View {
                     
                     Spacer()
                     
-                NavigationLink(destination: Q2()) {
+                    NavigationLink(destination: Q2(loadingNum: $loadingNum)) {
                                 ZStack {
                                     HStack {
                                         VStack (alignment: .leading) {
@@ -59,14 +61,14 @@ struct Q1 : View {
                             }
                                     
                                     
-                NavigationLink(destination: Q2()) {
+                NavigationLink(destination: Q2(loadingNum: $loadingNum)) {
                                 ZStack {
                                     HStack {
                                         VStack (alignment: .leading) {
                                             Text("예매 사이트에서 보고싶은")
                                                 .font(.system(size:20))
                                                 .foregroundColor(Color.white)
-                                            Text("영화가 있는지 확인한다")
+                                            Text("영화가 있는지 확인한다.")
                                                 .font(.system(size:20))
                                                 .foregroundColor(Color.white)
                                         }
@@ -80,11 +82,27 @@ struct Q1 : View {
                             }
                         }
             }
+//            .navigationBarItems(
+//                    leading:
+//                        NavigationLink(destination: TestView(loadingNum: $loadingNum)) {
+//                            Text("<")
+//                                .foregroundColor(.black)
+//                                .font(.system(size: 34).bold())
+//                        },
+//                    trailing:
+//                        NavigationLink (destination: ContentView(loadingNum: $loadingNum)){
+//                            //Image(systemName:"multipy")
+//                            Text("X")
+//                                .foregroundColor(.black)
+//                                .font(.system(size: 34).bold())
+//                        }
+//                )
             .navigationBarBackButtonHidden()
         }
 }
 
 struct Q2: View {
+    @Binding var loadingNum : Int
     var body: some View {
             NavigationView {
                 
@@ -102,7 +120,7 @@ struct Q2: View {
                     
                     Spacer()
                     
-                NavigationLink(destination: Q3()) {
+                NavigationLink(destination: Q3(loadingNum: $loadingNum)) {
                                 ZStack {
                                     HStack {
                                         VStack (alignment: .leading) {
@@ -124,7 +142,7 @@ struct Q2: View {
                             }
                                     
                                     
-                NavigationLink(destination: Q3()) {
+                NavigationLink(destination: Q3(loadingNum: $loadingNum)) {
                                 ZStack {
                                     HStack {
                                         VStack (alignment: .leading) {
@@ -150,6 +168,7 @@ struct Q2: View {
 }
 
 struct Q3: View {
+    @Binding var loadingNum : Int
     var body: some View {
         NavigationView {
             
@@ -167,7 +186,7 @@ struct Q3: View {
                 
                 Spacer()
                 
-            NavigationLink(destination: Q4()) {
+            NavigationLink(destination: Q4(loadingNum: $loadingNum)) {
                             ZStack {
                                 HStack {
                                     VStack (alignment: .leading) {
@@ -189,7 +208,7 @@ struct Q3: View {
                         }
                                 
                                 
-            NavigationLink(destination: Q4()) {
+            NavigationLink(destination: Q4(loadingNum: $loadingNum)) {
                             ZStack {
                                 HStack {
                                     VStack (alignment: .leading) {
@@ -215,6 +234,7 @@ struct Q3: View {
 }
 
 struct Q4: View {
+    @Binding var loadingNum : Int
     var body: some View {
         NavigationView {
             
@@ -232,7 +252,7 @@ struct Q4: View {
                 
                 Spacer()
                 
-            NavigationLink(destination: Q5()) {
+            NavigationLink(destination: Q5(loadingNum: $loadingNum)) {
                             ZStack {
                                 HStack {
                                     VStack (alignment: .leading) {
@@ -254,7 +274,7 @@ struct Q4: View {
                         }
                                 
                                 
-            NavigationLink(destination: Q5()) {
+            NavigationLink(destination: Q5(loadingNum: $loadingNum)) {
                             ZStack {
                                 HStack {
                                     VStack (alignment: .leading) {
@@ -280,6 +300,7 @@ struct Q4: View {
 }
 
 struct Q5 : View {
+    @Binding var loadingNum : Int
     @State var answer : Bool = true
     var body: some View {
             NavigationView {
@@ -351,12 +372,17 @@ struct Q5 : View {
 
 struct ResultView: View {
     @Binding var answer : Bool
+    @State var loadingNum : Int = 2
     @State var randomInd : Int = 0
     var body: some View {
         VStack {
             Text("당신의 취향은 ...")
             Text("\(theaters[randomInd])")
             .bold()
+            NavigationLink (destination: ContentView(loadingNum: $loadingNum)){
+                                       //Image(systemName:"multipy")
+                                       Text("나가기")
+            }
         }
         .navigationBarBackButtonHidden()
         .onAppear{
@@ -371,6 +397,8 @@ struct ResultView: View {
 }
 
 struct TestView: View {
+    @Binding var loadingNum : Int
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -386,14 +414,14 @@ struct TestView: View {
                     VStack(alignment: .leading) {
                         Text("나와").font(.largeTitle.bold()).font(.system(size: 34.0))
                         Text("잘 어울리는").font(.largeTitle.bold()).font(.system(size: 34.0))
-                        Text("영화관은 어디일까?").font(.largeTitle.bold()).font(.system(size: 34.0))
-                        Text("다섯 가지 질문에 응답하면").font(.headline).font(.system(size: 17.0)).foregroundColor(Color.gray)
-                        Text("취향에 맞는 영화관을").font(.headline).font(.system(size: 17.0)).foregroundColor(Color.gray)
-                        Text("추천해드려요.").font(.headline).font(.system(size: 17.0)).foregroundColor(Color.gray)
+                        Text("영화관은 어디일까?").font(.largeTitle.bold()).font(.system(size: 34.0)).padding(.bottom, 5)
+                        Text("다섯 가지 질문에 응답하면").font(.headline).font(.system(size: 17.0)).foregroundColor(Color.gray).padding(.leading, 5)
+                        Text("취향에 맞는 영화관을").font(.headline).font(.system(size: 17.0)).foregroundColor(Color.gray).padding(.leading, 5)
+                        Text("추천해드려요.").font(.headline).font(.system(size: 17.0)).foregroundColor(Color.gray).padding(.leading, 5)
                     }
                     .offset(x: -20, y: -236)
                 }
-                NavigationLink(destination: Q1()) {
+                NavigationLink(destination: Q1(loadingNum: $loadingNum)) {
                     Text("테스트 시작하기 →")
                         .font(.system(size: 20.0))
                         .fixedSize(horizontal: false, vertical: true)
@@ -406,14 +434,13 @@ struct TestView: View {
                 .offset(y: 280)
 
             }
-        }.onAppear{
-            print("testview")
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
-struct TestView_Previews: PreviewProvider {
-    static var previews: some View {
-        TestView()
-    }
-}
+//struct TestView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TestView(loadingNum: 1 )
+//    }
+//}

@@ -11,17 +11,13 @@ struct MovieListView: View {
     
     var movieDetailManager = MovieDetailManager()
     @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
-//    let categoryName: String
     @Binding var isShowingPopup: Bool
     @Binding var movieDetailData: MovieDetailData
     
     var body: some View {
-        //        ZStack {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(alignment: .top) {
                 ForEach(0..<movieScheduleDataForUser.count, id:\.self) { index in
-                    //                        GeometryReader { proxy in
-                    //                            let scale = getScale(proxy: proxy)
                     VStack(alignment: .leading, spacing: 8) {
                         Button {
                             movieDetailData = movieDetailManager.fetchDetail(movieCode: movieScheduleDataForUser[index].movieCode)!
@@ -34,18 +30,17 @@ struct MovieListView: View {
                             } placeholder: {
                                 Color.white
                             }
-                            .cornerRadius(8)
-                            .frame(height: 265)
+                            .frame(width: 210, height: 300)
                             .animation(.easeIn)
                         }
                         Text("\(movieScheduleDataForUser[index].movieName)")
-                            .font(.system(size: 10, weight: .semibold))
+                            .font(.system(size: 17, weight: .semibold))
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.black)
                         HStack {
                             ForEach(0 ..< movieScheduleDataForUser[index].movieTimeTable.count, id: \.self) { i in
                                 Text(movieScheduleDataForUser[index].movieTimeTable[i])
-                                    .font(.system(size: 10, weight: .semibold))
+                                    .font(.system(size: 12))
                                     .multilineTextAlignment(.leading)
                                     .foregroundColor(.black)
                             }
@@ -53,8 +48,9 @@ struct MovieListView: View {
 
                     }
                 } //Mark: - End Geometry
-                .frame(width: 188, height: 330)
+                .frame(width: 210, height: 360)
                 .padding(.leading, 20)
+                .padding(.top, -10)
             } //Mark: - End ForEach
         }//Mark: - End HStack
     }//Mark: - End ScrollView

@@ -11,7 +11,6 @@ struct MovieDayView2: View {
     
     var movieScheduleManager = MovieScheduleManager()
     @State var monthString: String = "Not Set"
-    //@State var selectedDate: Date = Date()
     @Binding var movieDetailData: MovieDetailData
     @Binding var selectedDate: Date
     @Binding var theaters: [Theater]
@@ -31,20 +30,22 @@ struct MovieDayView2: View {
     var body: some View {
         VStack {
             Text("상영중인 영화")
+                .font(.system(size: 20))
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading)
-                .padding(.top, 20)
+                .padding(.leading, 26)
+                .padding(.top, 10)
                 .bold()
-            HStack(spacing: 25) {
+            HStack(spacing: 20) {
                 ForEach(dates, id: \.self) { day in
                     ZStack {
                         Button(action: {
                             selectedDate = day
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "yyyy-MM-dd"
-                            movieScheduleManager.fetchMovieSchedule(theaterName: theaterName, date: dateFormatter.string(from: selectedDate)) // # fix
-                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                                movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
+                            movieScheduleManager.fetchMovieSchedule(theaterName: theaterName, date: dateFormatter.string(from: selectedDate)) { result in
+                                if let movieScheduleDataforUser = result {
+                                    self.movieScheduleDataForUser = movieScheduleDataforUser
+                                }
                             }
                         }, label: {
                             VStack {
@@ -62,21 +63,22 @@ struct MovieDayView2: View {
                                 .frame(width: 42, height: 48)
                         )
                         .disabled(closedDayCheck(aDay: day, allDays: allDays))
-                    }//Mark: - END ZStack
+                    }
+                    .padding(.bottom, 10)//Mark: - END ZStack
                 }//Mark: - END ForEach
-                .padding(.top, -5)
                 .onAppear {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"
                     selectedDate = dateFormatter.date(from: allDays[0])!
                 }
-            }//Mark: - END HStack
+            }
+            .padding(.horizontal, 27)//Mark: - END HStack
             
 
             VStack {
-                        MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
+                    MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
             }
-
+/*
             .sheet(isPresented: $showSheet) {
                 
                 VStack{
@@ -116,7 +118,16 @@ struct MovieDayView2: View {
                             }
                             
                             Button(action: {
+//                                selectedDate = day
                                 theaterName = theaters[1].name
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyy-MM-dd"
+                                dateFormatter.timeZone = TimeZone(identifier: "UTC")
+                                movieScheduleManager.fetchMovieSchedule(theaterName: theaterName, date: dateFormatter.string(from: selectedDate)) // # fix
+                                print("sele:\(selectedDate)")
+                                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                                    movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
+                                }
                             }) {
                                 VStack {
                                    Circle()
@@ -177,6 +188,7 @@ struct MovieDayView2: View {
                     
                     
             }
+ */
         }
     }
 }
@@ -199,6 +211,7 @@ func getDayShort(date: Date) -> String {
     } else {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
         return dateFormatter.string(from: date)
     }
 }
