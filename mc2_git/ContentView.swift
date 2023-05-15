@@ -34,31 +34,42 @@ let instagrams : [String : String] = [
     "KU시네마테크" : "https://instagram.com/kucinema?igshid=MzRlODBiNWFlZA=="
 ]
 
-let addresses : [String : String] = [
-    "광주극장" : "https://instagram.com/cinema_gwangju_1933?igshid=MzRlODBiNWFlZA==",
-    "광주독립영화관" : "https://instagram.com/gjcinema?igshid=MzRlODBiNWFlZA==",
-    "더숲아트시네마" : "https://instagram.com/deosup_artcinema?igshid=MzRlODBiNWFlZA==",
-    "씨네아트리좀" : "https://instagram.com/espacerhizome?igshid=MzRlODBiNWFlZA==",
-    "아트하우스모모" : "https://instagram.com/arthousemomo?igshid=MzRlODBiNWFlZA==",
-    "안동중앙시네마" : "https://instagram.com/joongangcinema.andong?igshid=MzRlODBiNWFlZA==",
-    "에무시네마" : "https://instagram.com/emuartspace?igshid=MzRlODBiNWFlZA==",
-    "오오극장" : "https://instagram.com/55cine?igshid=MzRlODBiNWFlZA==",
-    "인디플러스포항" : "https://instagram.com/pohang_culture?igshid=MzRlODBiNWFlZA==",
-    "인디플러스천안" : "https://instagram.com/indieplusca?igshid=MzRlODBiNWFlZA==",
-    "인천미림극장" : "https://instagram.com/indieplusca?igshid=MzRlODBiNWFlZA==",
-    "전주디지털독립영화관" : "X",
-    "판타스틱큐브" : "https://instagram.com/__fantastic_cube?igshid=MzRlODBiNWFlZA==",
-    "필름포럼" : "https://instagram.com/__fantastic_cube?igshid=MzRlODBiNWFlZA==",
-    "헤이리시네마" : "https://instagram.com/__fantastic_cube?igshid=MzRlODBiNWFlZA==",
-    "씨네큐브광화문" : "https://instagram.com/cinecube_kr?igshid=MzRlODBiNWFlZA==",
-    "오르페오한남" : "https://instagram.com/ode.orfeo?igshid=MzRlODBiNWFlZA==",
-    "라이카시네마" : "https://instagram.com/laikacinema?igshid=MzRlODBiNWFlZA==",
-    "모퉁이극장" : "https://instagram.com/corner_theater?igshid=MzRlODBiNWFlZA==",
-    "씨네인디U" : "https://instagram.com/cineindieu?igshid=MzRlODBiNWFlZA==",
-    "아리랑시네센터" : "https://instagram.com/arirang_cine?igshid=MzRlODBiNWFlZA==",
-    "영화공간주안" : "https://instagram.com/cinespacejuan?igshid=MzRlODBiNWFlZA==",
-    "KT&G상상마당시네마" : "https://instagram.com/sangsangcinema?igshid=MzRlODBiNWFlZA==",
-    "KU시네마테크" : "https://instagram.com/kucinema?igshid=MzRlODBiNWFlZA=="
+let addresses : [String : String] = [ // 광주극장, 오오극장, 인디플러스 포항 제외 모두 안됌. 주소 직접 복사 붙여넣기로 넣어야 함.
+    "광주극장" : "https://map.naver.com/v5/search/%EA%B4%91%EC%A3%BC%EA%B7%B9%EC%9E%A5/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "광주독립영화관" : "https://map.naver.com/v5/search/광주독립영화관/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "더숲아트시네마" : "https://map.naver.com/v5/search/더숲아트시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "씨네아트리좀" : "https://map.naver.com/v5/search/씨네아트리좀/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "아트하우스모모" : "https://map.naver.com/v5/search/아트하우스모모/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "안동중앙시네마" : "https://map.naver.com/v5/search/안동중앙시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "에무시네마" : "https://map.naver.com/v5/search/에무시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "오오극장" : "https://map.naver.com/v5/search/%EC%98%A4%EC%98%A4%EA%B7%B9%EC%9E%A5/place/35966761?c=15,0,0,0,dh&isCorrectAnswer=true",
+    "인디플러스포항" : "https://map.naver.com/v5/search/%EC%9D%B8%EB%94%94%ED%94%8C%EB%9F%AC%EC%8A%A4%ED%8F%AC%ED%95%AD/place/569933553?c=15,0,0,0,dh&isCorrectAnswer=true",
+    "인디플러스천안" : "https://map.naver.com/v5/search/인디플러스천안/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "인천미림극장" : "https://map.naver.com/v5/search/인천미림극장/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "전주디지털독립영화관" : "https://map.naver.com/v5/search/전주디지털독립영화관/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "판타스틱큐브" : "https://map.naver.com/v5/search/판타스틱큐브/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "필름포럼" : "https://map.naver.com/v5/search/필름포럼/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "헤이리시네마" : "https://map.naver.com/v5/search/헤이리시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "씨네큐브광화문" : "https://map.naver.com/v5/search/씨네큐브광화문/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "오르페오한남" : "https://map.naver.com/v5/search/오르페오한남/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "라이카시네마" : "https://map.naver.com/v5/search/라이카시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "모퉁이극장" : "https://map.naver.com/v5/search/모퉁이극장/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "씨네인디U" : "https://map.naver.com/v5/search/씨네인디U/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "아리랑시네센터" : "https://map.naver.com/v5/search/아리랑시네센터/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "영화공간주안" : "https://map.naver.com/v5/search/영화공간주안/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "KT&G상상마당시네마" : "https://map.naver.com/v5/search/KT&G상상마당시네마/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp",
+    "KU시네마테크" : "https://map.naver.com/v5/search/KU시네마테크/place/11830496?c=15,0,0,0,dh&placePath=%3Fentry%253Dbmp"
+]
+
+let results = [
+    "라이카시네마",
+    "에무시네마",
+    "인디플러스포항",
+    "KU시네마테크", // Q5 일반 영화관
+    "오오극장",
+    "오르페오한남",
+    "씨네큐브광화문",
+    "판타스틱큐브" // Q5 아이맥스
 ]
 
 struct ContentView: View {
@@ -70,148 +81,160 @@ struct ContentView: View {
     @State var workingDays : Array<String> = []
     @State var movieScheduleDataForUser: Array<MovieScheduleDataForUser> = []
     @State var locationDataManager = LocationDataManager()
-    @State var theaters : [Theater] = [Theater()]
-    @State var isLoading: Bool = true
+    @State var theaters : [Theater] = [Theater(), Theater(), Theater()]
+    @State var isLoading : Bool = true
     @State var biggestCircle : Bool = false
     @State var biggerCircle : Bool = false
     @State var isShowingPopup : Bool = false
     @State var selectedDate : Date = Date()
-    
+    @State var theaterName : String = ""
+    @State var answer : Bool = false
+    @State var randomInd : Int = 0
+    @State var showSheet : Bool = false
     var body: some View {
         GeometryReader { geometry in
+           NavigationView {
             VStack(spacing: 0) {
                 ZStack {
                     // ZStack {
-                                ScrollView {
-                                    ZStack { //Mark: - 영화관 로고
-                                        Rectangle()
-                                            .frame(height: 128)
-                                            .foregroundColor(Color(hex: "252525"))
-                                        Image("\(theaters[0].name)")
+                    ScrollView {
+                        ZStack { //Mark: - 영화관 로고
+                            Rectangle()
+                                .frame(height: 128)
+                                .foregroundColor(Color(hex: "252525"))
+                            Image("\(theaterName)") // #fix
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 70)
+                                .offset(x:0,y:10)
+                        }
+                        .foregroundColor(Color(hex: "252525"))
+                        
+                        //Mark: - 날짜 View, 포스터 View
+                        MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName, showSheet: $showSheet)
+                        // .padding(.bottom, 20)
+                        
+                        //Mark: - 영화관 이름, 주소
+                        Rectangle()
+                            .frame(height: 3)
+                            .foregroundColor(Color(hex:"E5E5EA"))
+                        
+                        HStack {
+                            VStack(alignment: .leading) {
+                                HStack {
+                                    Text("\(theaterName)") // #fix
+                                        .font(.system(size:20))
+                                        .bold()
+                                    
+                                    Link(destination: URL(string: instagrams[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
+                                        Image("Instagram_icon")
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: 70)
-                                            .offset(x:0,y:10)
-                                    }
-                                    .foregroundColor(Color(hex: "252525"))
+                                            .frame(width: 30)
+                                    })
                                     
-                                    //Mark: - 날짜 View, 포스터 View
-                                    MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup)
-                                    // .padding(.bottom, 20)
                                     
-                                    //Mark: - 영화관 이름, 주소
-                                    Rectangle()
-                                        .frame(height: 3)
-                                        .foregroundColor(Color(hex:"E5E5EA"))
                                     
-                                    HStack {
-                                        VStack(alignment: .leading) {
-                                            HStack {
-                                                Text("\(theaters[0].name)")
-                                                    .font(.system(size:20))
-                                                    .bold()
-
-                                                Link(destination: URL(string: instagrams[theaters[0].name] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
-                                                    Image("Instagram_icon")
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: 30)
-                                                })
-                                            }
-                                            
-                                            Text("영화관 주소")
-                                                .font(.caption)
-                                                .bold()
-                                                .padding(.bottom, 10)
-                                            
-                                            HStack {
-                                                Text("나와의 거리")
-                                                Image(systemName: "figure.walk")
-                                                    .foregroundColor(Color(hex: "5856D6"))
-                                                Spacer()
-                                                Text("\(theaters[0].handleDistance())")
-                                                    .multilineTextAlignment(.trailing)
-                                                    .foregroundColor(Color(hex: "5856D6"))
-                                                    .bold()
-                                                Link(destination: URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
-                                                    Image("location") // #bruni : URL 인스턴스 파라미터로 dummy data 대신 addresses[theaters[0].name]을 넣어주면 에러가 발생합니다.
-                                                        .resizable()
-                                                        .scaledToFit()
-                                                        .frame(width: 30)
-                                                })
-                                            }
-                                        }
-
-                                        .padding(.horizontal, 10)
-                                        Spacer()
-                                    }
-                                    .padding(.leading)
-                                    .padding(.top, 20)
-                                    .padding(.bottom, 80)
-                                    .background(Color(hex:"687CC3").opacity(0.1))
-                                }
-                                .edgesIgnoringSafeArea(.top)
-                                .onAppear {
-                                    
-//                                  movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
-                                    
-                                    dateManager.fetchDate(theaterName: theaters[0].name)
-                                    allDays = dateManager.allDays
-                                    closedDays = dateManager.closedDays
-                                    
-                                    for i in closedDays {
-                                        if let j = allDays.firstIndex(of: i){
-                                            allDays.remove(at: j)
-                                        }
-                                    }
-                                    
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "yyyy-MM-dd"
-                                    dateFormatter.timeZone = TimeZone(identifier: "UTC") // 15:00
-                                    selectedDate = dateFormatter.date(from: allDays[0])!
-                                    
-                                    movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateFormatter.string(from: selectedDate))
-                                    
-                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                                        movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
+                                    NavigationLink(destination: TestView()) { //
+                                        Text("Test")
                                     }
                                 }
-                                .refreshable {
-                                    locationDataManager.locationManager.requestLocation()
-                                    theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
-                                    dateManager.fetchDate(theaterName: theaters[0].name)
-                                    allDays = dateManager.allDays
-                                    closedDays = dateManager.closedDays
-                                    
-                                    for i in closedDays {
-                                        if let j = allDays.firstIndex(of: i){
-                                            allDays.remove(at: j)
-                                        }
-                                    }
-                                    
-                                    let dateFormatter = DateFormatter()
-                                    dateFormatter.dateFormat = "yyyy-MM-dd"
-                                    dateFormatter.timeZone = TimeZone(identifier: "UTC")
-                                    selectedDate = dateFormatter.date(from: allDays[0])!
-                                    
-                                    movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateFormatter.string(from: selectedDate))
-                                    
-                                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                                        movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
-                                    }
+                                
+                                Text("영화관 주소")
+                                    .font(.caption)
+                                    .bold()
+                                    .padding(.bottom, 10)
+                                
+                                HStack {
+                                    Text("나와의 거리")
+                                    Image(systemName: "figure.walk")
+                                        .foregroundColor(Color(hex: "5856D6"))
+                                    Spacer()
+                                    Text("\(theaters[0].handleDistance())")
+                                        .multilineTextAlignment(.trailing)
+                                        .foregroundColor(Color(hex: "5856D6"))
+                                        .bold()
+                                    Link(destination: URL(string: addresses[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
+                                        Image("location")
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 30)
+                                    })
                                 }
-                      //  }
-                        
-                        
-                        if isLoading {
-                            LoadingView
+                            }
+                            
+                            .padding(.horizontal, 10)
+                            Spacer()
                         }
-                    }.onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                            isLoading.toggle()
-                        })
+                        .padding(.leading)
+                        .padding(.top, 20)
+                        .padding(.bottom, 80)
+                        .background(Color(hex:"687CC3").opacity(0.1))
                     }
+                    .edgesIgnoringSafeArea(.top)
+                    .onAppear {
+                        
+                        //                                  movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
+                        
+                        dateManager.fetchDate(theaterName: theaterName)
+                        allDays = dateManager.allDays
+                        closedDays = dateManager.closedDays
+                        
+                        for i in closedDays {
+                            if let j = allDays.firstIndex(of: i){
+                                allDays.remove(at: j)
+                            }
+                        }
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        dateFormatter.timeZone = TimeZone(identifier: "UTC") // 15:00
+                        selectedDate = dateFormatter.date(from: allDays[0])!
+                        
+                        movieScheduleManager.fetchMovieSchedule(theaterName: theaterName, date: dateFormatter.string(from: selectedDate)) // # fix
+                        
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                            movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
+                        }
+                    }
+                    .refreshable {
+                        locationDataManager.locationManager.requestLocation()
+                        theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
+                        dateManager.fetchDate(theaterName: theaterName) // #fix
+                        allDays = dateManager.allDays
+                        closedDays = dateManager.closedDays
+                        
+                        for i in closedDays {
+                            if let j = allDays.firstIndex(of: i){
+                                allDays.remove(at: j)
+                            }
+                        }
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd"
+                        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+                        selectedDate = dateFormatter.date(from: allDays[0])!
+                        
+                        movieScheduleManager.fetchMovieSchedule(theaterName: theaterName, date: dateFormatter.string(from: selectedDate))
+                        
+                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                            movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
+                        }
+                    }
+                    //  }
+                    
+                    
+                    if isLoading {
+                        LoadingView
+                    }
+                }.onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                        isLoading.toggle()
+                        showSheet = true
+                    })
                 }
+            }
+        } // #end of navigationView
             .overlay(){
                     if isShowingPopup {
                         Color.black.opacity(0.5)
@@ -230,7 +253,6 @@ struct ContentView: View {
     }
 
 extension ContentView {
-    
     var LoadingView: some View {
         ZStack {
             Color(red: 246 / 255, green: 242 / 255, blue: 233 / 255)
@@ -258,7 +280,8 @@ extension ContentView {
         .onAppear {
             if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
                 theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
-                dateManager.fetchDate(theaterName: theaters[0].name)
+                theaterName = theaters[0].name // # fix
+                dateManager.fetchDate(theaterName: theaterName) // # fix
                 
 //                movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateManager.allDays[0])
                 allDays = dateManager.allDays
@@ -285,7 +308,6 @@ extension ContentView {
         }
     }
 }
-
 
 struct AnimationView : View {
     @State var biggestCircle = false
@@ -337,5 +359,3 @@ struct AnimationView : View {
         }.frame(width: 75, height: 75)
     }
 }
-
-

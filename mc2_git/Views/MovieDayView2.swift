@@ -18,9 +18,9 @@ struct MovieDayView2: View {
     @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
     @Binding var allDays : Array<String>
     @Binding var isShowingPopup: Bool
-    @State private var showSheet = true
-    @State private var selected = "내 근처 영화관"
-    let segments = ["내 근처 영화관", "내 취향 영화관"]
+    @Binding var theaterName : String
+    @Binding var showSheet : Bool
+
     
     let calendar = Calendar.current
     var dates = getWeek()
@@ -41,7 +41,7 @@ struct MovieDayView2: View {
                             selectedDate = day
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "yyyy-MM-dd"
-                            movieScheduleManager.fetchMovieSchedule(theaterName: theaters[0].name, date: dateFormatter.string(from: selectedDate))
+                            movieScheduleManager.fetchMovieSchedule(theaterName: theaterName, date: dateFormatter.string(from: selectedDate)) // # fix
                             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
                                 movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
                             }
@@ -79,49 +79,8 @@ struct MovieDayView2: View {
                     
                 }
             }
-            .sheet(isPresented: $showSheet) {
-                
-                VStack{
-                    Text("FEFEFE")
-                        
-                    Picker("Choose course", selection: $selected) {
-                        ForEach(segments, id:\.self) { segment in
-                            Text(segment)
-                                .tag(segment)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                    if selected == segments[0] {
-
-                        HStack{
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.white)
-                                .border(.black)
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.white)
-                                .border(.black)
-                            RoundedRectangle(cornerRadius: 10)
-                                .foregroundColor(.white)
-                                .border(.black)
-                        }
-                        
-                    }
-                    else {
-                        Text("영화관 취향 테스트를 통해 \n 취향에 맞는 영화관을 추천해 드릴게요!")
-                        Button(action : {
-                            print("Button pressed")
-                        }) {
-                            Text("테스트 시작하기")
-                        }
-                        .background(Color.purple)
-                        .cornerRadius(40)
-                        .foregroundColor(.white)
-                    }
-                } .presentationDetents([.fraction(0.05),.fraction(0.25)])
-                    
-                    
-                    
-            }
+            .sheet(isPresented: $showSheet) {BottomSheetView(theaterName:
+                                                                $theaterName, theaters: $theaters)}
         }
     }
 }
