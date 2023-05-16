@@ -17,22 +17,26 @@ class MovieScheduleManager {
     var movieCodeList: Array<String> = []
     var movieScheduleDataForUserList: Array<MovieScheduleDataForUser> = []
     
-    func fetchMovieSchedule(theaterName: String, date: String){
+    func fetchMovieSchedule(theaterName: String, date: String, completion: @escaping ([MovieScheduleDataForUser]?) -> Void){
         
         let movieScheduleUrl = "https://www.dtryx.com/cinema/showseq_list.do?cgid=FE8EF4D2-F22D-4802-A39A-D58F23A29C1E&ssid=&tokn=&BrandCd=\(theaterCode[theaterName]![0])&CinemaCd=\(theaterCode[theaterName]![1])&PlaySDT=\(date)"
-        performRequest(urlString: movieScheduleUrl)
+        performRequest(urlString: movieScheduleUrl) { result in
+            completion(result)
+        }
     }
-    func performRequest(urlString : String) {
+    func performRequest(urlString : String, completion: @escaping ([MovieScheduleDataForUser]?) -> Void) {
         if let url = URL(string: urlString){
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
                 if error != nil {
                     print("??? error \(error)")
+                    completion(nil)
                     return
                 }
                 
                 if let safeData = data {
                     if let result = self.parseJSON(safeData){
+                        completion(result)
                         return
                     }
                 }

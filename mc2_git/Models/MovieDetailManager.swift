@@ -41,17 +41,27 @@ class MovieDetailManager {
             let rateEndIndex = tempRating.index(tempRating.startIndex, offsetBy: 2)
             rating = String(tempRating[rateStartIndex ..< rateEndIndex])
             if rating == "전체" {
-                rating = "전"
+                rating = "ALL"
             }
+            
             let tempReleasedDate = try etc.array()[1].text()
-            let dateStartIndex = tempReleasedDate.index(tempReleasedDate.startIndex, offsetBy: 0)
-            let dateEndIndex = tempReleasedDate.index(tempReleasedDate.startIndex, offsetBy: 4)
-            releasedDate = String(tempReleasedDate[dateStartIndex ..< dateEndIndex])
+            print("<<<<<<<<<<<\(tempReleasedDate)>>>>>>>>>>") // YYYY.MM.DD 형식이 아닌 5월중의 경우 예외 처리
+            if tempReleasedDate.count == 10
+            {
+                let dateStartIndex = tempReleasedDate.index(tempReleasedDate.startIndex, offsetBy: 0)
+                let dateEndIndex = tempReleasedDate.index(tempReleasedDate.startIndex, offsetBy: 4)
+                releasedDate = String(tempReleasedDate[dateStartIndex ..< dateEndIndex])
+            }
+            else {
+                releasedDate = tempReleasedDate
+            }
+//            let dateStartIndex = tempReleasedDate.index(tempReleasedDate.startIndex, offsetBy: 0)
+//            let dateEndIndex = tempReleasedDate.index(tempReleasedDate.startIndex, offsetBy: 4)
+//            releasedDate = String(tempReleasedDate[dateStartIndex ..< dateEndIndex])
             genre = try etc.array()[2].text()
             runningTime = try etc.array()[3].text()
             let overViewLink : Elements = try doc.select("div.info2").select("div.txt").select("span")
             var tempOverView : String = ""
-//            var overView : String = ""
             for element in overViewLink.array(){
                 tempOverView += "\n"
                 tempOverView += try element.text()

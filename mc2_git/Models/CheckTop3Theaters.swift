@@ -5,6 +5,8 @@
 //  Created by 차차 on 2023/05/10.
 //
 
+// KM & M to 대중교통, 도보 (ex - 버스로 3분, 자차로 15분)
+
 import Foundation
 import CoreLocation
 

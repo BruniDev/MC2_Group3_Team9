@@ -11,7 +11,6 @@ struct MovieDayView2: View {
     
     var movieScheduleManager = MovieScheduleManager()
     @State var monthString: String = "Not Set"
-    //@State var selectedDate: Date = Date()
     @Binding var movieDetailData: MovieDetailData
     @Binding var selectedDate: Date
     @Binding var theaters: [Theater]
@@ -19,9 +18,9 @@ struct MovieDayView2: View {
     @Binding var allDays : Array<String>
     @Binding var isShowingPopup: Bool
     @Binding var theaterName : String
-    @Binding var showSheet : Bool
+    @State private var selected = "내 근처 영화관"
+    let segments = ["내 근처 영화관", "내 취향 영화관"]
 
-    
     let calendar = Calendar.current
     var dates = getWeek()
     var stringDates: Array<String> = []
@@ -30,20 +29,22 @@ struct MovieDayView2: View {
     var body: some View {
         VStack {
             Text("상영중인 영화")
+                .font(.system(size: 20))
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading)
-                .padding(.top, 20)
+                .padding(.leading, 26)
+                .padding(.top, 10)
                 .bold()
-            HStack(spacing: 25) {
+            HStack(spacing: 20) {
                 ForEach(dates, id: \.self) { day in
                     ZStack {
                         Button(action: {
                             selectedDate = day
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "yyyy-MM-dd"
-                            movieScheduleManager.fetchMovieSchedule(theaterName: theaterName, date: dateFormatter.string(from: selectedDate)) // # fix
-                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                                movieScheduleDataForUser = movieScheduleManager.movieScheduleDataForUserList
+                            movieScheduleManager.fetchMovieSchedule(theaterName: theaterName, date: dateFormatter.string(from: selectedDate)) { result in
+                                if let movieScheduleDataforUser = result {
+                                    self.movieScheduleDataForUser = movieScheduleDataforUser
+                                }
                             }
                         }, label: {
                             VStack {
@@ -61,27 +62,25 @@ struct MovieDayView2: View {
                                 .frame(width: 42, height: 48)
                         )
                         .disabled(closedDayCheck(aDay: day, allDays: allDays))
-                    }//Mark: - END ZStack
+                    }
+                    .padding(.bottom, 10)//Mark: - END ZStack
                 }//Mark: - END ForEach
-                .padding(.top, -5)
                 .onAppear {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"
                     selectedDate = dateFormatter.date(from: allDays[0])!
                 }
-            }//Mark: - END HStack
-            
-            NavigationView {
-                VStack{
-                    ScrollView {
-                        MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
-                    }
-                    
-                }
             }
-            .sheet(isPresented: $showSheet) {BottomSheetView(theaterName:
-                                                                $theaterName, theaters: $theaters)}
-        }
+            .padding(.horizontal, 27)//Mark: - END HStack
+            
+            
+            VStack {
+                MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
+                
+                
+            }
+
+        }//VStack Ended
     }
 }
 
@@ -103,6 +102,7 @@ func getDayShort(date: Date) -> String {
     } else {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "E"
+        dateFormatter.locale = Locale(identifier: "ko_KR")
         return dateFormatter.string(from: date)
     }
 }

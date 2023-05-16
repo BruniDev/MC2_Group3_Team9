@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct mc2_gitApp: App {
+    @State var loadingNum : Int = 1
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(loadingNum: $loadingNum)
         }
     }
 }
