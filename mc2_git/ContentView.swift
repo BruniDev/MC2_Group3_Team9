@@ -104,15 +104,23 @@ struct ContentView: View {
     @State var isShowingPopup : Bool = false
     @State var selectedDate : Date = Date()
     @State var theaterName : String = ""
+    @State var theaterDistance : String = ""
     @State var answer : Bool = false
     @State var randomInd : Int = 0
     @State var showSheet : Bool = false
+    @State private var selected = "내 근처 영화관"
+    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.87
+    @State private var currentDragOffsetY: CGFloat = 0
+    @State private var endingOffsetY: CGFloat = 0
     @Binding var loadingNum : Int
+    
+    
+    
     var body: some View {
         NavigationView {
             ZStack {
-            ScrollView(showsIndicators: false) {
-              //  VStack {
+                ScrollView(showsIndicators: false) {
+                    //  VStack {
                     ZStack { //Mark: - 영화관 로고
                         Rectangle()
                             .frame(height: 128)
@@ -126,7 +134,7 @@ struct ContentView: View {
                     .foregroundColor(Color(hex: "252525"))
                     
                     //Mark: - 날짜 View, 포스터 View
-                    MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName, showSheet: $showSheet)
+                    MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName,showSheet : $showSheet)
                     
                     //Mark: - 영화관 이름, 주소
                     VStack(spacing: 0) {
@@ -147,12 +155,6 @@ struct ContentView: View {
                                             .scaledToFit()
                                             .frame(width: 30)
                                     })
-                                    
-                                    
-                                    
-                                    NavigationLink(destination: TestView(loadingNum: $loadingNum)) { //
-                                        Text("Test")
-                                    }
                                 }
                                 
                                 Text(addresses[theaterName] ?? "X")
@@ -167,7 +169,7 @@ struct ContentView: View {
                                         Image(systemName: "figure.walk")
                                             .foregroundColor(Color(hex: "5856D6"))
                                         Spacer()
-                                        Text("\(theaters[0].handleDistance())")
+                                        Text("\(theaterDistance)")
                                             .multilineTextAlignment(.trailing)
                                             .foregroundColor(Color(hex: "5856D6"))
                                             .bold()
@@ -195,6 +197,7 @@ struct ContentView: View {
                     if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
                         theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
                         theaterName = theaters[0].name // # fix
+                        theaterDistance = theaters[0].handleDistance()
                         dateManager.fetchDate(theaterName: theaterName) // # fix
                         
                         allDays = dateManager.allDays
@@ -243,112 +246,73 @@ struct ContentView: View {
                             self.movieScheduleDataForUser = movieScheduleDataforUser
                         }
                     }
-                }
-               
-                if showSheet {
-                    ZStack{
-                        Button(action: {
-                            showSheet = false
-                        },label: {
-                            Rectangle()
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                                .edgesIgnoringSafeArea(.all)
-                                .foregroundColor(.black)
-                                .opacity(0.6)
-                        })
-                        .simultaneousGesture(TapGesture().onEnded{
-                            answer = true
-                        })
-                        
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(.white)
-                            .frame(height: UIScreen.main.bounds.height * 0.5)
-                            .offset(y: 200)
-                            .shadow(radius: 3)
-                    }
-                    .transition(.move(edge: .bottom))
-                    .animation(.easeInOut)
                     
                 }
-                // SheetView Visaulization
-                if showSheet == false {
-                    ZStack {
-                        Rectangle()
-                            .foregroundColor(.white)
-                            .cornerRadius(20)
-                            .frame(width: 390, height: 164)
-                            .offset(y: 422)
-                            .shadow(radius: 3)
-                        
-                        Rectangle()
-                            .foregroundColor(.white)
-                            .cornerRadius(20)
-                            .frame(width: 390, height: 164)
-                            .offset(y: 422)
-                            .shadow(radius: 3)
-                        VStack {
-                            Rectangle()
-                                .foregroundColor(.gray)
-                                .cornerRadius(3.5)
-                                .frame(width: 48, height: 4)
-                                .offset(y: 364)
-                            
-                            HStack {
-                                Text("영화관 탐색하기")
-                                    .font(.system(size: 20).bold())
-                                    .foregroundColor(Color.black)
-                                Image(systemName: "figure.hiking")
-                                    .foregroundColor(Color(hex: "5856D6"))
-                            }
-                            .offset(x: -100, y: 370)
-                            
-//                            Button(action: {
-//                                showSheet = true
-//                            }){
-//                                Text("영화관 탐색하기")
-//                                    .border(.red)
-//                                HStack {
-//                                    Text("영화관 탐색하기")
-//                                        .font(.system(size: 20))
-//                                        .foregroundColor(Color.black)
-//                                    Image(systemName: "figure.hiking")
-//                                        .foregroundColor(Color(hex: "5856D6"))
-//                                }
-//                                .offset(x: -105, y: 377)
-//                            }
-                        }
-                    }
-                }
                 
+                GeometryReader { reader in
+                    BottomSheetView(dateManager: DateManager(), movieScheduleManager: MovieScheduleManager(), movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays, closedDays: $closedDays, selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName,theaterDistance: $theaterDistance)
+                        .offset(y: startingOffsetY)
+                        .offset(y: currentDragOffsetY)
+                        .offset(y: endingOffsetY)
+                        .gesture(
+                            DragGesture()
+                                .onChanged({ value in
+                                    withAnimation(.spring()){
+                                        if value.translation.height < -startingOffsetY + 550 {
+                                            currentDragOffsetY = -startingOffsetY + 550
+                                        }
+                                        else{
+                                            currentDragOffsetY = value.translation.height
+                                        }
+                                    }
+                                    
+                                })
+                                .onEnded({ value in
+                                    withAnimation(.spring()) {
+                                        if currentDragOffsetY < -150{
+                                            endingOffsetY = -startingOffsetY + 550
+                                            currentDragOffsetY = .zero
+                                        } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
+                                            endingOffsetY = .zero
+                                            currentDragOffsetY = .zero
+                                        } else {
+                                            currentDragOffsetY = .zero
+                                        }
+                                    }
+                                })
+                        )
+                }
                 if isLoading && loadingNum == 1 {
-                    LoadingView
-                }
-                
-                
-            }.onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                    isLoading.toggle()
-                    // showSheet = true
-                })
-            }
-        }
-        .navigationBarBackButtonHidden(true)
-        // #end of navigationView
-        .overlay(){
-            if isShowingPopup {
-                Color.black.opacity(0.5)
-                    .ignoresSafeArea()
-                
-                CustomAlertView(isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
-                    .frame(width: 352, height: 758)
-                    .background(Color.white)
-                
-                
-                
-            }
-        }
-    }
-}
+                                   LoadingView
+                               }
+                               
+                               
+                           }.onAppear {
+                               DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                                   isLoading.toggle()
+                                   // showSheet = true
+                               })
+                           }
+                       }
+                       .navigationBarBackButtonHidden(true)
+                       // #end of navigationView
+                       .overlay(){
+                           if isShowingPopup {
+                               Color.black.opacity(0.5)
+                                   .ignoresSafeArea()
+                               
+                               CustomAlertView(isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
+                                   .frame(width: 352, height: 758)
+                                   .background(Color.white)
+                               
+                               
+                               
+                           }
+                       }
+                   }
+               }
+
+
 
 extension ContentView {
     var LoadingView: some View {

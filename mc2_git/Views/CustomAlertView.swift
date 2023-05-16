@@ -11,8 +11,8 @@ struct CustomAlertView: View {
         
         ZStack {
             VStack(spacing: 0) {
-                AsyncImage(url: URL(string:movieDetailData.poster)) { img in //Mark: - 영화 포스터 이미지
-                    img
+                AsyncImage(url: URL(string:movieDetailData.poster)) { img in
+                    img//Mark: - 영화 포스터 이미지
                         .resizable()
                         .scaledToFit()
                     

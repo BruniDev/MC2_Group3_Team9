@@ -147,81 +147,66 @@ let describe3 = [
 struct Q1 : View {
     @Binding var loadingNum : Int
     var body: some View {
-            NavigationView {
-                VStack {
-//
-                    
-                    VStack(alignment: .leading){
-                        Text("영화가")
-                            .font(.largeTitle.bold())
-                        Text("땡기는 주말 🎬,")
-                            .font(.largeTitle.bold())
-                        Text("당신은?")
-                            .font(.largeTitle.bold())
-                    }
-                    .padding(.trailing, 71)
-                    .padding(.top, 150)
-                    
-                    Spacer()
-                    
-                    NavigationLink(destination: Q2(loadingNum: $loadingNum)) {
-                                ZStack {
-                                    HStack {
-                                        VStack (alignment: .leading) {
-                                            Text("바로 근처")
-                                                .font(.system(size:20))
-                                                .foregroundColor(Color.white)
-                                            Text("영화관으로 달려간다.")
-                                                .font(.system(size:20))
-                                                .foregroundColor(Color.white)
-                                        }
-                                        .padding(.trailing, 30)
-                                        Text("🏃‍♂️")
-                                            .font(.system(size:40))
-                                    }
-                                }
-                                .frame(width: 350, height: 120)
-                                .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
-                                
-                            }
-                                    
-                                    
+        NavigationView {
+            VStack {
+                //
+                
+                VStack(alignment: .leading){
+                    Text("영화가")
+                        .font(.largeTitle.bold())
+                    Text("땡기는 주말 🎬,")
+                        .font(.largeTitle.bold())
+                    Text("당신은?")
+                        .font(.largeTitle.bold())
+                }
+                .padding(.trailing, 71)
+                .padding(.top, 150)
+                
+                Spacer()
+                
                 NavigationLink(destination: Q2(loadingNum: $loadingNum)) {
-                                ZStack {
-                                    HStack {
-                                        VStack (alignment: .leading) {
-                                            Text("예매 사이트에서 보고싶은")
-                                                .font(.system(size:20))
-                                                .foregroundColor(Color.white)
-                                            Text("영화가 있는지 확인한다.")
-                                                .font(.system(size:20))
-                                                .foregroundColor(Color.white)
-                                        }
-                                        .padding(.trailing, 30)
-                                        Text("🎫")
-                                            .font(.system(size:40))
-                                    }
-                                }
-                                .frame(width: 350, height: 120)
-                                .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text("바로 근처")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                                Text("영화관으로 달려간다.")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
                             }
+                            .padding(.trailing, 30)
+                            Text("🏃‍♂️")
+                                .font(.system(size:40))
                         }
+                    }
+                    .frame(width: 350, height: 120)
+                    .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                    
+                }
+                
+                
+                NavigationLink(destination: Q2(loadingNum: $loadingNum)) {
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text("예매 사이트에서 보고싶은")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                                Text("영화가 있는지 확인한다.")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                            }
+                            .padding(.trailing, 30)
+                            Text("🎫")
+                                .font(.system(size:40))
+                        }
+                    }
+                    .frame(width: 350, height: 120)
+                    .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                }
             }
-//            .navigationBarItems(
-//                    leading:
-//                        NavigationLink(destination: TestView(loadingNum: $loadingNum)) {
-//                            Text("<")
-//                                .foregroundColor(.black)
-//                                .font(.system(size: 34).bold())
-//                        },
-//                    trailing:
-//                        NavigationLink (destination: ContentView(loadingNum: $loadingNum)){
-//                            //Image(systemName:"multipy")
-//                            Text("X")
-//                                .foregroundColor(.black)
-//                                .font(.system(size: 34).bold())
-//                        }
-//                )
+        }
             .navigationBarBackButtonHidden()
         }
 }
