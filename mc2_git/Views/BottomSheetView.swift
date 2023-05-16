@@ -101,7 +101,7 @@ struct BottomSheetView: View {
                     Text("영화관 취향 테스트를 통해 \n 취향에 맞는 영화관을 추천해 드릴게요!")
                     Button(action : {
                         self.showSettingView = true
-                        print("버튼이 눌렸다")
+                        print("버튼이 눌렸₩다")
                         
                     }){
                         Text("테스트 시작하기")
