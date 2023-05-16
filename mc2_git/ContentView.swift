@@ -13,7 +13,7 @@ let instagrams : [String : String] = [
     "더숲아트시네마" : "https://instagram.com/deosup_artcinema?igshid=MzRlODBiNWFlZA==",
     "씨네아트리좀" : "https://instagram.com/espacerhizome?igshid=MzRlODBiNWFlZA==",
     "아트하우스모모" : "https://instagram.com/arthousemomo?igshid=MzRlODBiNWFlZA==",
-    "안동중앙시네마" : "https://instagram.com/joongangcinema.andong?igshid=MzRlODBiNWFlZA==",
+    "안동중앙아트시네마" : "https://instagram.com/joongangcinema.andong?igshid=MzRlODBiNWFlZA==",
     "에무시네마" : "https://instagram.com/emuartspace?igshid=MzRlODBiNWFlZA==",
     "오오극장" : "https://instagram.com/55cine?igshid=MzRlODBiNWFlZA==",
     "인디플러스포항" : "https://instagram.com/pohang_culture?igshid=MzRlODBiNWFlZA==",
@@ -40,7 +40,7 @@ let urls : [String : String] = [
     "더숲아트시네마" : "https://map.naver.com/v5/entry/place/1015940361?c=15,0,0,0,dh&isCorrectAnswer=true",
     "씨네아트리좀" : "https://map.naver.com/v5/entry/place/37383447?c=15,0,0,0,dh&isCorrectAnswer=true",
     "아트하우스모모" : "https://map.naver.com/v5/entry/place/12948307?c=15,0,0,0,dh&isCorrectAnswer=true",
-    "안동중앙시네마" : "https://map.naver.com/v5/search/%EC%95%88%EB%8F%99%EC%A4%91%EC%95%99%EC%8B%9C%EB%84%A4%EB%A7%88/place/34635294?c=15,0,0,0,dh&isCorrectAnswer=true",
+    "안동중앙아트시네마" : "https://map.naver.com/v5/search/%EC%95%88%EB%8F%99%EC%A4%91%EC%95%99%EC%8B%9C%EB%84%A4%EB%A7%88/place/34635294?c=15,0,0,0,dh&isCorrectAnswer=true",
     "에무시네마" : "https://map.naver.com/v5/entry/place/37842043?c=15,0,0,0,dh",
     "오오극장" : "https://map.naver.com/v5/search/%EC%98%A4%EC%98%A4%EA%B7%B9%EC%9E%A5/place/35966761?c=15,0,0,0,dh&isCorrectAnswer=true",
     "인디플러스포항" : "https://map.naver.com/v5/search/%EC%9D%B8%EB%94%94%ED%94%8C%EB%9F%AC%EC%8A%A4%ED%8F%AC%ED%95%AD/place/569933553?c=15,0,0,0,dh&isCorrectAnswer=true",
@@ -67,7 +67,7 @@ let addresses : [String : String] = [
     "더숲아트시네마" : "서울특별시 노원구 노해로 480 조광빌딩 B",
     "씨네아트리좀" : "경상남도 창원시 마산합포구 동서북14길 24",
     "아트하우스모모" : "서울특별시 서대문구 이화여대길 52 (대현동, 이화여자대학교 ECC B402)",
-    "안동중앙시네마" : "경상북도 안동시 문화광장길 45 (삼산동)",
+    "안동중앙아트시네마" : "경상북도 안동시 문화광장길 45 (삼산동)",
     "에무시네마" : "서울특별시 종로구 경희궁1가길 7",
     "오오극장" : "대구광역시 중구 국채보상로 537",
     "인디플러스포항" : "경상북도 포항시 북구 서동로 83",
@@ -117,114 +117,86 @@ struct ContentView: View {
     
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                ScrollView(showsIndicators: false) {
-                    //  VStack {
-                    ZStack { //Mark: - 영화관 로고
-                        Rectangle()
-                            .frame(height: 128)
-                            .foregroundColor(Color(hex: "252525"))
-                        Image("\(theaterName)") // #fix
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 70)
-                            .offset(x:0, y:10)
-                    }
-                    .foregroundColor(Color(hex: "252525"))
+        ZStack {
+            VStack {
+                //ScrollView(showsIndicators: false) {
+                ZStack { //Mark: - 영화관 로고
+                    Rectangle()
+                        .frame(height: 128)
+                        .foregroundColor(Color(hex: "252525"))
+                    Image("\(theaterName)") // #fix
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 70)
+                        .offset(x:0, y:10)
+                }
+                .foregroundColor(Color(hex: "252525"))
+                
+                //Mark: - 날짜 View, 포스터 View
+                MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName,showSheet : $showSheet)
+                
+                //Mark: - 영화관 이름, 주소
+                VStack(spacing: 0) {
+                    Rectangle()
+                        .frame(height: 3)
+                        .foregroundColor(Color(hex:"E5E5EA"))
                     
-                    //Mark: - 날짜 View, 포스터 View
-                    MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName,showSheet : $showSheet)
-                    
-                    //Mark: - 영화관 이름, 주소
-                    VStack(spacing: 0) {
-                        Rectangle()
-                            .frame(height: 3)
-                            .foregroundColor(Color(hex:"E5E5EA"))
-                        
-                        HStack {
-                            VStack(alignment: .leading) {
+                    HStack {
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text("\(theaterName)") // #fix
+                                    .font(.system(size:28))
+                                    .bold()
+                                
+                                Link(destination: URL(string: instagrams[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
+                                    Image("Instagram_icon")
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 30)
+                                })
+                            }
+                            
+                            Text(addresses[theaterName] ?? "X")
+                            // .font(.caption)
+                                .font(.system(size:12))
+                                .bold()
+                            // .padding(.bottom, 10)
+                            VStack {
+                                Spacer()
                                 HStack {
-                                    Text("\(theaterName)") // #fix
-                                        .font(.system(size:28))
+                                    Text("나와의 거리")
+                                    Image(systemName: "figure.walk")
+                                        .foregroundColor(Color(hex: "5856D6"))
+                                    Spacer()
+                                    Text("\(theaterDistance)")
+                                        .multilineTextAlignment(.trailing)
+                                        .foregroundColor(Color(hex: "5856D6"))
                                         .bold()
-                                    
-                                    Link(destination: URL(string: instagrams[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
-                                        Image("Instagram_icon")
+                                    Link(destination: URL(string: urls[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
+                                        Image("location")
                                             .resizable()
                                             .scaledToFit()
                                             .frame(width: 30)
                                     })
                                 }
-                                
-                                Text(addresses[theaterName] ?? "X")
-                                // .font(.caption)
-                                    .font(.system(size:12))
-                                    .bold()
-                                // .padding(.bottom, 10)
-                                VStack {
-                                    Spacer()
-                                    HStack {
-                                        Text("나와의 거리")
-                                        Image(systemName: "figure.walk")
-                                            .foregroundColor(Color(hex: "5856D6"))
-                                        Spacer()
-                                        Text("\(theaterDistance)")
-                                            .multilineTextAlignment(.trailing)
-                                            .foregroundColor(Color(hex: "5856D6"))
-                                            .bold()
-                                        Link(destination: URL(string: urls[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
-                                            Image("location")
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 30)
-                                        })
-                                    }
-                                }
-                                //                                .offset(y: 55)
                             }
-                            .padding(.horizontal, 10)
+                            //                                .offset(y: 55)
                         }
-                        .padding(.leading)
-                        .padding(.top, 20)
-                        .padding(.bottom, 80)
-                        .background(Color(hex:"687CC3").opacity(0.1))
+                        .padding(.horizontal, 10)
                     }
-                    .frame(width: 390, height : 233)
+                    .padding(.leading)
+                    .padding(.top, 20)
+                    .padding(.bottom, 80)
+                    .background(Color(hex:"687CC3").opacity(0.1))
                 }
-                .edgesIgnoringSafeArea(.top)
-                .onAppear {
-                    if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
-                        theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
-                        theaterName = theaters[0].name // # fix
-                        theaterDistance = theaters[0].handleDistance()
-                        dateManager.fetchDate(theaterName: theaterName) // # fix
-                        
-                        allDays = dateManager.allDays
-                        closedDays = dateManager.closedDays
-                        
-                        for i in closedDays {
-                            if let j = allDays.firstIndex(of: i){
-                                allDays.remove(at: j)
-                            }
-                        }
-                        
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd"
-                        dateFormatter.timeZone = TimeZone(identifier: "UTC")
-                        selectedDate = dateFormatter.date(from: allDays[0])!
-                        
-                        movieScheduleManager.fetchMovieSchedule(theaterName: theaterName, date: dateFormatter.string(from: selectedDate)) { result in
-                            if let movieScheduleDataforUser = result {
-                                self.movieScheduleDataForUser = movieScheduleDataforUser
-                            }
-                        }
-                    }
-                }
-                .refreshable {
-                    locationDataManager.locationManager.requestLocation()
+                .frame(width: 390, height : 233)
+            }
+            .edgesIgnoringSafeArea(.top)
+            .onAppear {
+                if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
                     theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
                     theaterName = theaters[0].name // # fix
+                    theaterDistance = theaters[0].transferToMobility()
                     dateManager.fetchDate(theaterName: theaterName) // # fix
                     
                     allDays = dateManager.allDays
@@ -246,71 +218,65 @@ struct ContentView: View {
                             self.movieScheduleDataForUser = movieScheduleDataforUser
                         }
                     }
-                    
                 }
+            }
+           
+            GeometryReader { reader in
+                BottomSheetView(dateManager: DateManager(), movieScheduleManager: MovieScheduleManager(), movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays, closedDays: $closedDays, selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName,theaterDistance: $theaterDistance)
+                    .offset(y: startingOffsetY)
+                    .offset(y: currentDragOffsetY)
+                    .offset(y: endingOffsetY)
+                    .gesture(
+                        DragGesture()
+                            .onChanged({ value in
+                                withAnimation(.spring()){
+                                    if value.translation.height < -startingOffsetY + 550 {
+                                        currentDragOffsetY = -startingOffsetY + 550
+                                    }
+                                    else{
+                                        currentDragOffsetY = value.translation.height
+                                    }
+                                }
+                                
+                            })
+                            .onEnded({ value in
+                                withAnimation(.spring()) {
+                                    if currentDragOffsetY < -150{
+                                        endingOffsetY = -startingOffsetY + 550
+                                        currentDragOffsetY = .zero
+                                    } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
+                                        endingOffsetY = .zero
+                                        currentDragOffsetY = .zero
+                                    } else {
+                                        currentDragOffsetY = .zero
+                                    }
+                                }
+                            })
+                    )
+            }
+            if isLoading && loadingNum == 1 {
+                LoadingView
+            }
+            
+            
+        }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                isLoading.toggle()
+            })
+        }
+        .overlay(){
+            if isShowingPopup {
+                Color.black.opacity(0.5)
+                    .ignoresSafeArea()
                 
-                GeometryReader { reader in
-                    BottomSheetView(dateManager: DateManager(), movieScheduleManager: MovieScheduleManager(), movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays, closedDays: $closedDays, selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName,theaterDistance: $theaterDistance)
-                        .offset(y: startingOffsetY)
-                        .offset(y: currentDragOffsetY)
-                        .offset(y: endingOffsetY)
-                        .gesture(
-                            DragGesture()
-                                .onChanged({ value in
-                                    withAnimation(.spring()){
-                                        if value.translation.height < -startingOffsetY + 550 {
-                                            currentDragOffsetY = -startingOffsetY + 550
-                                        }
-                                        else{
-                                            currentDragOffsetY = value.translation.height
-                                        }
-                                    }
-                                    
-                                })
-                                .onEnded({ value in
-                                    withAnimation(.spring()) {
-                                        if currentDragOffsetY < -150{
-                                            endingOffsetY = -startingOffsetY + 550
-                                            currentDragOffsetY = .zero
-                                        } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
-                                            endingOffsetY = .zero
-                                            currentDragOffsetY = .zero
-                                        } else {
-                                            currentDragOffsetY = .zero
-                                        }
-                                    }
-                                })
-                        )
-                }
-                if isLoading && loadingNum == 1 {
-                                   LoadingView
-                               }
-                               
-                               
-                           }.onAppear {
-                               DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                                   isLoading.toggle()
-                                   // showSheet = true
-                               })
-                           }
-                       }
-                       .navigationBarBackButtonHidden(true)
-                       // #end of navigationView
-                       .overlay(){
-                           if isShowingPopup {
-                               Color.black.opacity(0.5)
-                                   .ignoresSafeArea()
-                               
-                               CustomAlertView(isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
-                                   .frame(width: 352, height: 758)
-                                   .background(Color.white)
-                               
-                               
-                               
-                           }
-                       }
-                   }
-               }
+                CustomAlertView(isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
+                    .frame(width: 352, height: 758)
+                    .background(Color.white)
+            }
+        }
+    }
+}
 
 
 

@@ -519,11 +519,9 @@ struct ResultView: View {
                     .font(.system(size: 22).bold())
                     .padding(.top, 11)
                 
-                Circle()
+                Image("\(theaters[randomInd])_circle")
                     .frame(width:80, height: 80)
                     .padding(.top, 11)
-                
-                // Image("\(theaters[randomInd])_circle")
                 
                 Text(describe1[randomInd])
                     .font(.system(size: 15))

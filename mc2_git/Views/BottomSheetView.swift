@@ -25,6 +25,7 @@ struct BottomSheetView: View {
             Capsule()
                 .fill(Color(white: 0.95))
                 .frame(width: 50, height : 7)
+                .padding(.top, 5)
             
             HStack {
                 Text("영화관 탐색하기")
@@ -36,6 +37,7 @@ struct BottomSheetView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading,30)
+            
     
             Picker("Choose course", selection: $selected) {
                 ForEach(segments, id : \.self) { segment in
@@ -46,15 +48,14 @@ struct BottomSheetView: View {
             }
             .colorMultiply(Color(hex: "5856D6"))
             .pickerStyle(SegmentedPickerStyle())
-           
             .frame(width: 350)
             if selected == segments[0] {
                 HStack {
                     ForEach(0..<3) { num in
                         Button(action: {
                             theaterName = theaters[num].name
-                            theaterDistance = theaters[num].handleDistance()
-                            dateManager.fetchDate(theaterName: theaterName) // # fix
+                            theaterDistance = theaters[num].transferToMobility()
+                            dateManager.fetchDate(theaterName: theaterName)
                             
                             allDays = dateManager.allDays
                             closedDays = dateManager.closedDays
@@ -83,8 +84,10 @@ struct BottomSheetView: View {
                                     .border(.gray)
                                     .cornerRadius(19)
                                 VStack {
-                                    Circle()
+                                    Image("\(theaters[num].name)_circle")
                                         .frame(width: 60, height: 60)
+//                                    Circle()
+//                                        .frame(width: 60, height: 60)
                                     Text("\(theaters[num].name)")
                                         .font(.system(size: 15.0))
                                         .foregroundColor(.black)
@@ -113,12 +116,14 @@ struct BottomSheetView: View {
                             .foregroundColor(Color.white)
                             .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(32.5))
                     }
-                
             }
-        }.background(Color.white)
-            .sheet(isPresented: $showSettingView) {
+        }
+        .background(Color.white)
+        .cornerRadius(20).shadow(radius: 5) // #shadow 추가
+        .edgesIgnoringSafeArea(.bottom)
+        .sheet(isPresented: $showSettingView) {
                TestView(loadingNum: $loadingNum)
-            }
+        }
          
     }
 }
