@@ -20,8 +20,6 @@ struct BottomSheetView: View {
     
     var body : some View {
         
-        
-        
         VStack {
            
             Capsule()

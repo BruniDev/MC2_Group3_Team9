@@ -18,6 +18,7 @@ struct MovieDayView2: View {
     @Binding var allDays : Array<String>
     @Binding var isShowingPopup: Bool
     @Binding var theaterName : String
+    @Binding var showSheet : Bool
     @State private var selected = "내 근처 영화관"
     let segments = ["내 근처 영화관", "내 취향 영화관"]
 

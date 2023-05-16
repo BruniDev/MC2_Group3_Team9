@@ -108,11 +108,11 @@ struct ContentView: View {
     @State var answer : Bool = false
     @State var randomInd : Int = 0
     @State var showSheet : Bool = false
-    @Binding var loadingNum : Int
     @State private var selected = "내 근처 영화관"
     @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.87
     @State private var currentDragOffsetY: CGFloat = 0
     @State private var endingOffsetY: CGFloat = 0
+    @Binding var loadingNum : Int
     
     
     
@@ -134,7 +134,7 @@ struct ContentView: View {
                     .foregroundColor(Color(hex: "252525"))
                     
                     //Mark: - 날짜 View, 포스터 View
-                    MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName)
+                    MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName,showSheet : $showSheet)
                     
                     //Mark: - 영화관 이름, 주소
                     VStack(spacing: 0) {
@@ -246,7 +246,9 @@ struct ContentView: View {
                             self.movieScheduleDataForUser = movieScheduleDataforUser
                         }
                     }
+                    
                 }
+                
                 GeometryReader { reader in
                     BottomSheetView(dateManager: DateManager(), movieScheduleManager: MovieScheduleManager(), movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays, closedDays: $closedDays, selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName,theaterDistance: $theaterDistance)
                         .offset(y: startingOffsetY)
@@ -280,10 +282,37 @@ struct ContentView: View {
                                 })
                         )
                 }
-            }
-        }
-    }
-}
+                if isLoading && loadingNum == 1 {
+                                   LoadingView
+                               }
+                               
+                               
+                           }.onAppear {
+                               DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                                   isLoading.toggle()
+                                   // showSheet = true
+                               })
+                           }
+                       }
+                       .navigationBarBackButtonHidden(true)
+                       // #end of navigationView
+                       .overlay(){
+                           if isShowingPopup {
+                               Color.black.opacity(0.5)
+                                   .ignoresSafeArea()
+                               
+                               CustomAlertView(isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
+                                   .frame(width: 352, height: 758)
+                                   .background(Color.white)
+                               
+                               
+                               
+                           }
+                       }
+                   }
+               }
+
+
 
 extension ContentView {
     var LoadingView: some View {
