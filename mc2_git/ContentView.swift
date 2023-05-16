@@ -104,6 +104,7 @@ struct ContentView: View {
     @State var isShowingPopup : Bool = false
     @State var selectedDate : Date = Date()
     @State var theaterName : String = ""
+    @State var theaterDistance : String = ""
     @State var answer : Bool = false
     @State var randomInd : Int = 0
     @State var showSheet : Bool = false
@@ -168,7 +169,7 @@ struct ContentView: View {
                                         Image(systemName: "figure.walk")
                                             .foregroundColor(Color(hex: "5856D6"))
                                         Spacer()
-                                        Text("\(theaters[0].handleDistance())")
+                                        Text("\(theaterDistance)")
                                             .multilineTextAlignment(.trailing)
                                             .foregroundColor(Color(hex: "5856D6"))
                                             .bold()
@@ -196,6 +197,7 @@ struct ContentView: View {
                     if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
                         theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
                         theaterName = theaters[0].name // # fix
+                        theaterDistance = theaters[0].handleDistance()
                         dateManager.fetchDate(theaterName: theaterName) // # fix
                         
                         allDays = dateManager.allDays
@@ -246,7 +248,7 @@ struct ContentView: View {
                     }
                 }
                 GeometryReader { reader in
-                    BottomSheetView(selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName)
+                    BottomSheetView(dateManager: DateManager(), movieScheduleManager: MovieScheduleManager(), movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays, closedDays: $closedDays, selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName,theaterDistance: $theaterDistance)
                         .offset(y: startingOffsetY)
                         .offset(y: currentDragOffsetY)
                         .offset(y: endingOffsetY)

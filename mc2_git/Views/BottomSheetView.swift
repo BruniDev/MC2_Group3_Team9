@@ -3,11 +3,17 @@ import SwiftUI
 
 struct BottomSheetView: View {
     
+    var dateManager = DateManager()
+    var movieScheduleManager = MovieScheduleManager()
+    @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
+    @Binding var allDays : Array<String>
+    @Binding var closedDays : Array<String>
     @Binding var selected : String
     let segments = ["내 근처 영화관", "내 취향 영화관"]
     @Binding var selectedDate: Date
     @Binding var theaters: [Theater]
     @Binding var theaterName : String
+    @Binding var theaterDistance : String
     @State var loadingNum : Int = 1
     @State var showSettingView = false
     @State var selectSegment = 0
@@ -49,6 +55,28 @@ struct BottomSheetView: View {
                     ForEach(0..<3) { num in
                         Button(action: {
                             theaterName = theaters[num].name
+                            theaterDistance = theaters[num].handleDistance()
+                            dateManager.fetchDate(theaterName: theaterName) // # fix
+                            
+                            allDays = dateManager.allDays
+                            closedDays = dateManager.closedDays
+                            
+                            for i in closedDays {
+                                if let j = allDays.firstIndex(of: i){
+                                    allDays.remove(at: j)
+                                }
+                            }
+                            
+                            let dateFormatter = DateFormatter()
+                            dateFormatter.dateFormat = "yyyy-MM-dd"
+                            dateFormatter.timeZone = TimeZone(identifier: "UTC")
+                            selectedDate = dateFormatter.date(from: allDays[0])!
+                            
+                            movieScheduleManager.fetchMovieSchedule(theaterName: theaterName, date: dateFormatter.string(from: selectedDate)) { result in
+                                if let movieScheduleDataforUser = result {
+                                    self.movieScheduleDataForUser = movieScheduleDataforUser
+                                }
+                            }
                         }) {
                             ZStack{
                                 Rectangle()
