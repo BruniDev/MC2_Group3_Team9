@@ -11,6 +11,7 @@ struct MovieDayView2: View {
     
     var movieScheduleManager = MovieScheduleManager()
     @State var monthString: String = "Not Set"
+    @State var scrollToTop: Bool = false
     @Binding var movieDetailData: MovieDetailData
     @Binding var selectedDate: Date
     @Binding var theaters: [Theater]
@@ -39,6 +40,7 @@ struct MovieDayView2: View {
                 ForEach(dates, id: \.self) { day in
                     ZStack {
                         Button(action: {
+                            scrollToTop = true
                             selectedDate = day
                             let dateFormatter = DateFormatter()
                             dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -76,7 +78,7 @@ struct MovieDayView2: View {
             
             
             VStack {
-                MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
+                MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData, scrollToTop: $scrollToTop)
                 
                 
             }

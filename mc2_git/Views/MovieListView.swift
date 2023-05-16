@@ -13,47 +13,58 @@ struct MovieListView: View {
     @Binding var movieScheduleDataForUser: Array<MovieScheduleDataForUser>
     @Binding var isShowingPopup: Bool
     @Binding var movieDetailData: MovieDetailData
+    @Binding var scrollToTop: Bool
     
     var body: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(alignment: .top) {
-                ForEach(0..<movieScheduleDataForUser.count, id:\.self) { index in
-                    VStack(alignment: .leading, spacing: 8) {
-                        Button {
-                            movieDetailData = movieDetailManager.fetchDetail(movieCode: movieScheduleDataForUser[index].movieCode)!
-                            isShowingPopup = true
-                        } label: {
-                            AsyncImage(url: URL(string: "\(movieScheduleDataForUser[index].movieIMG)")) { img in
-                                img
-                                    .resizable()
-                                    .scaledToFit()
-                            } placeholder: {
-                                Color.white
+        ScrollViewReader{ scrollViewProxy in
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .top) {
+                    ForEach(0..<movieScheduleDataForUser.count, id:\.self) { index in
+                        VStack(alignment: .leading, spacing: 8) {
+                            Button {
+                                movieDetailData = movieDetailManager.fetchDetail(movieCode: movieScheduleDataForUser[index].movieCode)!
+                                isShowingPopup = true
+                            } label: {
+                                AsyncImage(url: URL(string: "\(movieScheduleDataForUser[index].movieIMG)")) { img in
+                                    img
+                                        .resizable()
+                                        .scaledToFit()
+                                } placeholder: {
+                                    Color.white
+                                }
+                                .frame(width: 210, height: 300)
+                                .animation(.easeIn)
                             }
-                            .frame(width: 210, height: 300)
-                            .animation(.easeIn)
+                            Text("\(movieScheduleDataForUser[index].movieName)")
+                                .font(.system(size: 17, weight: .semibold))
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.black)
+                            HStack {
+                                ForEach(0 ..< movieScheduleDataForUser[index].movieTimeTable.count, id: \.self) { i in
+                                    Text(movieScheduleDataForUser[index].movieTimeTable[i])
+                                        .font(.system(size: 12))
+                                        .multilineTextAlignment(.leading)
+                                        .foregroundColor(.black)
+                                }
+                            }
+                            
                         }
-                        Text("\(movieScheduleDataForUser[index].movieName)")
-                            .font(.system(size: 17, weight: .semibold))
-                            .multilineTextAlignment(.leading)
-                            .foregroundColor(.black)
-                        HStack {
-                            ForEach(0 ..< movieScheduleDataForUser[index].movieTimeTable.count, id: \.self) { i in
-                                Text(movieScheduleDataForUser[index].movieTimeTable[i])
-                                    .font(.system(size: 12))
-                                    .multilineTextAlignment(.leading)
-                                    .foregroundColor(.black)
+                    } //Mark: - End Geometry
+                    .frame(width: 210, height: 360)
+                    .padding(.leading, 20)
+                    .padding(.top, -10)
+                    .onChange(of: scrollToTop) { newValue in
+                        if newValue {
+                            withAnimation{
+                                scrollViewProxy.scrollTo(0, anchor: .top)
+                                scrollToTop = false
                             }
                         }
-
                     }
-                } //Mark: - End Geometry
-                .frame(width: 210, height: 360)
-                .padding(.leading, 20)
-                .padding(.top, -10)
-            } //Mark: - End ForEach
-        }//Mark: - End HStack
-    }//Mark: - End ScrollView
+                } //Mark: - End ForEach
+            }//Mark: - End HStack
+        }//Mark: - End ScrollView
+    }
 }
 
 func getScale(proxy: GeometryProxy) -> CGFloat {
