@@ -114,6 +114,7 @@ struct ContentView: View {
     @State private var endingOffsetY: CGFloat = 0
     
     
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -132,7 +133,7 @@ struct ContentView: View {
                     .foregroundColor(Color(hex: "252525"))
                     
                     //Mark: - 날짜 View, 포스터 View
-                    MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName, showSheet: $showSheet)
+                    MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName)
                     
                     //Mark: - 영화관 이름, 주소
                     VStack(spacing: 0) {
@@ -246,7 +247,6 @@ struct ContentView: View {
                 }
                 GeometryReader { reader in
                     BottomSheetView(selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName)
-                    //                        .offset(y: self.dragOffset.height + 550)
                         .offset(y: startingOffsetY)
                         .offset(y: currentDragOffsetY)
                         .offset(y: endingOffsetY)
@@ -277,65 +277,6 @@ struct ContentView: View {
                                     }
                                 })
                         )
-                    
-                    //                        .gesture(DragGesture(minimumDistance: 30)
-                    //                            .onChanged{ value in
-                    //
-                    //                                dragOffset = value.translation
-                    //                            }
-                    //                            .onEnded{ value in
-                    //                                if dragOffset.height < 400 {
-                    //                                    translation.height = 500
-                    //                                }
-                    //
-                    //                            }
-                    //                        )
-                    //                            withAnimation{
-                    //                                translation = value.translation
-                    //                                location = value.location
-                    
-                    //                                if value.startLocation.y > reader.frame(in : .global).midX {
-                    //                                    if value.translation.height < 0 && offset > (-reader.frame(in: .global).height + 60) {
-                    //                                        offset = value.translation.height
-                    //                                    }
-                    //                                }
-                    //
-                    //                                if value.startLocation.y < reader.frame(in : .global).midX {
-                    //                                    if value.translation.height > 0 && offset < 0 {
-                    //                                        offset = (-reader.frame(in: .global).height + 60) +
-                    //                                        value.translation.height
-                    //                                    }
-                    //                                }
-                    
-                    
-                    //
-                    
-                    //                            withAnimation {
-                    //                                if value.startLocation.y > reader.frame(in: .global).midX {
-                    //                                    if -value.translation.height > reader.frame(in: .global).midX {
-                    //                                        offset = (-reader.frame(in: .global).height + 60)
-                    //                                        return
-                    //                                    }
-                    //
-                    //                                }
-                    //                                if value.startLocation.y < reader.frame(in: .global).midX {
-                    //                                    if value.translation.height < reader.frame(in: .global).midX {
-                    //                                        offset = (-reader.frame(in: .global).height + 60)
-                    //                                        return
-                    //                                    }
-                    //
-                    //                                }
-                    //                                if value.startLocation.y < reader.frame(in: .global).midX {
-                    //                                    offset = -reader.frame(in: .global).height + 550
-                    //                                }
-                    //                                if value.startLocation.y > reader.frame(in: .global).midX {
-                    //                                    offset = -reader.frame(in: .global).height + 800
-                    //                                }
-                    
-                    //                            }
-                    
-                    
-                    
                 }
             }
         }

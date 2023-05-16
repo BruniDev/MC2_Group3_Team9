@@ -5,12 +5,13 @@ struct BottomSheetView: View {
     
     @Binding var selected : String
     let segments = ["내 근처 영화관", "내 취향 영화관"]
-    //    @Binding var movieDetailData: MovieDetailData
     @Binding var selectedDate: Date
     @Binding var theaters: [Theater]
     @Binding var theaterName : String
     @State var loadingNum : Int = 1
     @State var showSettingView = false
+    @State var selectSegment = 0
+    
     var body : some View {
         
         
@@ -23,96 +24,54 @@ struct BottomSheetView: View {
             
             HStack {
                 Text("영화관 탐색하기")
+                    
                     .font(.system(size: 20).bold())
                     .foregroundColor(Color.black)
                 Image(systemName: "figure.hiking")
                     .foregroundColor(Color(hex: "5856D6"))
             }
-       
-            
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.leading,30)
+    
             Picker("Choose course", selection: $selected) {
                 ForEach(segments, id : \.self) { segment in
                     Text(segment)
                         .tag(segment)
                 }
-                                                          
-       
-                
+   
             }
-            .pickerStyle(.segmented)
+            .colorMultiply(Color(hex: "5856D6"))
+            .pickerStyle(SegmentedPickerStyle())
+           
+            .frame(width: 350)
             if selected == segments[0] {
                 HStack {
-                    Button(action: {
-                        theaterName = theaters[0].name
-                    }) {
-                        ZStack{
-                            Rectangle()
-                                .frame(width: 109, height: 141)
-                                .foregroundColor(.white)
-                                .border(.gray)
-                                .cornerRadius(19)
-                            
-                            VStack {
-                                Circle()
-                                    .frame(width: 60, height: 60)
-                                Text("\(theaters[0].name)")
-                                    .font(.system(size: 15.0))
-                                    .foregroundColor(.black)
-                                Text("\(theaters[0].handleDistance())")
-                                    .font(.system(size: 15.0))
-                                    .foregroundColor(.black)
-                            }
-                        }
-                    }// 1번째
-                    Button(action: {
-                        theaterName = theaters[1].name
-                    }) {
-                        ZStack{
-                            Rectangle()
-                                .frame(width: 109, height: 141)
-                                .foregroundColor(.white)
-                                .border(.gray)
-                                .cornerRadius(19)
-                            
-                            VStack {
-                                Circle()
-                                    .frame(width: 60, height: 60)
-                                Text("\(theaters[1].name)")
-                                    .font(.system(size: 15.0))
-                                    .foregroundColor(.black)
-                                Text("\(theaters[1].handleDistance())")
-                                    .font(.system(size: 15.0))
-                                    .foregroundColor(.black)
-                            }
-                        }
-                    }
-                    Button(action: {
-                        theaterName = theaters[2].name
-                    }) {
-                        ZStack{
-                            Rectangle()
-                                .frame(width: 109, height: 141)
-                                .foregroundColor(.white)
-                                .border(.gray)
-                                .cornerRadius(19)
-                            
-                            VStack {
-                                Circle()
-                                    .frame(width: 60, height: 60)
-                                Text("\(theaters[2].name)")
-                                    .font(.system(size: 15.0))
-                                    .foregroundColor(.black)
-                                Text("\(theaters[2].handleDistance())")
-                                    .font(.system(size: 15.0))
-                                    .foregroundColor(.black)
+                    ForEach(0..<3) { num in
+                        Button(action: {
+                            theaterName = theaters[num].name
+                        }) {
+                            ZStack{
+                                Rectangle()
+                                    .frame(width: 109, height: 141)
+                                    .foregroundColor(.white)
+                                    .border(.gray)
+                                    .cornerRadius(19)
+                                VStack {
+                                    Circle()
+                                        .frame(width: 60, height: 60)
+                                    Text("\(theaters[num].name)")
+                                        .font(.system(size: 15.0))
+                                        .foregroundColor(.black)
+                                    Text("\(theaters[num].handleDistance())")
+                                        .font(.system(size: 15.0))
+                                        .foregroundColor(Color(hex: "5856D6"))
+                                }
                             }
                         }
                     }
                 }
-                
             }
             else {
-              
                     Text("영화관 취향 테스트를 통해 \n 취향에 맞는 영화관을 추천해 드릴게요!")
                     Button(action : {
                         self.showSettingView = true
@@ -134,6 +93,7 @@ struct BottomSheetView: View {
             .sheet(isPresented: $showSettingView) {
                TestView(loadingNum: $loadingNum)
             }
+         
     }
 }
 
