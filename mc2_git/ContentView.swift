@@ -108,15 +108,17 @@ struct ContentView: View {
     @State var randomInd : Int = 0
     @State var showSheet : Bool = false
     @Binding var loadingNum : Int
-    @State var offset : CGFloat = 0
-    @State var translation : CGSize = CGSize(width: 0 , height: 0)
-    @State var location : CGPoint = CGPoint(x:0,y:0)
     @State private var selected = "내 근처 영화관"
+    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.87
+    @State private var currentDragOffsetY: CGFloat = 0
+    @State private var endingOffsetY: CGFloat = 0
+    
+    
     var body: some View {
         NavigationView {
             ZStack {
-            ScrollView(showsIndicators: false) {
-              //  VStack {
+                ScrollView(showsIndicators: false) {
+                    //  VStack {
                     ZStack { //Mark: - 영화관 로고
                         Rectangle()
                             .frame(height: 128)
@@ -244,46 +246,96 @@ struct ContentView: View {
                 }
                 GeometryReader { reader in
                     BottomSheetView(selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName)
-                        .offset(y: reader.frame(in: .global).height - 60)
-                        .offset(y: offset)
-                        .gesture(DragGesture().onChanged({(value) in
-                            withAnimation{
-                                translation = value.translation
-                                location = value.location
-                                
-                                if value.startLocation.y > reader.frame(in : .global).midX {
-                                    if value.translation.height < 0 && offset > (-reader.frame(in: .global).height + 60) {
-                                        offset = value.translation.height
+                    //                        .offset(y: self.dragOffset.height + 550)
+                        .offset(y: startingOffsetY)
+                        .offset(y: currentDragOffsetY)
+                        .offset(y: endingOffsetY)
+                        .gesture(
+                            DragGesture()
+                                .onChanged({ value in
+                                    withAnimation(.spring()){
+                                        if value.translation.height < -startingOffsetY + 550 {
+                                            currentDragOffsetY = -startingOffsetY + 550
+                                        }
+                                        else{
+                                            currentDragOffsetY = value.translation.height
+                                        }
                                     }
-                                }
-                                
-                                if value.startLocation.y < reader.frame(in : .global).midX {
-                                    if value.translation.height > 0 && offset < 0 {
-                                        offset = (-reader.frame(in: .global).height + 60) +
-                                        value.translation.height
+                                    
+                                })
+                                .onEnded({ value in
+                                    withAnimation(.spring()) {
+                                        if currentDragOffsetY < -150{
+                                            endingOffsetY = -startingOffsetY + 550
+                                            currentDragOffsetY = .zero
+                                        } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
+                                            endingOffsetY = .zero
+                                            currentDragOffsetY = .zero
+                                        } else {
+                                            currentDragOffsetY = .zero
+                                        }
                                     }
-                                }
-                            }
-                        }).onEnded({(value) in
-                            withAnimation {
-                                if value.startLocation.y > reader.frame(in: .global).midX {
-                                    if -value.translation.height > reader.frame(in: .global).midX {
-                                        offset = (-reader.frame(in: .global).height + 60)
-                                        return
-                                    }
-                                    offset = 0
-                                }
-                                if value.startLocation.y < reader.frame(in: .global).midX {
-                                    if value.translation.height < reader.frame(in: .global).midX {
-                                        offset = (-reader.frame(in: .global).height + 60)
-                                        return
-                                    }
-                                    offset = 0
-                                }
-                            }
-                            
-                        })
+                                })
                         )
+                    
+                    //                        .gesture(DragGesture(minimumDistance: 30)
+                    //                            .onChanged{ value in
+                    //
+                    //                                dragOffset = value.translation
+                    //                            }
+                    //                            .onEnded{ value in
+                    //                                if dragOffset.height < 400 {
+                    //                                    translation.height = 500
+                    //                                }
+                    //
+                    //                            }
+                    //                        )
+                    //                            withAnimation{
+                    //                                translation = value.translation
+                    //                                location = value.location
+                    
+                    //                                if value.startLocation.y > reader.frame(in : .global).midX {
+                    //                                    if value.translation.height < 0 && offset > (-reader.frame(in: .global).height + 60) {
+                    //                                        offset = value.translation.height
+                    //                                    }
+                    //                                }
+                    //
+                    //                                if value.startLocation.y < reader.frame(in : .global).midX {
+                    //                                    if value.translation.height > 0 && offset < 0 {
+                    //                                        offset = (-reader.frame(in: .global).height + 60) +
+                    //                                        value.translation.height
+                    //                                    }
+                    //                                }
+                    
+                    
+                    //
+                    
+                    //                            withAnimation {
+                    //                                if value.startLocation.y > reader.frame(in: .global).midX {
+                    //                                    if -value.translation.height > reader.frame(in: .global).midX {
+                    //                                        offset = (-reader.frame(in: .global).height + 60)
+                    //                                        return
+                    //                                    }
+                    //
+                    //                                }
+                    //                                if value.startLocation.y < reader.frame(in: .global).midX {
+                    //                                    if value.translation.height < reader.frame(in: .global).midX {
+                    //                                        offset = (-reader.frame(in: .global).height + 60)
+                    //                                        return
+                    //                                    }
+                    //
+                    //                                }
+                    //                                if value.startLocation.y < reader.frame(in: .global).midX {
+                    //                                    offset = -reader.frame(in: .global).height + 550
+                    //                                }
+                    //                                if value.startLocation.y > reader.frame(in: .global).midX {
+                    //                                    offset = -reader.frame(in: .global).height + 800
+                    //                                }
+                    
+                    //                            }
+                    
+                    
+                    
                 }
             }
         }

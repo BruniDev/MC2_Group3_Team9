@@ -12,6 +12,9 @@ struct BottomSheetView: View {
     @State var loadingNum : Int = 1
     @State var showSettingView = false
     var body : some View {
+        
+        
+        
         VStack {
            
             Capsule()
@@ -25,14 +28,16 @@ struct BottomSheetView: View {
                 Image(systemName: "figure.hiking")
                     .foregroundColor(Color(hex: "5856D6"))
             }
-            .padding()
+       
             
             Picker("Choose course", selection: $selected) {
                 ForEach(segments, id : \.self) { segment in
                     Text(segment)
                         .tag(segment)
-                    
                 }
+                                                          
+       
+                
             }
             .pickerStyle(.segmented)
             if selected == segments[0] {
@@ -132,13 +137,4 @@ struct BottomSheetView: View {
     }
 }
 
-//struct BlurShape : UIViewRepresentable {
-//    func MakeUIView(context: Context) -> UIVisualEffectView {
-//        return UIVisualEffectView(effect: UIBlurEffect(style: .systemMaterial))
-//    }
-//    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-//
-//    }
-//}
-//
 
