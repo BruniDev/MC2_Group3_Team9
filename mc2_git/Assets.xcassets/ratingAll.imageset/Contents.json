@@ -6,10 +6,12 @@
       "scale" : "1x"
     },
     {
+      "filename" : "ratingAll 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "ratingAll 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }
