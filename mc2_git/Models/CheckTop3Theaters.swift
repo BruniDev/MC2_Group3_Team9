@@ -16,7 +16,7 @@ let nameList: [String] = [
     "더숲아트시네마",
     "씨네아트리좀",
     "아트하우스모모",
-    "안동중앙시네마",
+    "안동중앙아트시네마",
     "에무시네마",
     "오오극장",
     "인디플러스포항",
@@ -121,6 +121,31 @@ class Theater {
                     toDouble *= 10
                     return String(Int(toDouble) / 10) + "." + String(Int(toDouble) % 10) + " KM"
             }
+        }
+    }
+    
+    func transferToMobility() -> String { // 도보: 1, 대중교통: 2, 자동차: 3
+        var toDouble = Double(distance)
+        var result : String
+        var minute : Double
+        
+        if toDouble < 4000 {
+            result = "도보 "
+            minute = toDouble / 4000 * 60
+            result = result + String(Int(minute)) + "분"
+            return result
+        }
+        
+        else {
+            result = "자동차 "
+            minute = toDouble / 30000 * 60
+            if Int(minute) > 60 {
+                result = result + String(Int(minute) / 60) + "시간 " + String(Int(minute) % 60) + "분"
+            }
+            else {
+                result = result + String(Int(minute)) + "분"
+            }
+            return result
         }
     }
 }

@@ -4,15 +4,15 @@ struct CustomAlertView: View {
     
     @Binding var isShowingPopup : Bool
     @Binding var movieDetailData : MovieDetailData
-    @State var wordCheck : Bool = true
+//    @State var wordCheck : Bool = true
     @State var titleCheck : Bool =  true
     
     var body: some View {
         
         ZStack {
             VStack(spacing: 0) {
-                AsyncImage(url: URL(string:movieDetailData.poster)) { img in //Mark: - 영화 포스터 이미지
-                    img
+                AsyncImage(url: URL(string:movieDetailData.poster)) { img in
+                    img//Mark: - 영화 포스터 이미지
                         .resizable()
                         .scaledToFit()
                     
@@ -22,32 +22,38 @@ struct CustomAlertView: View {
                 .frame(width: 284, height: 407)
                 .padding(.top, 65)
                 .shadow(color: .gray, radius: 3, y: 4)
-                .overlay(Circle()
-                    .foregroundColor(.black.opacity(0.5))
-                    .frame(width: 40)
-                    .padding(.top, 80)
-                    .padding(.trailing, 15)
-                    .overlay(
-                        Text(movieDetailData.rating)
-                            .font(.system(size: wordCheck ? 22 : 15))
-                            .padding(.top, wordCheck ? 87 : 91)
-                            .padding(.trailing, wordCheck ? 24 : 21)
-                            .foregroundColor(.yellow.opacity(0.5))
-                        ,alignment: .topTrailing
-                    )
-                        .onAppear {
-                            if movieDetailData.rating == "ALL" {
-                                self.wordCheck = false
-                            }
-                        }
-                         ,alignment: .topTrailing
-                )
+//                .overlay(Circle()
+//                    .foregroundColor(.black.opacity(0.5))
+//                    .frame(width: 40)
+//                    .padding(.top, 80)
+//                    .padding(.trailing, 15)
+//                    .overlay(
+//                        Text(movieDetailData.rating)
+//                            .font(.system(size: wordCheck ? 22 : 15))
+//                            .padding(.top, wordCheck ? 87 : 91)
+//                            .padding(.trailing, wordCheck ? 24 : 21)
+//                            .foregroundColor(.yellow.opacity(0.5))
+//                        ,alignment: .topTrailing
+//                    )
+//                        .onAppear {
+//                            if movieDetailData.rating == "ALL" {
+//                                self.wordCheck = false
+//                            }
+//                        }
+//                         ,alignment: .topTrailing
+//                )
                 
                 //Mark: - 포스터 이미지 아래 영화 정보 전체
                 HStack(alignment: .bottom) {
+                    ZStack {
+                        Image(ratingCheck(rating: movieDetailData.rating))
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                    }
+                    .padding(.leading, 34)
+                    .padding(.bottom, 5)
                     Text(movieDetailData.title)
-                        .font(.system(size: titleCheck ? 28 : 24))
-                        .padding(.leading, 34)
+                        .font(.system(size: titleCheck ? 28 : 20))
                         .bold()
                         .onAppear {
                             if movieDetailData.title.count > 10 {
@@ -90,6 +96,7 @@ struct CustomAlertView: View {
             
             VStack {
                 HStack {
+                    Spacer()
                     Button(action: {
                         isShowingPopup = false
                     }) {
@@ -97,9 +104,8 @@ struct CustomAlertView: View {
                             .font(.system(size: 40))
                             .foregroundColor(.black.opacity(0.8))
                             .padding(.top, 12)
-                            .padding(.leading, 12)
+                            .padding(.trailing, 12)
                     }
-                    Spacer()
                 }
                 Spacer()
             }
@@ -118,5 +124,24 @@ struct CustomAlertView: View {
                 .font(.system(size: 12))
             Spacer()
         }
+    }
+    
+    func ratingCheck(rating: String) -> String {
+        if rating == "전체" {
+            return "ratingAll"
+        } else if rating == "12"{
+            return "rating12"
+        } else if rating == "15"{
+            return "rating15"
+        } else {
+            return "rating18"
+        }
+    }
+    
+}
+
+struct MovieListView_Previews: PreviewProvider {
+    static var previews: some View {
+        CustomAlertView(isShowingPopup: .constant(true), movieDetailData: .constant(MovieDetailData(title: "", engTitle: "", poster: "", releasedDate: "", overView: "", director: "", cast: "", genre: "", runningTime: "", rating: "")))
     }
 }
