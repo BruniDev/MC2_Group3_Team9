@@ -18,7 +18,7 @@ struct MovieListView: View {
     var body: some View {
         ScrollViewReader{ scrollViewProxy in
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top) {
+                HStack(alignment: .top, spacing: 14) {
                     ForEach(0..<movieScheduleDataForUser.count, id:\.self) { index in
                         VStack(alignment: .leading, spacing: 8) {
                             Button {
@@ -34,6 +34,7 @@ struct MovieListView: View {
                                 }
                                 .frame(width: 210, height: 300)
                                 .animation(.easeIn)
+                                .shadow(color: .gray, radius: 3, x:1, y: 1)
                             }
                             Text("\(movieScheduleDataForUser[index].movieName)")
                                 .font(.system(size: 17, weight: .semibold))
@@ -42,7 +43,7 @@ struct MovieListView: View {
                             HStack {
                                 ForEach(0 ..< movieScheduleDataForUser[index].movieTimeTable.count, id: \.self) { i in
                                     Text(movieScheduleDataForUser[index].movieTimeTable[i])
-                                        .font(.system(size: 12))
+                                        .font(.system(size: 14))
                                         .multilineTextAlignment(.leading)
                                         .foregroundColor(.black)
                                 }
@@ -51,7 +52,7 @@ struct MovieListView: View {
                         }
                     } //Mark: - End Geometry
                     .frame(width: 210, height: 360)
-                    .padding(.leading, 20)
+//                    .padding(.horizontal, 27)
                     .padding(.top, -10)
                     .onChange(of: scrollToTop) { newValue in
                         if newValue {
@@ -61,7 +62,8 @@ struct MovieListView: View {
                             }
                         }
                     }
-                } //Mark: - End ForEach
+                }
+                .padding(.horizontal, 27)//Mark: - End ForEach
             }//Mark: - End HStack
         }//Mark: - End ScrollView
     }

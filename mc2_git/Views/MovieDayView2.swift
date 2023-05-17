@@ -50,7 +50,7 @@ struct MovieDayView2: View {
                                 }
                             }
                         }, label: {
-                            VStack {
+                            VStack(spacing:5){
                                 Text("\(getDayNumber(date: day))")
                                     .font(.system(size: 17))
                                     .bold()
@@ -80,7 +80,6 @@ struct MovieDayView2: View {
             VStack {
                 MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData, scrollToTop: $scrollToTop)
             }
-
         }//VStack Ended
     }
 }
@@ -109,7 +108,6 @@ func getDayShort(date: Date) -> String {
 }
 
 func getWeek() -> [Date] {
-  
     let currentDate = Date()
     
     let calendar = Calendar.current
@@ -123,7 +121,6 @@ func getWeek() -> [Date] {
         .prefix(7)
     
     daysMonth[0] = calendar.startOfDay(for: currentDate)
-    
     return Array(daysMonth)
 }
 

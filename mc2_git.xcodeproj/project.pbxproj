@@ -28,6 +28,7 @@
 		93FB5C982A0F894B008A8AA9 /* CustomAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C972A0F894B008A8AA9 /* CustomAlertView.swift */; };
 		93FB5C9A2A0F8962008A8AA9 /* MovieDayView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C992A0F8962008A8AA9 /* MovieDayView2.swift */; };
 		93FB5C9C2A0F8971008A8AA9 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FB5C9B2A0F8971008A8AA9 /* TestView.swift */; };
+		D99784082A15577200BF11E2 /* WalkingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99784072A15577200BF11E2 /* WalkingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		93FB5C972A0F894B008A8AA9 /* CustomAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertView.swift; sourceTree = "<group>"; };
 		93FB5C992A0F8962008A8AA9 /* MovieDayView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDayView2.swift; sourceTree = "<group>"; };
 		93FB5C9B2A0F8971008A8AA9 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
+		D99784072A15577200BF11E2 /* WalkingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 				93FB5C9B2A0F8971008A8AA9 /* TestView.swift */,
 				7B36C9952A105A070043D988 /* BottomSheetView.swift */,
 				937E322A2A1235EB0063F1DE /* AnimationVIew.swift */,
+				D99784072A15577200BF11E2 /* WalkingView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				93FB5C842A0F888C008A8AA9 /* MovieScheduleDataForUser.swift in Sources */,
 				7B36C9962A105A070043D988 /* BottomSheetView.swift in Sources */,
 				93FB5C902A0F88EC008A8AA9 /* MovieScheduleManager.swift in Sources */,
+				D99784082A15577200BF11E2 /* WalkingView.swift in Sources */,
 				93FB5C8C2A0F88C5008A8AA9 /* Color.swift in Sources */,
 				93FB5C542A0F8807008A8AA9 /* mc2_gitApp.swift in Sources */,
 				93FB5C8E2A0F88D9008A8AA9 /* DateManager.swift in Sources */,

@@ -13,7 +13,7 @@ let instagrams : [String : String] = [
     "더숲아트시네마" : "https://instagram.com/deosup_artcinema?igshid=MzRlODBiNWFlZA==",
     "씨네아트리좀" : "https://instagram.com/espacerhizome?igshid=MzRlODBiNWFlZA==",
     "아트하우스모모" : "https://instagram.com/arthousemomo?igshid=MzRlODBiNWFlZA==",
-    "안동중앙아트시네마" : "https://instagram.com/joongangcinema.andong?igshid=MzRlODBiNWFlZA==",
+    "중앙아트시네마" : "https://instagram.com/joongangcinema.andong?igshid=MzRlODBiNWFlZA==",
     "에무시네마" : "https://instagram.com/emuartspace?igshid=MzRlODBiNWFlZA==",
     "오오극장" : "https://instagram.com/55cine?igshid=MzRlODBiNWFlZA==",
     "인디플러스포항" : "https://instagram.com/pohang_culture?igshid=MzRlODBiNWFlZA==",
@@ -40,7 +40,7 @@ let urls : [String : String] = [
     "더숲아트시네마" : "https://map.naver.com/v5/entry/place/1015940361?c=15,0,0,0,dh&isCorrectAnswer=true",
     "씨네아트리좀" : "https://map.naver.com/v5/entry/place/37383447?c=15,0,0,0,dh&isCorrectAnswer=true",
     "아트하우스모모" : "https://map.naver.com/v5/entry/place/12948307?c=15,0,0,0,dh&isCorrectAnswer=true",
-    "안동중앙아트시네마" : "https://map.naver.com/v5/search/%EC%95%88%EB%8F%99%EC%A4%91%EC%95%99%EC%8B%9C%EB%84%A4%EB%A7%88/place/34635294?c=15,0,0,0,dh&isCorrectAnswer=true",
+    "중앙아트시네마" : "https://map.naver.com/v5/search/%EC%95%88%EB%8F%99%EC%A4%91%EC%95%99%EC%8B%9C%EB%84%A4%EB%A7%88/place/34635294?c=15,0,0,0,dh&isCorrectAnswer=true",
     "에무시네마" : "https://map.naver.com/v5/entry/place/37842043?c=15,0,0,0,dh",
     "오오극장" : "https://map.naver.com/v5/search/%EC%98%A4%EC%98%A4%EA%B7%B9%EC%9E%A5/place/35966761?c=15,0,0,0,dh&isCorrectAnswer=true",
     "인디플러스포항" : "https://map.naver.com/v5/search/%EC%9D%B8%EB%94%94%ED%94%8C%EB%9F%AC%EC%8A%A4%ED%8F%AC%ED%95%AD/place/569933553?c=15,0,0,0,dh&isCorrectAnswer=true",
@@ -67,7 +67,7 @@ let addresses : [String : String] = [
     "더숲아트시네마" : "서울특별시 노원구 노해로 480 조광빌딩 B",
     "씨네아트리좀" : "경상남도 창원시 마산합포구 동서북14길 24",
     "아트하우스모모" : "서울특별시 서대문구 이화여대길 52 (대현동, 이화여자대학교 ECC B402)",
-    "안동중앙아트시네마" : "경상북도 안동시 문화광장길 45 (삼산동)",
+    "중앙아트시네마" : "경상북도 안동시 문화광장길 45 (삼산동)",
     "에무시네마" : "서울특별시 종로구 경희궁1가길 7",
     "오오극장" : "대구광역시 중구 국채보상로 537",
     "인디플러스포항" : "경상북도 포항시 북구 서동로 83",
@@ -117,29 +117,6 @@ struct ContentView: View {
     @Binding var loadingNum : Int
     
     //    @State private var isVisible = false
-//
-    
-    @State private var currentIndex = 0
-    @State private var showWalk = true
-    @State private var showRun = false
-    @State private var showWalk1 = false
-    @State private var showRun1 = false
-    @State private var showWalk2 = false
-    @State private var showRun2 = false
-    
-    let images: [String] = ["figure.run", "figure.walk", "figure.run", "figure.walk", "figure.run", "figure.walk"]
-    
-    
-    let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
-    func startAnimating() {
-        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
-               withAnimation {
-                   currentIndex = (currentIndex + 1) % images.count
-               }
-           }
-       }
-    
-    
     
     var body: some View {
         ZStack {
@@ -151,14 +128,13 @@ struct ContentView: View {
                     Image("\(theaterName)") // #fix
                         .resizable()
                         .scaledToFit()
-                        .frame(height: 70)
-                        //.border(.white)
-                        .offset(x:0, y:10)
+                        .frame(height: 35)
+                        .offset(x:0, y:15)
                 }
                 .foregroundColor(Color(hex: "252525"))
                 
                 //Mark: - 날짜 View, 포스터 View
-                MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName,showSheet : $showSheet)
+                    MovieDayView2(movieDetailData: $movieDetailData, selectedDate: $selectedDate, theaters: $theaters, movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays,isShowingPopup: $isShowingPopup, theaterName: $theaterName,showSheet : $showSheet)
                 
                 //Mark: - 영화관 이름, 주소
                 VStack(spacing: 0) {
@@ -188,25 +164,15 @@ struct ContentView: View {
                                     Spacer()
                                     HStack {
                                         Text("나와의 거리")
-                                            .padding(.trailing, 10)
-                                        HStack(spacing: 10) {
-                                            ForEach(0..<images.count) { index in
-                                                Image(systemName: images[index])
-                                                    .resizable()
-                                                    .aspectRatio(contentMode: .fit)
-                                                    .frame(width: 16, height: 16)
-                                                    .opacity(index == currentIndex ? 1 : 0)
-                                                    .animation(.easeIn(duration: 0.5))
-                                            }
-                                        }
-                                        .onAppear {
-                                            startAnimating()
-                                        }
-
+                                            .fontWeight(.bold)
+                                            .foregroundColor(Color(hex: "5856D6"))
+                                        Spacer()
+                                        WalkingView()
+                                        Spacer()
                                         Text("\(theaterDistance)")
                                             .multilineTextAlignment(.trailing)
                                             .foregroundColor(Color(hex: "5856D6"))
-                                            .bold()
+                                            .fontWeight(.medium)
                                         
                                         Link(destination: URL(string: urls[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
                                             Image("location")
@@ -220,16 +186,19 @@ struct ContentView: View {
                             }
                             //                                .offset(y: 55)
                         }
-                        //.padding(.horizontal, 10)
+                    .padding(.leading, 25)
+                    .padding(.trailing, 10)
+                    .padding(.top, 20) // 20 --> 25
+                    .padding(.bottom, 100)//.padding(.horizontal, 10)
                     }
-                    .padding(.leading)
-                    .padding(.top, 25) // 20 --> 25
-                    .padding(.bottom, 80)
+//                    .padding(.leading)
+//                    .padding(.top, 25) // 20 --> 25
+//                    .padding(.bottom, 80)
                     .frame(width: UIScreen.main.bounds.width)
                     .background(Color(hex:"687CC3").opacity(0.1))
                 }
-                .frame(width: 390, height : 844)
-            .edgesIgnoringSafeArea(.top)
+                .frame(width: 395, height : 844)
+            .edgesIgnoringSafeArea(.all)
             .onAppear {
                 print(UIScreen.main.bounds.height)
                 if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
@@ -259,32 +228,6 @@ struct ContentView: View {
                     }
                 }
             }
-           
-//            if bottomSheetPresented {
-//                Button (action: {
-//                    withAnimation(.spring()){
-//                        if currentDragOffsetY < -100 {
-//                            endingOffsetY = -startingOffsetY + 540
-//                            currentDragOffsetY = .zero
-//                        } else if endingOffsetY != 0 && currentDragOffsetY > 100 {
-//                            endingOffsetY = .zero
-//                            currentDragOffsetY = .zero
-//                            bottomSheetPresented = false
-//                            padding_bottom = 33
-//                        } else {
-//                            currentDragOffsetY = .zero
-//                        }
-//                    }
-//                    bottomSheetPresented.toggle()
-//                    padding_bottom = 33
-//                })
-//                {
-//                    Rectangle()
-//                        .frame(minWidth: 0, maxWidth: .infinity,minHeight: 0, maxHeight: .infinity)
-//                        .foregroundColor(Color.black.opacity(0.5))
-//                        .edgesIgnoringSafeArea(.all)
-//                }
-//            }
             
             GeometryReader { reader in
                 
@@ -320,7 +263,7 @@ struct ContentView: View {
                                     else {
                                         currentDragOffsetY = value.translation.height
                                     }
-                                    padding_bottom = 1
+                                    padding_bottom = 4
                                     bottomSheetPresented = true
                                 }
                             })

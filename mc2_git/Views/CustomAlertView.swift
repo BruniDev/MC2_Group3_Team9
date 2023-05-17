@@ -62,6 +62,7 @@ struct CustomAlertView: View {
                         }
                     Text(movieDetailData.releasedDate)
                         .font(.system(size: 11))
+                        .padding(.bottom, 3)
                     Spacer()
                 }
                 .padding(.top, 12)

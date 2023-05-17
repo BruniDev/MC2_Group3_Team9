@@ -16,7 +16,7 @@ let nameList: [String] = [
     "더숲아트시네마",
     "씨네아트리좀",
     "아트하우스모모",
-    "안동중앙아트시네마",
+    "중앙아트시네마",
     "에무시네마",
     "오오극장",
     "인디플러스포항",
@@ -109,17 +109,17 @@ class Theater {
         var toDouble = Double(distance)
 
         if toDouble < 1000 { // distance < 1 KM
-            return String(Int(toDouble)) + " M"
+            return String(Int(toDouble)) + "m"
         }
         else { // distance >= 1 KM
             toDouble /= 1000
 
             if toDouble >= 10 { // distance >= 10 KM
-                return String(Int(toDouble)) + " KM"
+                return String(Int(toDouble)) + "km"
             }
             else { // 1 KM <= distance < 10 KM
                     toDouble *= 10
-                    return String(Int(toDouble) / 10) + "." + String(Int(toDouble) % 10) + " KM"
+                    return String(Int(toDouble) / 10) + "." + String(Int(toDouble) % 10) + "km"
             }
         }
     }
@@ -138,7 +138,7 @@ class Theater {
         
         else {
             result = "자동차 "
-            minute = toDouble / 30000 * 60
+            minute = toDouble / 40000 * 60
             if Int(minute) > 60 {
                 result = result + String(Int(minute) / 60) + "시간 " + String(Int(minute) % 60) + "분"
             }

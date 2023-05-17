@@ -116,6 +116,10 @@ struct BottomSheetView: View {
                                             .resizable()
                                             .frame(width: 60, height: 60)
                                             .aspectRatio(contentMode: .fill)
+                                            .background(RoundedRectangle(cornerRadius: 40)
+                                                .strokeBorder(borderColors[num], lineWidth: 1)
+                                                .frame(width: 61, height: 61))
+                                    
                                         Circle()
                                             .frame(width: 60, height: 60)
                                             .foregroundColor(Color(hex: "5856D6").opacity(0.5))
@@ -126,12 +130,18 @@ struct BottomSheetView: View {
                                         //.aspectRatio(contentMode: .fill)
                                             .opacity(buttonSelected[num] * 2 / 3)
                                     }
+                                    .padding(.top, 13)
+                                    Spacer()
                                     Text("\(theaters[num].name)")
                                         .font(.system(size: 15.0))
                                         .foregroundColor(.black)
+                                        .fontWeight(.bold)
+                                        .padding(.bottom, 1)
                                     Text("\(theaters[num].handleDistance())")
-                                        .font(.system(size: 15.0))
+                                        .font(.system(size: 14.0))
                                         .foregroundColor(Color(hex: "5856D6"))
+                                        .padding(.bottom, 15)
+//                                        .fontWeight(.bold)
                                 }
                                 .frame(width: 109, height: 141)
                             }
@@ -145,7 +155,10 @@ struct BottomSheetView: View {
                 }
             }
             else {
-                Text("영화관 취향 테스트를 통해 \n 취향에 맞는 영화관을 추천해 드릴게요!")
+                Text("영화관 취향 테스트를 통해\n취향에 맞는 영화관을 추천해 드릴게요!")
+                    .multilineTextAlignment(.center)
+                    .padding(.top, 13)
+                    .padding(.bottom, 15)
                 Button(action : {
                     self.showSettingView = true
                     print("버튼이 눌렸다")
@@ -156,7 +169,7 @@ struct BottomSheetView: View {
                         .fixedSize(horizontal: false, vertical: true)
                         .multilineTextAlignment(.center)
                         .padding()
-                        .frame(width: 182, height: 64)
+                        .frame(width: 182, height: 50)
                         .foregroundColor(Color.white)
                         .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(32.5))
                 }
@@ -168,7 +181,7 @@ struct BottomSheetView: View {
         .background(Color.white)
         .cornerRadius(20).shadow(radius: bottomSheetPresented ? 0 : 5)
         .sheet(isPresented: $showSettingView) {
-            TestView(loadingNum: $loadingNum)
+            TestView(loadingNum: $loadingNum, showSettingView:$showSettingView)
         }
         
     }
