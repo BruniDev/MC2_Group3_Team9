@@ -40,9 +40,6 @@ class MovieDetailManager {
             let rateStartIndex = tempRating.index(tempRating.startIndex, offsetBy: 0)
             let rateEndIndex = tempRating.index(tempRating.startIndex, offsetBy: 2)
             rating = String(tempRating[rateStartIndex ..< rateEndIndex])
-            if rating == "전체" {
-                rating = "ALL"
-            }
             
             let tempReleasedDate = try etc.array()[1].text()
             print("<<<<<<<<<<<\(tempReleasedDate)>>>>>>>>>>") // YYYY.MM.DD 형식이 아닌 5월중의 경우 예외 처리

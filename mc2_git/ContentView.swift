@@ -116,6 +116,28 @@ struct ContentView: View {
     @State var padding_bottom : CGFloat = 33
     @Binding var loadingNum : Int
     
+    //    @State private var isVisible = false
+//
+    
+    @State private var currentIndex = 0
+    @State private var showWalk = true
+    @State private var showRun = false
+    @State private var showWalk1 = false
+    @State private var showRun1 = false
+    @State private var showWalk2 = false
+    @State private var showRun2 = false
+    
+    let images: [String] = ["figure.run", "figure.walk", "figure.run", "figure.walk", "figure.run", "figure.walk"]
+    
+    
+    let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
+    func startAnimating() {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+               withAnimation {
+                   currentIndex = (currentIndex + 1) % images.count
+               }
+           }
+       }
     
     
     
@@ -157,33 +179,44 @@ struct ContentView: View {
                                         .frame(width: 22)
                                 })
                             }
-                            
-                            Text(addresses[theaterName] ?? "X")
-                                .font(.system(size:15))
-                                .padding(.top, -10)
+                                
+                                Text(addresses[theaterName] ?? "X")
+                                    .font(.system(size:12))
+                                    .bold()
+                                
+                                VStack {
+                                    Spacer()
+                                    HStack {
+                                        Text("나와의 거리")
+                                            .padding(.trailing, 10)
+                                        HStack(spacing: 10) {
+                                            ForEach(0..<images.count) { index in
+                                                Image(systemName: images[index])
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 16, height: 16)
+                                                    .opacity(index == currentIndex ? 1 : 0)
+                                                    .animation(.easeIn(duration: 0.5))
+                                            }
+                                        }
+                                        .onAppear {
+                                            startAnimating()
+                                        }
 
-                            VStack {
-                                Spacer()
-                                HStack {
-                                    Text("나와의 거리")
-                                        .font(.system(size: 17, weight: .semibold))
-                                        .foregroundColor(Color(hex: "5856D6"))
-                                    Image(systemName: "figure.walk")
-                                        .foregroundColor(Color(hex: "5856D6"))
-                                        .padding(.trailing, 126)
-                            
-                                    Text("\(theaterDistance)")
-                                        .multilineTextAlignment(.trailing)
-                                        .foregroundColor(Color(hex: "5856D6"))
-                                        .bold()
-                                    
-                                    Link(destination: URL(string: urls[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
-                                        Image("location")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 32)
-                                    })
+                                        Text("\(theaterDistance)")
+                                            .multilineTextAlignment(.trailing)
+                                            .foregroundColor(Color(hex: "5856D6"))
+                                            .bold()
+                                        
+                                        Link(destination: URL(string: urls[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
+                                            Image("location")
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 30)
+                                        })
+                                    }
                                 }
+
                             }
                             //                                .offset(y: 55)
                         }
@@ -195,11 +228,10 @@ struct ContentView: View {
                     .frame(width: UIScreen.main.bounds.width)
                     .background(Color(hex:"687CC3").opacity(0.1))
                 }
-                .frame(width: 390, height : 233)
-            }
+                .frame(width: 390, height : 844)
             .edgesIgnoringSafeArea(.top)
             .onAppear {
-                print(UIScreen.main.bounds.width)
+                print(UIScreen.main.bounds.height)
                 if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
                     theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
                     theaterName = theaters[0].name // # fix
