@@ -114,6 +114,28 @@ struct ContentView: View {
     @State private var endingOffsetY: CGFloat = 0
     @Binding var loadingNum : Int
     
+    //    @State private var isVisible = false
+//
+    
+    @State private var currentIndex = 0
+    @State private var showWalk = true
+    @State private var showRun = false
+    @State private var showWalk1 = false
+    @State private var showRun1 = false
+    @State private var showWalk2 = false
+    @State private var showRun2 = false
+    
+    let images: [String] = ["figure.run", "figure.walk", "figure.run", "figure.walk", "figure.run", "figure.walk"]
+    
+    
+    let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
+    func startAnimating() {
+        Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { timer in
+               withAnimation {
+                   currentIndex = (currentIndex + 1) % images.count
+               }
+           }
+       }
     
     
     var body: some View {
@@ -158,21 +180,34 @@ struct ContentView: View {
                                 }
                                 
                                 Text(addresses[theaterName] ?? "X")
-                                // .font(.caption)
                                     .font(.system(size:12))
                                     .bold()
-                                // .padding(.bottom, 10)
                                 VStack {
                                     Spacer()
                                     HStack {
                                         Text("나와의 거리")
-                                        Image(systemName: "figure.walk")
-                                            .foregroundColor(Color(hex: "5856D6"))
-                                        Spacer()
+                                            .padding(.trailing, 10)
+                                        HStack(spacing: 10) {
+                                            ForEach(0..<images.count) { index in
+                                                Image(systemName: images[index])
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fit)
+                                                    .frame(width: 16, height: 16)
+                                                    .opacity(index == currentIndex ? 1 : 0)
+                                                    .animation(.easeIn(duration: 0.5))
+                                            }
+                                        }
+                                        .onAppear {
+                                            startAnimating()
+                                        }
+
+                                        
+
                                         Text("\(theaterDistance)")
                                             .multilineTextAlignment(.trailing)
                                             .foregroundColor(Color(hex: "5856D6"))
                                             .bold()
+                                        
                                         Link(destination: URL(string: urls[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
                                             Image("location")
                                                 .resizable()
@@ -181,16 +216,15 @@ struct ContentView: View {
                                         })
                                     }
                                 }
-                                //                                .offset(y: 55)
                             }
                             .padding(.horizontal, 10)
                         }
                         .padding(.leading)
                         .padding(.top, 20)
                         .padding(.bottom, 80)
-                        .background(Color(hex:"687CC3").opacity(0.1))
                     }
                     .frame(width: 390, height : 233)
+                    .background(Color(hex:"687CC3").opacity(0.1))
                 }
                 .edgesIgnoringSafeArea(.top)
                 .onAppear {
@@ -283,34 +317,34 @@ struct ContentView: View {
                         )
                 }
                 if isLoading && loadingNum == 1 {
-                                   LoadingView
-                               }
-                               
-                               
-                           }.onAppear {
-                               DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
-                                   isLoading.toggle()
-                                   // showSheet = true
-                               })
-                           }
-                       }
-                       .navigationBarBackButtonHidden(true)
-                       // #end of navigationView
-                       .overlay(){
-                           if isShowingPopup {
-                               Color.black.opacity(0.5)
-                                   .ignoresSafeArea()
-                               
-                               CustomAlertView(isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
-                                   .frame(width: 352, height: 758)
-                                   .background(Color.white)
-                               
-                               
-                               
-                           }
-                       }
-                   }
-               }
+                    LoadingView
+                }
+                
+                
+            }.onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+                    isLoading.toggle()
+                    // showSheet = true
+                })
+            }
+        }
+        .navigationBarBackButtonHidden(true)
+        // #end of navigationView
+        .overlay(){
+            if isShowingPopup {
+                Color.black.opacity(0.5)
+                    .ignoresSafeArea()
+                
+                CustomAlertView(isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
+                    .frame(width: 352, height: 758)
+                    .background(Color.white)
+                
+                
+                
+            }
+        }
+    }
+}
 
 
 
