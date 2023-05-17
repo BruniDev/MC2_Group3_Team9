@@ -17,7 +17,7 @@ struct MovieListView: View {
     
     var body: some View {
         ScrollViewReader{ scrollViewProxy in
-            ScrollView(.horizontal, showsIndicators: false) {
+            ScrollView(.horizontal, showsIndicators: true) {
                 HStack(alignment: .top) {
                     ForEach(0..<movieScheduleDataForUser.count, id:\.self) { index in
                         VStack(alignment: .leading, spacing: 8) {
