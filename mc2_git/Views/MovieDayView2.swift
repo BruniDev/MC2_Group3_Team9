@@ -77,8 +77,6 @@ struct MovieDayView2: View {
             
             VStack {
                 MovieListView(movieScheduleDataForUser: $movieScheduleDataForUser, isShowingPopup: $isShowingPopup, movieDetailData: $movieDetailData)
-                
-                
             }
 
         }//VStack Ended

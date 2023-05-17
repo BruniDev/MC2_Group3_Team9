@@ -16,9 +16,9 @@ struct MovieListView: View {
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(alignment: .top) {
+            HStack(alignment: .top, spacing: 10) {
                 ForEach(0..<movieScheduleDataForUser.count, id:\.self) { index in
-                    VStack(alignment: .leading, spacing: 8) {
+                    VStack(alignment: .leading) {
                         Button {
                             movieDetailData = movieDetailManager.fetchDetail(movieCode: movieScheduleDataForUser[index].movieCode)!
                             isShowingPopup = true
@@ -26,32 +26,35 @@ struct MovieListView: View {
                             AsyncImage(url: URL(string: "\(movieScheduleDataForUser[index].movieIMG)")) { img in
                                 img
                                     .resizable()
-                                    .scaledToFit()
+                                    .scaledToFit() // 상하 동일, 좌우 틀림
+                                    //.aspectRatio(contentMode: .fill) // 좌우 동일, 상하 틀림
                             } placeholder: {
                                 Color.white
                             }
                             .frame(width: 210, height: 300)
                             .animation(.easeIn)
                         }
+                        
                         Text("\(movieScheduleDataForUser[index].movieName)")
                             .font(.system(size: 17, weight: .semibold))
                             .multilineTextAlignment(.leading)
                             .foregroundColor(.black)
+                            .padding(.bottom, -5)
                         HStack {
                             ForEach(0 ..< movieScheduleDataForUser[index].movieTimeTable.count, id: \.self) { i in
                                 Text(movieScheduleDataForUser[index].movieTimeTable[i])
-                                    .font(.system(size: 12))
+                                    .font(.system(size: 15))
                                     .multilineTextAlignment(.leading)
                                     .foregroundColor(.black)
                             }
                         }
-
                     }
                 } //Mark: - End Geometry
                 .frame(width: 210, height: 360)
-                .padding(.leading, 20)
+                // .padding(.leading, 20)
                 .padding(.top, -10)
-            } //Mark: - End ForEach
+            }
+            .padding(.horizontal, 20)//Mark: - End ForEach
         }//Mark: - End HStack
     }//Mark: - End ScrollView
 }

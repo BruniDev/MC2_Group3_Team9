@@ -109,17 +109,19 @@ struct ContentView: View {
     @State var randomInd : Int = 0
     @State var showSheet : Bool = false
     @State private var selected = "내 근처 영화관"
-    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.87
+    @State private var startingOffsetY: CGFloat = UIScreen.main.bounds.height * 0.89 // UIScreen.main.bounds.height * 0.87
     @State private var currentDragOffsetY: CGFloat = 0
     @State private var endingOffsetY: CGFloat = 0
+    @State var bottomSheetPresented = false
+    @State var padding_bottom : CGFloat = 33
     @Binding var loadingNum : Int
+    
     
     
     
     var body: some View {
         ZStack {
             VStack {
-                //ScrollView(showsIndicators: false) {
                 ZStack { //Mark: - 영화관 로고
                     Rectangle()
                         .frame(height: 128)
@@ -127,7 +129,8 @@ struct ContentView: View {
                     Image("\(theaterName)") // #fix
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 70)
+                        .frame(height: 70)
+                        //.border(.white)
                         .offset(x:0, y:10)
                 }
                 .foregroundColor(Color(hex: "252525"))
@@ -145,54 +148,58 @@ struct ContentView: View {
                         VStack(alignment: .leading) {
                             HStack {
                                 Text("\(theaterName)") // #fix
-                                    .font(.system(size:28))
-                                    .bold()
+                                    .font(.system(size:22, weight: .bold))
                                 
                                 Link(destination: URL(string: instagrams[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
                                     Image("Instagram_icon")
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(width: 30)
+                                        .frame(width: 22)
                                 })
                             }
                             
                             Text(addresses[theaterName] ?? "X")
-                            // .font(.caption)
-                                .font(.system(size:12))
-                                .bold()
-                            // .padding(.bottom, 10)
+                                .font(.system(size:15))
+                                .padding(.top, -10)
+
                             VStack {
                                 Spacer()
                                 HStack {
                                     Text("나와의 거리")
+                                        .font(.system(size: 17, weight: .semibold))
+                                        .foregroundColor(Color(hex: "5856D6"))
                                     Image(systemName: "figure.walk")
                                         .foregroundColor(Color(hex: "5856D6"))
-                                    Spacer()
+                                        .padding(.trailing, 126)
+                            
                                     Text("\(theaterDistance)")
                                         .multilineTextAlignment(.trailing)
                                         .foregroundColor(Color(hex: "5856D6"))
                                         .bold()
+                                    
                                     Link(destination: URL(string: urls[theaterName] ?? "X") ?? URL(string: "https://map.naver.com/v5/entry/place/11591652?c=15,0,0,0,dh")!, label: {
                                         Image("location")
                                             .resizable()
                                             .scaledToFit()
-                                            .frame(width: 30)
+                                            .frame(width: 32)
                                     })
                                 }
                             }
                             //                                .offset(y: 55)
                         }
-                        .padding(.horizontal, 10)
+                        //.padding(.horizontal, 10)
                     }
                     .padding(.leading)
-                    .padding(.top, 20)
+                    .padding(.top, 25) // 20 --> 25
                     .padding(.bottom, 80)
+                    .frame(width: UIScreen.main.bounds.width)
                     .background(Color(hex:"687CC3").opacity(0.1))
                 }
                 .frame(width: 390, height : 233)
             }
             .edgesIgnoringSafeArea(.top)
             .onAppear {
+                print(UIScreen.main.bounds.width)
                 if locationDataManager.locationManager.authorizationStatus == .authorizedWhenInUse {
                     theaters = CheckTop3Theaters(location: locationDataManager.locationManager.location!)
                     theaterName = theaters[0].name // # fix
@@ -221,32 +228,80 @@ struct ContentView: View {
                 }
             }
            
+//            if bottomSheetPresented {
+//                Button (action: {
+//                    withAnimation(.spring()){
+//                        if currentDragOffsetY < -100 {
+//                            endingOffsetY = -startingOffsetY + 540
+//                            currentDragOffsetY = .zero
+//                        } else if endingOffsetY != 0 && currentDragOffsetY > 100 {
+//                            endingOffsetY = .zero
+//                            currentDragOffsetY = .zero
+//                            bottomSheetPresented = false
+//                            padding_bottom = 33
+//                        } else {
+//                            currentDragOffsetY = .zero
+//                        }
+//                    }
+//                    bottomSheetPresented.toggle()
+//                    padding_bottom = 33
+//                })
+//                {
+//                    Rectangle()
+//                        .frame(minWidth: 0, maxWidth: .infinity,minHeight: 0, maxHeight: .infinity)
+//                        .foregroundColor(Color.black.opacity(0.5))
+//                        .edgesIgnoringSafeArea(.all)
+//                }
+//            }
+            
             GeometryReader { reader in
-                BottomSheetView(dateManager: DateManager(), movieScheduleManager: MovieScheduleManager(), movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays, closedDays: $closedDays, selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName,theaterDistance: $theaterDistance)
+                
+                if bottomSheetPresented {
+                    Button (action: {
+                        withAnimation(.spring()){
+                            startingOffsetY = UIScreen.main.bounds.height * 0.89
+                            currentDragOffsetY = 0
+                            endingOffsetY = .zero
+                        }
+                        bottomSheetPresented = false
+                        padding_bottom = 33
+                    })
+                    {
+                        Rectangle()
+                            .frame(minWidth: 0, maxWidth: .infinity,minHeight: 0, maxHeight: .infinity)
+                            .foregroundColor(Color.black.opacity(0.5))
+                            .edgesIgnoringSafeArea(.all)
+                    }
+                }
+                
+                BottomSheetView(dateManager: DateManager(), movieScheduleManager: MovieScheduleManager(), movieScheduleDataForUser: $movieScheduleDataForUser, allDays: $allDays, closedDays: $closedDays, selected: $selected, selectedDate: $selectedDate, theaters: $theaters, theaterName: $theaterName,theaterDistance: $theaterDistance, padding_bottom: $padding_bottom, bottomSheetPresented: $bottomSheetPresented, startingOffsetY: $startingOffsetY, currentDragOffsetY: $currentDragOffsetY, endingOffsetY: $endingOffsetY)
                     .offset(y: startingOffsetY)
                     .offset(y: currentDragOffsetY)
                     .offset(y: endingOffsetY)
-                    .gesture(
+                    .gesture( // 드래그 정도에 따른 opacity 조절
                         DragGesture()
                             .onChanged({ value in
                                 withAnimation(.spring()){
-                                    if value.translation.height < -startingOffsetY + 550 {
-                                        currentDragOffsetY = -startingOffsetY + 550
+                                    if value.translation.height < -startingOffsetY + 540 { // 551
+                                        currentDragOffsetY = -startingOffsetY + 540
                                     }
-                                    else{
+                                    else {
                                         currentDragOffsetY = value.translation.height
                                     }
+                                    padding_bottom = 1
+                                    bottomSheetPresented = true
                                 }
-                                
                             })
                             .onEnded({ value in
                                 withAnimation(.spring()) {
-                                    if currentDragOffsetY < -150{
-                                        endingOffsetY = -startingOffsetY + 550
+                                    if currentDragOffsetY < -100 {
+                                        endingOffsetY = -startingOffsetY + 540
                                         currentDragOffsetY = .zero
-                                    } else if endingOffsetY != 0 && currentDragOffsetY > 150 {
+                                    } else if endingOffsetY != 0 && currentDragOffsetY > 100 {
                                         endingOffsetY = .zero
                                         currentDragOffsetY = .zero
+                                        bottomSheetPresented = false
+                                        padding_bottom = 33
                                     } else {
                                         currentDragOffsetY = .zero
                                     }
@@ -254,6 +309,7 @@ struct ContentView: View {
                             })
                     )
             }
+            
             if isLoading && loadingNum == 1 {
                 LoadingView
             }
@@ -261,7 +317,7 @@ struct ContentView: View {
             
         }
         .onAppear {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: { // #loading time
                 isLoading.toggle()
             })
         }
@@ -283,7 +339,7 @@ struct ContentView: View {
 extension ContentView {
     var LoadingView: some View {
         ZStack {
-            Color(red: 246 / 255, green: 242 / 255, blue: 233 / 255)
+            Color(hex:"EEE9F6")
                 .ignoresSafeArea()
             HStack (alignment: .top) {
                 VStack(alignment: .center) {

@@ -24,27 +24,27 @@ let describe1 = [
     감각적이며 편안한 장소를 좋아하시는 당신, \
     당신에게는 서울 서대문구에 위치한’ 라이카시네마’를 추천해 드려요!
     """,
-
+    
     """
     감성적이고 분위기 있는 조용한 장소를 좋아하시는 당신, \
     당신에게는 서울 종로구에 위치한 ‘에무시네마’를 추천해 드려요!
     """,
-
+    
     """
     한국 독립영화를 즐겨보는 당신, \
     당신에게는 경북 포항시에 위치한 ‘인디플러스 포항’을 추천드려요!
     """,
-
+    
     """
     예술영화 마니아인 당신, \
     당신에게는 서울 광진구 ‘KU 시네마테크’를 추천해 드려요!
     """,
-
+    
     """
     아늑하고 조용한 장소를 좋아하시는 당신, \
     당신에게는 대구 중구에 위치한 ‘오오극장’을 추천해 드려요!
     """,
-
+    
     """
     음악영화, 예술영화를 좋아하는 당신, \
     당신에게는 서울 한남동에 위치한 영화관 ‘오르페오’를 추천해 드려요!
@@ -54,7 +54,7 @@ let describe1 = [
     예술영화를 사랑하는 당신, \
     당신에게는 서울 종로구에 위치한 ‘씨네큐브’를 추천해 드려요!
     """,
-
+    
     """
     장르불문 다양한 영화를 즐기는 당신, \
     당신에게는 경기도 부천에 있는 ‘판타스틱 큐브’를 추천해 드려요!
@@ -73,6 +73,7 @@ let describe2 = [
     """,
     
     """
+    
     """,
     
     """
@@ -149,8 +150,6 @@ struct Q1 : View {
     var body: some View {
         NavigationView {
             VStack {
-                //
-                
                 VStack(alignment: .leading){
                     Text("영화가")
                         .font(.largeTitle.bold())
@@ -207,81 +206,79 @@ struct Q1 : View {
                 }
             }
         }
-            .navigationBarBackButtonHidden()
-        }
+        .navigationBarBackButtonHidden()
+    }
 }
 
 struct Q2: View {
     @Binding var loadingNum : Int
     var body: some View {
-            NavigationView {
+        NavigationView {
+            VStack {
+                VStack(alignment: .leading){
+                    Text("간만에 생긴")
+                        .font(.largeTitle.bold())
+                    Text("자유시간 🏖️,")
+                        .font(.largeTitle.bold())
+                    Text("당신이라면?")
+                        .font(.largeTitle.bold())
+                }
+                .padding(.trailing, 100)
+                .padding(.top, 150)
                 
-                VStack {
-                    VStack(alignment: .leading){
-                        Text("간만에 생긴")
-                            .font(.largeTitle.bold())
-                        Text("자유시간 🏖️,")
-                            .font(.largeTitle.bold())
-                        Text("당신이라면?")
-                            .font(.largeTitle.bold())
-                    }
-                    .padding(.trailing, 100)
-                    .padding(.top, 150)
-                    
-                    Spacer()
-                    
+                Spacer()
+                
                 NavigationLink(destination: Q3(loadingNum: $loadingNum)) {
-                                ZStack {
-                                    HStack {
-                                        VStack (alignment: .leading) {
-                                            Text("혼자서도 잘 놀아요,")
-                                                .font(.system(size:20))
-                                                .foregroundColor(Color.white)
-                                            Text(" 나만의 시간을 갖는다.")
-                                                .font(.system(size:20))
-                                                .foregroundColor(Color.white)
-                                        }
-                                        .padding(.trailing, 30)
-                                        Text("🏝️")
-                                            .font(.system(size:40))
-                                    }
-                                }
-                                .frame(width: 350, height: 120)
-                                .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
-                                
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text("혼자서도 잘 놀아요,")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                                Text(" 나만의 시간을 갖는다.")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
                             }
-                                    
-                                    
-                NavigationLink(destination: Q3(loadingNum: $loadingNum)) {
-                                ZStack {
-                                    HStack {
-                                        VStack (alignment: .leading) {
-                                            Text("혼자는 외로워,")
-                                                .font(.system(size:20))
-                                                .foregroundColor(Color.white)
-                                            Text("친구들에게 연락한다.")
-                                                .font(.system(size:20))
-                                                .foregroundColor(Color.white)
-                                        }
-                                        .padding(.trailing, 30)
-                                        Text("📱")
-                                            .font(.system(size:40))
-                                    }
-                                }
-                                .frame(width: 350, height: 120)
-                                .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
-                            }
+                            .padding(.trailing, 30)
+                            Text("🏝️")
+                                .font(.system(size:40))
                         }
+                    }
+                    .frame(width: 350, height: 120)
+                    .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                    
+                }
+                
+                
+                NavigationLink(destination: Q3(loadingNum: $loadingNum)) {
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text("혼자는 외로워,")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                                Text("친구들에게 연락한다.")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                            }
+                            .padding(.trailing, 30)
+                            Text("📱")
+                                .font(.system(size:40))
+                        }
+                    }
+                    .frame(width: 350, height: 120)
+                    .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                }
             }
-            .navigationBarBackButtonHidden()
         }
+        .navigationBarBackButtonHidden()
+    }
 }
 
 struct Q3: View {
     @Binding var loadingNum : Int
     var body: some View {
         NavigationView {
-            
             VStack {
                 VStack(alignment: .leading){
                     Text("요즘 가장 핫한")
@@ -296,48 +293,48 @@ struct Q3: View {
                 
                 Spacer()
                 
-            NavigationLink(destination: Q4(loadingNum: $loadingNum)) {
-                            ZStack {
-                                HStack {
-                                    VStack (alignment: .leading) {
-                                        Text("SNS에")
-                                            .font(.system(size:20))
-                                            .foregroundColor(Color.white)
-                                        Text("자랑하기.")
-                                            .font(.system(size:20))
-                                            .foregroundColor(Color.white)
-                                    }
-                                    .padding(.trailing, 30)
-                                    Text("👍")
-                                        .font(.system(size:40))
-                                }
+                NavigationLink(destination: Q4(loadingNum: $loadingNum)) {
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text("SNS에")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                                Text("자랑하기.")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
                             }
-                            .frame(width: 350, height: 120)
-                            .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
-                            
-                        }
-                                
-                                
-            NavigationLink(destination: Q4(loadingNum: $loadingNum)) {
-                            ZStack {
-                                HStack {
-                                    VStack (alignment: .leading) {
-                                        Text("사진 찍어")
-                                            .font(.system(size:20))
-                                            .foregroundColor(Color.white)
-                                        Text("혼자 간직하기.")
-                                            .font(.system(size:20))
-                                            .foregroundColor(Color.white)
-                                    }
-                                    .padding(.trailing, 30)
-                                    Text("📸")
-                                        .font(.system(size:40))
-                                }
-                            }
-                            .frame(width: 350, height: 120)
-                            .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                            .padding(.trailing, 30)
+                            Text("👍")
+                                .font(.system(size:40))
                         }
                     }
+                    .frame(width: 350, height: 120)
+                    .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                    
+                }
+                
+                
+                NavigationLink(destination: Q4(loadingNum: $loadingNum)) {
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text("사진 찍어")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                                Text("혼자 간직하기.")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                            }
+                            .padding(.trailing, 30)
+                            Text("📸")
+                                .font(.system(size:40))
+                        }
+                    }
+                    .frame(width: 350, height: 120)
+                    .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                }
+            }
         }
         .navigationBarBackButtonHidden()
     }
@@ -347,7 +344,6 @@ struct Q4: View {
     @Binding var loadingNum : Int
     var body: some View {
         NavigationView {
-            
             VStack {
                 VStack(alignment: .leading){
                     Text("영화 시작 전, 👨‍🚒")
@@ -362,48 +358,48 @@ struct Q4: View {
                 
                 Spacer()
                 
-            NavigationLink(destination: Q5(loadingNum: $loadingNum)) {
-                            ZStack {
-                                HStack {
-                                    VStack (alignment: .leading) {
-                                        Text("영화관에")
-                                            .font(.system(size:20))
-                                            .foregroundColor(Color.white)
-                                        Text("불이 나면 어떡하지...")
-                                            .font(.system(size:20))
-                                            .foregroundColor(Color.white)
-                                    }
-                                    .padding(.trailing, 30)
-                                    Text("🚨")
-                                        .font(.system(size:40))
-                                }
+                NavigationLink(destination: Q5(loadingNum: $loadingNum)) {
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text("영화관에")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                                Text("불이 나면 어떡하지...")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
                             }
-                            .frame(width: 350, height: 120)
-                            .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
-                            
-                        }
-                                
-                                
-            NavigationLink(destination: Q5(loadingNum: $loadingNum)) {
-                            ZStack {
-                                HStack {
-                                    VStack (alignment: .leading) {
-                                        Text("영화 언제 시작하지?")
-                                            .font(.system(size:20))
-                                            .foregroundColor(Color.white)
-                                        Text("빨리 시작해라")
-                                            .font(.system(size:20))
-                                            .foregroundColor(Color.white)
-                                    }
-                                    .padding(.trailing, 30)
-                                    Text("❓")
-                                        .font(.system(size:40))
-                                }
-                            }
-                            .frame(width: 350, height: 120)
-                            .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                            .padding(.trailing, 30)
+                            Text("🚨")
+                                .font(.system(size:40))
                         }
                     }
+                    .frame(width: 350, height: 120)
+                    .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                    
+                }
+                
+                
+                NavigationLink(destination: Q5(loadingNum: $loadingNum)) {
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text("영화 언제 시작하지?")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                                Text("빨리 시작해라")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                            }
+                            .padding(.trailing, 30)
+                            Text("❓")
+                                .font(.system(size:40))
+                        }
+                    }
+                    .frame(width: 350, height: 120)
+                    .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                }
+            }
         }
         .navigationBarBackButtonHidden()
     }
@@ -413,71 +409,71 @@ struct Q5 : View {
     @Binding var loadingNum : Int
     @State var answer : Bool = true
     var body: some View {
-            NavigationView {
-                VStack {
-                    VStack(alignment: .leading){
-                        Text("크리스토퍼 놀란의 신작이")
-                            .font(.largeTitle.bold())
-                        Text("아이맥스로  🪐")
-                            .font(.largeTitle.bold())
-                        Text("촬영됐다던데...?")
-                            .font(.largeTitle.bold())
-                    }
-                    .padding(.trailing, 10)
-                    .padding(.top, 150)
-                    
-                    Spacer()
-                                
-                    NavigationLink(destination: ResultView(answer: $answer)) {
-                        ZStack {
-                            HStack {
-                                VStack (alignment: .leading) {
-                                    Text("당연히")
-                                        .font(.system(size:20))
-                                        .foregroundColor(Color.white)
-                                    Text("용∙아∙맥이지~")
-                                        .font(.system(size:20))
-                                        .foregroundColor(Color.white)
-                                }
-                                .padding(.trailing, 30)
-                                Text("🐉")
-                                    .font(.system(size:40))
-                            }
-                        }
-                        .frame(width: 350, height: 120)
-                        .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
-                    }
-                    .simultaneousGesture(TapGesture().onEnded{
-                                answer = true
-                    })
-                                    
-                                    
-                    NavigationLink(destination: ResultView(answer: $answer)) {
-                        ZStack {
-                            HStack {
-                                VStack (alignment: .leading) {
-                                    Text("예매하기 빡쎄다던데...")
-                                        .font(.system(size:20))
-                                        .foregroundColor(Color.white)
-                                    Text("그냥 일반 영화관에서 봐야겠다.")
-                                        .font(.system(size:20))
-                                        .foregroundColor(Color.white)
-                                }
-                                .padding(.trailing, 30)
-                                Text("😭")
-                                    .font(.system(size:40))
-                            }
-                        }
-                        .frame(width: 350, height: 120)
-                        .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
-                    }
-                    .simultaneousGesture(TapGesture().onEnded{
-                                answer = false
-                    })
+        NavigationView {
+            VStack {
+                VStack(alignment: .leading){
+                    Text("크리스토퍼 놀란의 신작이")
+                        .font(.largeTitle.bold())
+                    Text("아이맥스로  🪐")
+                        .font(.largeTitle.bold())
+                    Text("촬영됐다던데...?")
+                        .font(.largeTitle.bold())
                 }
+                .padding(.trailing, 10)
+                .padding(.top, 150)
+                
+                Spacer()
+                
+                NavigationLink(destination: ResultView(answer: $answer)) {
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text("당연히")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                                Text("용∙아∙맥이지~")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                            }
+                            .padding(.trailing, 30)
+                            Text("🐉")
+                                .font(.system(size:40))
+                        }
+                    }
+                    .frame(width: 350, height: 120)
+                    .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                }
+                .simultaneousGesture(TapGesture().onEnded{
+                    answer = true
+                })
+                
+                
+                NavigationLink(destination: ResultView(answer: $answer)) {
+                    ZStack {
+                        HStack {
+                            VStack (alignment: .leading) {
+                                Text("예매하기 빡쎄다던데...")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                                Text("그냥 일반 영화관에서 봐야겠다.")
+                                    .font(.system(size:20))
+                                    .foregroundColor(Color.white)
+                            }
+                            .padding(.trailing, 30)
+                            Text("😭")
+                                .font(.system(size:40))
+                        }
+                    }
+                    .frame(width: 350, height: 120)
+                    .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
+                }
+                .simultaneousGesture(TapGesture().onEnded{
+                    answer = false
+                })
             }
-            .navigationBarBackButtonHidden()
         }
+        .navigationBarBackButtonHidden()
+    }
 }
 
 struct ResultView: View {
@@ -485,68 +481,61 @@ struct ResultView: View {
     @State var loadingNum : Int = 2
     @State var randomInd : Int = 0
     var body: some View {
-        //        VStack {
-        //            Text("당신의 취향은 ...")
-        //            Text("\(theaters[randomInd])")
-        //            .bold()
-        //            NavigationLink (destination: ContentView(loadingNum: $loadingNum)){
-        //                                       //Image(systemName:"multipy")
-        //                                       Text("나가기")
-        //            }
-        //        }
-        //        .navigationBarBackButtonHidden()
-        ZStack {
-            VStack{
-                Image("background_result")
-                    .frame(width: 390 ,height: 293)
-                    .edgesIgnoringSafeArea(.top)
-                Spacer()
+        NavigationView {
+            ZStack {
+                VStack{
+                    Image("background_result")
+                        .frame(width: 390 ,height: 293)
+                        .edgesIgnoringSafeArea(.top)
+                    Spacer()
+                }
+                
+                VStack(alignment: .center) {
+                    Text("나의 극장")
+                        .frame(width: 80, height: 23)
+                        .font(.system(size: 15))
+                        .foregroundColor(.white)
+                        .background(Color(hex:"636366"))
+                        .cornerRadius(10)
+                        .padding(.top, 29)
+                    Text("📽️")
+                        .font(.system(size: 22))
+                        .padding(.top, 11)
+                    
+                    Text("당신의 취향은 \(theaters[randomInd])")
+                        .font(.system(size: 22).bold())
+                        .padding(.top, 11)
+                    
+                    Image("\(theaters[randomInd])_circle")
+                        .frame(width:80, height: 80)
+                        .padding(.top, 11)
+                    
+                    Text(describe1[randomInd])
+                        .font(.system(size: 15))
+                        .padding(.top, 15)
+                        .padding(.horizontal,27)
+                    
+                    Text(describe2[randomInd])
+                        .font(.system(size: 15))
+                        .padding(.top, 25)
+                        .padding(.horizontal,27)
+                    
+                    Text(describe3[randomInd])
+                        .font(.system(size: 15))
+                        .padding(.top, 25)
+                        .padding(.horizontal,27)
+                    
+                    Spacer()
+                }
+                .frame(width: 339, height: 607)
+                .background(Color(hex:"E5E5EA"))
+                .border(Color(hex:"8E8E93"))
+                .cornerRadius(23)
+                .offset(y: 84)
             }
-            
-            VStack(alignment: .center) {
-                Text("나의 극장")
-                    .frame(width: 80, height: 23)
-                    .font(.system(size: 15))
-                    .foregroundColor(.white)
-                    .background(Color(hex:"636366"))
-                    .cornerRadius(10)
-                    .padding(.top, 29)
-                Text("📽️")
-                    .font(.system(size: 22))
-                    .padding(.top, 11)
-
-                Text("당신의 취향은 \(theaters[randomInd])")
-                    .font(.system(size: 22).bold())
-                    .padding(.top, 11)
-                
-                Image("\(theaters[randomInd])_circle")
-                    .frame(width:80, height: 80)
-                    .padding(.top, 11)
-                
-                Text(describe1[randomInd])
-                    .font(.system(size: 15))
-                    .padding(.top, 15)
-                    .padding(.horizontal,27)
-                
-                Text(describe2[randomInd])
-                    .font(.system(size: 15))
-                    .padding(.top, 25)
-                    .padding(.horizontal,27)
-                
-                Text(describe3[randomInd])
-                    .font(.system(size: 15))
-                    .padding(.top, 25)
-                    .padding(.horizontal,27)
-                
-                Spacer()
-            }
-            .frame(width: 339, height: 607)
-            .background(Color(hex:"E5E5EA"))
-            .border(Color(hex:"8E8E93"))
-            .cornerRadius(23)
-            .offset(y: 84)
         }
         .navigationBarBackButtonHidden()
+        
         .onAppear{
             if answer == true {
                 randomInd = Int.random(in: 0..<4)
@@ -573,6 +562,13 @@ struct TestView: View {
                     .foregroundColor(Color(hex: "5856D6").opacity(0.6))
                     .offset(x: 102, y: -207)
                 VStack(alignment: .leading) {
+                    Button(action: {
+                        
+                    })
+                    {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(Color(hex:"5856D6"))
+                    }
                     VStack(alignment: .leading) {
                         Text("나와").font(.largeTitle.bold()).font(.system(size: 34.0))
                         Text("잘 어울리는").font(.largeTitle.bold()).font(.system(size: 34.0))
@@ -594,7 +590,7 @@ struct TestView: View {
                         .background(Color(hex:"5856D6").shadow(radius: 3).cornerRadius(19))
                 }
                 .offset(y: 280)
-
+                
             }
         }
         .navigationBarBackButtonHidden()

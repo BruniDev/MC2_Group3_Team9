@@ -14,7 +14,8 @@ struct AnimationView : View {
     @State var circle = true
     
     var body: some View {
-        ZStack {
+        VStack(alignment: .trailing) {
+            ZStack {
                 if biggestCircle {
                     Circle()
                         .fill(Color(red: 88 / 255, green: 86 / 255, blue: 214 / 255))
@@ -33,7 +34,7 @@ struct AnimationView : View {
                         }
                 }
                 
-            if biggerCircle {
+                if biggerCircle {
                     Circle()
                         .fill(Color(red: 88 / 255, green: 86 / 255, blue: 214 / 255))
                         .frame(width: 50, height: 50)
@@ -45,16 +46,22 @@ struct AnimationView : View {
                             }
                         }
                 }
-            if circle {
-                Circle()
-                    .fill(Color(red: 88 / 255, green: 86 / 255, blue: 214 / 255))
-                    .frame(width: 25, height: 25)
-                    .onAppear {
-                        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
-                            biggerCircle.toggle()
+                if circle {
+                    Circle()
+                        .fill(Color(red: 88 / 255, green: 86 / 255, blue: 214 / 255))
+                        .frame(width: 25, height: 25)
+                        .onAppear {
+                            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                                biggerCircle.toggle()
+                            }
                         }
-                    }
+                }
             }
-        }.frame(width: 75, height: 75)
+            .frame(width: 75, height: 75)
+            
+            Text("찾는 중 ・・・")
+                .font(.system(size: 17)) // , weight: .semibold
+                .foregroundColor(Color(hex:"5856D6"))
+        }
     }
 }
